@@ -1,8 +1,7 @@
 'use client';
 
+import { ClarityAbiTypeTuple, isClarityAbiList } from '@/common/utils/stacks-kit';
 import { FC } from 'react';
-
-import { ClarityAbiTypeTuple, isClarityAbiList } from '@stacks/transactions';
 
 import { ListValueType, TupleValueType } from '../../types/values';
 import { getTuple } from '../../utils';

@@ -1,3 +1,5 @@
+import { deserialize, prettyPrint } from '@/common/utils/stacks-kit';
+
 import {
   CoinbaseTransaction,
   ContractCallTransaction,
@@ -7,7 +9,6 @@ import {
   TokenTransferTransaction,
   Transaction,
 } from '@stacks/stacks-blockchain-api-types';
-import { deserialize, prettyPrint } from '@stacks/transactions/dist/cl';
 
 export function getToAddress(tx: Transaction | MempoolTransaction): string {
   switch (tx.tx_type) {

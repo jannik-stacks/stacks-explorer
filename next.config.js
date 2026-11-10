@@ -6,6 +6,15 @@ const { withSentryConfig } = require('@sentry/nextjs');
 const nextConfig = {
   output: 'standalone',
   turbopack: {},
+  transpilePackages: [
+    '@jannik-stacks/kit',
+    '@noble/curves',
+    '@noble/hashes',
+    '@scure/base',
+    '@scure/bip32',
+    '@scure/bip39',
+    'micro-packed',
+  ],
   async headers() {
     return [
       {

@@ -15,6 +15,7 @@ const customJestConfig = {
   rootDir: '',
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
+    '^@jannik-stacks/kit$': '<rootDir>/node_modules/@jannik-stacks/kit/dist/index.mjs',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],

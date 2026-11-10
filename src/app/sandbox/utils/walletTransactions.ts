@@ -1,10 +1,15 @@
 'use client';
 
 import { logError } from '@/common/utils/error-utils';
+import {
+  Cl,
+  PostCondition,
+  PostConditionModeName,
+  postConditionToHex,
+} from '@/common/utils/stacks-kit';
 
 import { request } from '@stacks/connect';
 import { NetworkString } from '@stacks/connect/dist/types/methods';
-import { Cl, PostCondition, PostConditionModeName, postConditionToHex } from '@stacks/transactions';
 
 const formatClarityArgs = (args: any[]): any[] => {
   return args.map(arg => {

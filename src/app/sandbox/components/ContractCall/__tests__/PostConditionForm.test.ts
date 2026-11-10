@@ -3,7 +3,7 @@ import {
   PostConditionMode,
   PostConditionType,
   PoxConditionCode,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
 
 import { FunctionFormikState } from '../FunctionView';
 import { checkPostConditionParameters, getPostCondition } from '../PostConditionForm';

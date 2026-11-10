@@ -5,6 +5,7 @@ import {
   feeEstimationsMaxValues,
   feeEstimationsMinValues,
 } from '@/app/feeConfig';
+import { StacksNetworkName } from '@/common/utils/stacks-kit';
 import {
   getEstimatedUnsignedStacksTxByteLength,
   getSerializedUnsignedStacksTxPayload,
@@ -21,8 +22,7 @@ import { convertAmountToBaseUnit, createMoney, stxToMicroStx } from '@leather.io
 import BigNumber from 'bignumber.js';
 import { unstable_cache } from 'next/cache';
 
-import { StacksNetworkName } from '@stacks/network';
-import { StacksTransactionWire } from '@stacks/transactions';
+type StacksTransactionWire = Awaited<ReturnType<typeof generateStacksUnsignedTransaction>>;
 
 export function createSampleTokenTransferOptions(
   network: StacksNetworkName

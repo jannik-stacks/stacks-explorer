@@ -1,4 +1,4 @@
-import { bufferCVFromString, cvToHex, tupleCV } from '@stacks/transactions';
+import { bufferCVFromString, cvToHex, tupleCV } from '@/common/utils/stacks-kit';
 
 import { BNSV1_CONTRACT } from '../constants/constants';
 import { GenericResponseType } from '../hooks/useInfiniteQueryResult';

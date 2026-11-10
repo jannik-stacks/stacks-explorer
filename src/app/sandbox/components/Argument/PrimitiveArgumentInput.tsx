@@ -1,7 +1,6 @@
+import { ClarityAbiType, getTypeString } from '@/common/utils/stacks-kit';
 import { Box } from '@chakra-ui/react';
 import { FC } from 'react';
-
-import { ClarityAbiType, getTypeString } from '@stacks/transactions';
 
 import { Field } from '../../../../components/ui/field';
 import { Input } from '../../../../ui/Input';

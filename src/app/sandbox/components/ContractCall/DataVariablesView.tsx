@@ -1,8 +1,7 @@
+import { ClarityAbiVariable, getTypeString } from '@/common/utils/stacks-kit';
 import { Box, Flex, Grid, Icon, Spinner, Stack, chakra } from '@chakra-ui/react';
 import { Atom } from '@phosphor-icons/react';
 import { FC, memo, useId, useState } from 'react';
-
-import { ClarityAbiVariable, getTypeString } from '@stacks/transactions';
 
 import { Section } from '../../../../common/components/Section';
 import { useGlobalContext } from '../../../../common/context/useGlobalContext';

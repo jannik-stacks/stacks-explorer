@@ -1,11 +1,10 @@
 import { RowCopyButton } from '@/app/txid/[txId]/redesign/tx-summary/SummaryItem';
+import { ClarityAbiFunction } from '@/common/utils/stacks-kit';
 import { DefaultBadge, DefaultBadgeIcon, DefaultBadgeLabel } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
 import { ButtonLink } from '@/ui/ButtonLink';
 import { Flex, FlexProps, Icon } from '@chakra-ui/react';
 import { Eye, Function, Lock } from '@phosphor-icons/react';
-
-import { ClarityAbiFunction } from '@stacks/transactions';
 
 export function FunctionListItem({
   functionAbi,

@@ -1,5 +1,4 @@
 import { TxDetailsOf } from '@/common/types/tx-v3';
-
 import {
   Cl,
   ClarityAbiFunction,
@@ -7,7 +6,7 @@ import {
   cvToJSON,
   getTypeString,
   hexToCV,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
 
 export interface PrettyFunctionResult {
   display: string;

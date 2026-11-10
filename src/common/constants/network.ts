@@ -1,4 +1,4 @@
-import { STACKS_MAINNET, STACKS_TESTNET } from '@stacks/network';
+import { STACKS_MAINNET, STACKS_TESTNET } from '@/common/utils/stacks-kit';
 
 import { Network, NetworkModes } from '../types/network';
 import { DEFAULT_DEVNET_SERVER } from './constants';

@@ -1,9 +1,9 @@
 import { NetworkModes } from '@/common/types/network';
+import { cvToJSON, hexToCV } from '@/common/utils/stacks-kit';
 import { getBnsFromId, getNameInfo } from 'bns-v2-sdk';
 import { useEffect, useState } from 'react';
 
 import { NonFungibleTokenHoldingsList } from '@stacks/stacks-blockchain-api-types';
-import { cvToJSON, hexToCV } from '@stacks/transactions';
 
 import { BNSV1_CONTRACT, BNSV2_CONTRACT } from '../../../../common/constants/constants';
 import { hexToString } from '../../../../common/utils/utils';

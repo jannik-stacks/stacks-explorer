@@ -1,6 +1,5 @@
 import { TxDetailsOf } from '@/common/types/tx-v3';
-
-import { ClarityAbiFunction, cvToJSON, hexToCV } from '@stacks/transactions';
+import { ClarityAbiFunction, cvToJSON, hexToCV } from '@/common/utils/stacks-kit';
 
 import {
   formatClarityValue,
@@ -184,10 +183,10 @@ export const contractCallTxWithTupleResult = {
 };
 
 // Mock cvToJSON and hexToCV since we're testing functions that use them
-jest.mock('@stacks/transactions', () => ({
+jest.mock('@/common/utils/stacks-kit', () => ({
   cvToJSON: jest.fn(),
   hexToCV: jest.fn(),
-  getTypeString: jest.requireActual('@stacks/transactions').getTypeString,
+  getTypeString: jest.requireActual('@/common/utils/stacks-kit').getTypeString,
 }));
 
 // v3 encodes contract call arguments as bare `{ hex, repr }` values.

@@ -1,9 +1,8 @@
 'use client';
 
+import { ClarityAbiFunction } from '@/common/utils/stacks-kit';
 import { Flex } from '@chakra-ui/react';
 import { FC, useState } from 'react';
-
-import { ClarityAbiFunction } from '@stacks/transactions';
 
 import { AbiFunction } from '../../app/sandbox/components/ContractCall/AvailableFunctionsView';
 import { FunctionView } from '../../app/sandbox/components/ContractCall/FunctionView';

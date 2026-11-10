@@ -1,4 +1,4 @@
-import { PostConditionMode, PostConditionModeName } from '@stacks/transactions';
+import { PostConditionMode, PostConditionModeName } from '@/common/utils/stacks-kit';
 
 export const postConditionModeNames: Record<PostConditionMode, PostConditionModeName> = {
   [PostConditionMode.Allow]: 'allow',

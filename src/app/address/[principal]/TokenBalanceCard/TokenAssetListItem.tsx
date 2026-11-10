@@ -2,13 +2,13 @@
 
 import { RISKY_NFTS } from '@/app/token/[tokenId]/consts';
 import { isRiskyNFTContract } from '@/app/token/[tokenId]/utils';
+import { cvToJSON, hexToCV } from '@/common/utils/stacks-kit';
 import { Flex, FlexProps, Icon } from '@chakra-ui/react';
 import { Warning } from '@phosphor-icons/react';
 import React from 'react';
 
 import { NonFungibleTokenHolding } from '@stacks/stacks-blockchain-api-types/generated';
 import type { operations } from '@stacks/token-metadata-api-client/lib/generated/schema';
-import { cvToJSON, hexToCV } from '@stacks/transactions';
 
 import { TxLink } from '../../../../common/components/ExplorerLinks';
 import { TwoColsListItem } from '../../../../common/components/TwoColumnsListItem';

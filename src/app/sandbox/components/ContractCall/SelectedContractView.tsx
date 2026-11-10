@@ -1,9 +1,8 @@
+import { ClarityAbiFunction } from '@/common/utils/stacks-kit';
 import FungibleTokenIcon from '@/ui/icons/FungibleTokenIcon';
 import { Box, Flex, Grid, Icon, Stack } from '@chakra-ui/react';
 import { ArrowSquareOut, Atom, ListChecks } from '@phosphor-icons/react';
 import { FC } from 'react';
-
-import { ClarityAbiFunction } from '@stacks/transactions';
 
 import { TxLink } from '../../../../common/components/ExplorerLinks';
 import { Section } from '../../../../common/components/Section';

@@ -1,13 +1,12 @@
 import { ListValueType } from '@/app/sandbox/types/values';
 import { getTuple } from '@/app/sandbox/utils';
+import { ClarityAbiTypeList } from '@/common/utils/stacks-kit';
 import { Button } from '@/ui/Button';
 import { IconButtonRedesign } from '@/ui/IconButton';
 import { Field, Flex, Stack } from '@chakra-ui/react';
 import { X } from '@phosphor-icons/react';
 import { FieldArray } from 'formik';
 import { FC } from 'react';
-
-import { ClarityAbiTypeList } from '@stacks/transactions';
 
 import { Argument } from './index';
 import { CommonArgumentInputProps } from './types';

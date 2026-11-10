@@ -1,8 +1,3 @@
-import { Box, Flex, Icon, Stack } from '@chakra-ui/react';
-import { CaretDown } from '@phosphor-icons/react';
-import { Field, FormikErrors } from 'formik';
-import { useState } from 'react';
-
 import {
   Cl,
   ClarityAbiFunction,
@@ -23,7 +18,11 @@ import {
   isClarityAbiOptional,
   isClarityAbiPrimitive,
   validateStacksAddress,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
+import { Box, Flex, Icon, Stack } from '@chakra-ui/react';
+import { CaretDown } from '@phosphor-icons/react';
+import { Field, FormikErrors } from 'formik';
+import { useState } from 'react';
 
 import { isUint128 } from '../../../../common/utils/number-utils';
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from '../../../../components/ui/menu';

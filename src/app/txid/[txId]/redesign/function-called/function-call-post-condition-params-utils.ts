@@ -1,6 +1,5 @@
 import { logError } from '@/common/utils/error-utils';
 import { isUint128 } from '@/common/utils/number-utils';
-
 import {
   Cl,
   FungibleComparator,
@@ -18,7 +17,7 @@ import {
   StakingPostCondition,
   StxPostCondition,
   validateStacksAddress,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
 
 import { FunctionFormikState } from './FunctionCallForm';
 

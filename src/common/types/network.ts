@@ -1,4 +1,4 @@
-import { ChainId } from '@stacks/network';
+import { ChainId } from '@/common/utils/stacks-kit';
 
 export enum NetworkModes {
   Testnet = 'testnet',

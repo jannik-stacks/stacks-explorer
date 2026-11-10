@@ -1,7 +1,6 @@
 /** @jest-environment node */
 import { stacksAPIFetch } from '@/api/stacksAPIFetch';
 import type { PoxInfo } from '@/common/queries/usePoxInforRaw';
-
 import {
   ClarityValue,
   cvToHex,
@@ -11,7 +10,7 @@ import {
   trueCV,
   tupleCV,
   uintCV,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
 
 import type { Bond } from '../data';
 import { fetchCurrentCycleEstimate, getPendingCalculationHeight } from '../reward-estimate';

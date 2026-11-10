@@ -13,7 +13,7 @@ import {
   noneCV,
   someCV,
   tupleCV,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
 
 import { ReadOnlyResponse } from '../../common/types/ReadOnlyResponse';
 import { TupleValueType } from './types/values';

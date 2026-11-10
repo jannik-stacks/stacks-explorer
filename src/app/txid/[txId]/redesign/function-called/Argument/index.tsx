@@ -2,9 +2,8 @@
 
 import { ListValueType, TupleValueType } from '@/app/sandbox/types/values';
 import { getTuple } from '@/app/sandbox/utils';
+import { ClarityAbiTypeTuple, isClarityAbiList } from '@/common/utils/stacks-kit';
 import { FC } from 'react';
-
-import { ClarityAbiTypeTuple, isClarityAbiList } from '@stacks/transactions';
 
 import { ListArgumentInput } from './ListArgumentInput';
 import { PrimitiveArgumentInput } from './PrimitiveArgumentInput';

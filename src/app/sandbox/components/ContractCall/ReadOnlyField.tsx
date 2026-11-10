@@ -1,7 +1,6 @@
+import { ClarityAbiFunction, ClarityValue } from '@/common/utils/stacks-kit';
 import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
-
-import { ClarityAbiFunction, ClarityValue } from '@stacks/transactions';
 
 import { Section } from '../../../../common/components/Section';
 import { useGlobalContext } from '../../../../common/context/useGlobalContext';

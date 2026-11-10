@@ -3,12 +3,11 @@ import { parseReadOnlyResponse } from '@/app/sandbox/utils';
 import { CodeEditor, withControls } from '@/app/txid/[txId]/redesign/source/CodeEditor';
 import { useGlobalContext } from '@/common/context/useGlobalContext';
 import { useCallReadOnlyFunction } from '@/common/queries/useCallReadOnlyFunction';
+import { ClarityAbiFunction, ClarityValue } from '@/common/utils/stacks-kit';
 import { ButtonLink } from '@/ui/ButtonLink';
 import { Text } from '@/ui/Text';
 import { Stack } from '@chakra-ui/react';
 import { FC } from 'react';
-
-import { ClarityAbiFunction, ClarityValue } from '@stacks/transactions';
 
 const CodeEditorWithControls = withControls(CodeEditor, true, false);
 

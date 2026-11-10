@@ -1,7 +1,6 @@
 import { stacksAPIFetch } from '@/api/stacksAPIFetch';
 import type { PoxInfo } from '@/common/queries/usePoxInforRaw';
 import { getApiUrl } from '@/common/utils/network-utils';
-
 import {
   ClarityValue,
   cvToHex,
@@ -11,7 +10,7 @@ import {
   noneCV,
   someCV,
   uintCV,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
 
 import type { Bond } from './data';
 import { readUint } from './data';

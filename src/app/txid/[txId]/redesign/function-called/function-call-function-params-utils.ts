@@ -11,10 +11,7 @@ import { callContract } from '@/app/sandbox/utils/walletTransactions';
 import { PRINCIPAL_MEMPOOL_TX_SUMMARIES_INFINITE_KEY } from '@/common/queries/useMempoolTxSummaries';
 import { isUint128 } from '@/common/utils/number-utils';
 import { postConditionModeNames } from '@/common/utils/post-condition-mode-utils';
-import { QueryClient } from '@tanstack/react-query';
-
-import { asciiToBytes, bytesToHex } from '@stacks/common';
-import { NetworkString } from '@stacks/connect/dist/types/methods';
+import { asciiToBytes, bytesToHex } from '@/common/utils/stacks-kit';
 import {
   ClarityAbiFunction,
   ClarityAbiType,
@@ -27,7 +24,10 @@ import {
   isClarityAbiPrimitive,
   listCV,
   validateStacksAddress,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
+import { QueryClient } from '@tanstack/react-query';
+
+import { NetworkString } from '@stacks/connect/dist/types/methods';
 
 import { FunctionFormikState, FunctionParameters } from './FunctionCallForm';
 import {

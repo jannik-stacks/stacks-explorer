@@ -1,4 +1,4 @@
-import { ChainId } from '@stacks/network';
+import { ChainId } from '@/common/utils/stacks-kit';
 
 import { Network, NetworkModes } from '../../types/network';
 import { buildUrl, getQueryParams } from '../buildUrl';

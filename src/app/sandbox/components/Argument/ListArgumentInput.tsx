@@ -1,9 +1,8 @@
+import { ClarityAbiTypeList } from '@/common/utils/stacks-kit';
 import { Box, Flex, Icon } from '@chakra-ui/react';
 import { X } from '@phosphor-icons/react';
 import { FieldArray } from 'formik';
 import { FC } from 'react';
-
-import { ClarityAbiTypeList } from '@stacks/transactions';
 
 import { Button } from '../../../../ui/Button';
 import { Text } from '../../../../ui/Text';

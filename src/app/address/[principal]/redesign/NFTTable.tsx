@@ -2,13 +2,13 @@ import { Card } from '@/common/components/Card';
 import { TablePaginationControls } from '@/common/components/table/TablePaginationControls';
 import { useBulkFtMetadata } from '@/common/queries/useBulkTokenMetadata';
 import { useNftHoldings } from '@/common/queries/useNftHoldings';
+import { cvToJSON, hexToCV } from '@/common/utils/stacks-kit';
 import { getContractIdFromAssetId } from '@/common/utils/utils';
 import { Box, Flex, Grid } from '@chakra-ui/react';
 import { PaginationState } from '@tanstack/react-table';
 import { useCallback, useMemo, useState } from 'react';
 
 import { NftBalance } from '@stacks/stacks-blockchain-api-types';
-import { cvToJSON, hexToCV } from '@stacks/transactions';
 
 import { useAddressIdPageData } from '../AddressIdPageContext';
 import { CollectibleCard } from './CollectibleCard';

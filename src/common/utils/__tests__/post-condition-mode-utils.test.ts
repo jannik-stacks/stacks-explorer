@@ -1,4 +1,4 @@
-import { PostConditionMode } from '@stacks/transactions';
+import { PostConditionMode } from '@/common/utils/stacks-kit';
 
 import { postConditionModeFromName, postConditionModeNames } from '../post-condition-mode-utils';
 

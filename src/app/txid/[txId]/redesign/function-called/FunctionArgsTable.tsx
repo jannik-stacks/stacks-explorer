@@ -1,9 +1,8 @@
 import { ScrollIndicator } from '@/common/components/ScrollIndicator';
 import { Table } from '@/common/components/table/Table';
 import { TxDetailsOf } from '@/common/types/tx-v3';
+import { ClarityAbiFunction } from '@/common/utils/stacks-kit';
 import { ColumnDef } from '@tanstack/react-table';
-
-import { ClarityAbiFunction } from '@stacks/transactions';
 
 import {
   NameCellRenderer,

@@ -1,6 +1,5 @@
+import { ClarityAbiFunction, ClarityValue, cvToHex } from '@/common/utils/stacks-kit';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
-
-import { ClarityAbiFunction, ClarityValue, cvToHex } from '@stacks/transactions';
 
 import { HIRO_HEADERS } from '../constants/env';
 import { ReadOnlyResponse } from '../types/ReadOnlyResponse';

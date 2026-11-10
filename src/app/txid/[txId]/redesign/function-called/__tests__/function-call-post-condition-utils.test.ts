@@ -5,7 +5,7 @@ import {
   PostConditionType,
   PoxConditionCode,
   postConditionToHex,
-} from '@stacks/transactions';
+} from '@/common/utils/stacks-kit';
 
 import {
   PostConditionBuilderParameters,
@@ -511,5 +511,63 @@ describe('wallet serialization', () => {
     });
 
     expect(postConditionToHex(pc!).startsWith('04')).toBe(true);
+  });
+});
+
+describe('stacks.js post-condition wire vectors', () => {
+  test.each([
+    [
+      {
+        type: 'stx-postcondition',
+        address: 'SP000000000000000000002Q6VF78',
+        condition: 'eq',
+        amount: '42',
+      },
+      '000216000000000000000000000000000000000000000001000000000000002a',
+    ],
+    [
+      {
+        type: 'staking-postcondition',
+        address: 'SP000000000000000000002Q6VF78.pox',
+        condition: 'gte',
+        amount: '100',
+      },
+      '030316000000000000000000000000000000000000000003706f78030000000000000064',
+    ],
+    [
+      {
+        type: 'ft-postcondition',
+        address: 'origin',
+        condition: 'lte',
+        amount: '10',
+        asset: 'SP000000000000000000002Q6VF78.token::coin',
+      },
+      '010116000000000000000000000000000000000000000005746f6b656e04636f696e05000000000000000a',
+    ],
+    [
+      {
+        type: 'nft-postcondition',
+        address: 'SP000000000000000000002Q6VF78',
+        condition: 'not-sent',
+        asset: 'SP000000000000000000002Q6VF78.token::nft',
+        assetId: {
+          type: 'utf8',
+          value: 'nft',
+        },
+      },
+      '020216000000000000000000000000000000000000000016000000000000000000000000000000000000000005746f6b656e036e66740e000000036e667411',
+    ],
+    [
+      {
+        type: 'pox-postcondition',
+        address: 'origin',
+        condition: 'will-perform',
+      },
+      '040132',
+    ],
+  ])('serializes %j', (condition, expected) => {
+    expect(postConditionToHex(condition as Parameters<typeof postConditionToHex>[0])).toBe(
+      expected
+    );
   });
 });

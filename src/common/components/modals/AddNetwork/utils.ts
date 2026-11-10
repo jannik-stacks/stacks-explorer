@@ -1,6 +1,5 @@
+import { ChainId } from '@/common/utils/stacks-kit';
 import { string } from 'yup';
-
-import { ChainId } from '@stacks/network';
 
 import { fetchFromApi } from '../../../api/fetch';
 import { DEFAULT_V2_INFO_ENDPOINT } from '../../../constants/constants';

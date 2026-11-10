@@ -1,9 +1,12 @@
 import { TupleValueType } from '@/app/sandbox/types/values';
+import {
+  ClarityAbiTypeTuple,
+  getTypeString,
+  isClarityAbiOptional,
+} from '@/common/utils/stacks-kit';
 import { Input } from '@/ui/Input';
 import { Field, HStack, Stack } from '@chakra-ui/react';
 import { FC } from 'react';
-
-import { ClarityAbiTypeTuple, getTypeString, isClarityAbiOptional } from '@stacks/transactions';
 
 import { CommonArgumentInputProps } from './types';
 

@@ -1,8 +1,7 @@
+import { ClarityAbiType, getTypeString } from '@/common/utils/stacks-kit';
 import { Input } from '@/ui/Input';
 import { Field, Stack } from '@chakra-ui/react';
 import { FC } from 'react';
-
-import { ClarityAbiType, getTypeString } from '@stacks/transactions';
 
 import { CommonArgumentInputProps } from './types';
 

@@ -1,11 +1,10 @@
 import { Select } from '@/common/components/Select';
+import { PostConditionMode, PostConditionType } from '@/common/utils/stacks-kit';
 import { Input } from '@/ui/Input';
 import { Caption } from '@/ui/typography';
 import { Box, Field, Stack } from '@chakra-ui/react';
 import { FormikErrors } from 'formik';
 import { ChangeEvent, useMemo } from 'react';
-
-import { PostConditionMode, PostConditionType } from '@stacks/transactions';
 
 import { FormikSetFieldValueFunction, FunctionFormikState } from './FunctionCallForm';
 import {

@@ -1,4 +1,5 @@
 /** @jest-environment node */
+import { serializeClarityValues } from '@/common/queries/test-utils/serializeClarityValues';
 import { TxDetailsOf } from '@/common/types/tx-v3';
 import clarityVectors from '@/common/utils/fixtures/stacks-behavior/clarity.json';
 
@@ -579,22 +580,28 @@ it('throws for malformed function result bytes', () => {
 
 describe('ABI form parameter vectors', () => {
   const { abi, values } = require('@/common/utils/fixtures/stacks-behavior/abi-form.json');
-  it('pins initial values, validation and coercion for every argument path', () => {
+  it('pins initial values, validation and coercion for every argument path', async () => {
     expect(createInitialFunctionParameterValues(abi)).toMatchSnapshot();
     expect(checkFunctionParameters(abi, values)).toEqual({});
-    expect(processFunctionParameters(values, abi)).toMatchSnapshot();
+    const final = processFunctionParameters(values, abi);
+    expect({
+      names: Object.keys(final),
+      arguments: await serializeClarityValues(Object.values(final)),
+    }).toMatchSnapshot();
     expect(extractFunctionParams({ ...values, postConditionMode: 2 })).toEqual(values);
     expect(isPublicFunction(abi)).toBe(true);
     expect(isPublicFunction({ ...abi, access: 'read_only' })).toBe(false);
     expect([1, 2, 3].map(shouldUsePostConditions)).toEqual([false, true, true]);
   });
-  it('pins empty optional fields and ignores arguments absent from the ABI', () => {
-    expect(
-      processFunctionParameters(
-        { optional: '', 'optional-tuple': { x: '' }, list: [], unknown: 'ignored' },
-        abi
-      )
-    ).toMatchSnapshot();
+  it('pins empty optional fields and ignores arguments absent from the ABI', async () => {
+    const final = processFunctionParameters(
+      { optional: '', 'optional-tuple': { x: '' }, list: [], unknown: 'ignored' },
+      abi
+    );
+    expect({
+      names: Object.keys(final),
+      arguments: await serializeClarityValues(Object.values(final)),
+    }).toMatchSnapshot();
   });
   it.each([
     ['amount', '-1'],

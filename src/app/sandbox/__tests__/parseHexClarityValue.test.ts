@@ -1,4 +1,5 @@
 /** @jest-environment node */
+import { serializeClarityValues } from '@/common/queries/test-utils/serializeClarityValues';
 import clarityVectors from '@/common/utils/fixtures/stacks-behavior/clarity.json';
 
 import {
@@ -52,24 +53,34 @@ describe('ABI form coercion', () => {
     [{ 'string-ascii': { length: 10 } }, 'hello'],
     [{ 'string-utf8': { length: 10 } }, 'hé🙂'],
     ['principal', 'SP000000000000000000002Q6VF78.hello'],
-  ])('coerces optional values %#', (type, value) => {
-    expect(encodeOptional(type as any, value as string)).toMatchSnapshot();
+  ])('coerces optional values %#', async (type, value) => {
+    expect(
+      await serializeClarityValues([encodeOptional(type as any, value as string)])
+    ).toMatchSnapshot();
   });
   it.each(['', '-1', '340282366920938463463374607431768211456', 'not a number'])(
     'falls back to none for optional uint %s',
-    value => {
-      expect(encodeOptional('uint128', value)).toEqual({ type: 'none' });
+    async value => {
+      expect(await serializeClarityValues([encodeOptional('uint128', value)])).toEqual(['0x09']);
     }
   );
-  it('encodes tuples, optional tuples and optional fields', () => {
+  it('encodes tuples, optional tuples and optional fields', async () => {
     const tuple = [
       { name: 'amount', type: 'uint128' },
       { name: 'memo', type: { optional: { 'string-ascii': { length: 10 } } } },
     ] as any;
-    expect(encodeTuple(tuple, { amount: 42, memo: '' })).toMatchSnapshot();
-    expect(encodeTuple(tuple, { amount: '42', memo: 'hi' })).toMatchSnapshot();
-    expect(encodeOptionalTuple(tuple, { amount: '', memo: 'hi' })).toEqual({ type: 'none' });
-    expect(encodeOptionalTuple(tuple, { amount: '42', memo: 'hi' })).toMatchSnapshot();
+    expect(
+      await serializeClarityValues([encodeTuple(tuple, { amount: 42, memo: '' })])
+    ).toMatchSnapshot();
+    expect(
+      await serializeClarityValues([encodeTuple(tuple, { amount: '42', memo: 'hi' })])
+    ).toMatchSnapshot();
+    expect(
+      await serializeClarityValues([encodeOptionalTuple(tuple, { amount: '', memo: 'hi' })])
+    ).toEqual(['0x09']);
+    expect(
+      await serializeClarityValues([encodeOptionalTuple(tuple, { amount: '42', memo: 'hi' })])
+    ).toMatchSnapshot();
     expect(() => encodeTuple(tuple, { amount: '-1', memo: '' })).toThrow();
     expect(getTuple({ tuple })).toEqual(tuple);
     expect(getTuple({ optional: { tuple } })).toEqual(tuple);

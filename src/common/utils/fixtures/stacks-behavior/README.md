@@ -1,4 +1,4 @@
-# Frozen stacks.js behavior vectors (issue #4)
+# Explorer behavior vectors (issue #4)
 
 Captured on 2026-11-11 from Explorer source commit
 `7a58b3606ccb120a31b321b1262fd42b204bd870` with installed
@@ -34,7 +34,12 @@ No Kit or production/dependency changes were used to capture these vectors.
 
 Capture scripts and build artifacts are outside the checkout, not runtime
 oracles. Tests run offline without services or wallets and do not import or mock
-transactions/common/network at runtime. ABI types are inferred from repository function signatures.
+transactions/common/network at runtime. ABI types are inferred from repository
+function signatures. The serialization test driver passes Clarity values through
+repository `callReadOnlyFunction` and captures argument hex at its mocked fetch
+boundary. Optional/tuple coercion, processed function parameters and wallet
+functionArgs are asserted as wire hex, without SDK object layouts or BigInt
+representations in their expected values.
 
 ## Observations intentionally preserved
 
@@ -46,11 +51,18 @@ and high fees may exceed configured ranges. Malformed fee responses throw.
 Wallet user rejections return null; unrelated failures propagate.
 These are characterization results, not behavior fixes.
 
-## Freeze contract
+## Behavior contract for the remaining migration
 
-`frozen-sha256.json` lists the resulting tests and fixtures (including snapshots)
-with SHA-256 hashes. Preserve their bytes through migration parts 2/3 and 3/3;
-change the implementation to satisfy them. Do not regenerate snapshots with a
-replacement dependency. The manifest excludes itself, this provenance document,
-the workplan and Jest configuration. Existing API and WebSocket tests remain
-unchanged and are included in the full unit regression run.
+Preserve vector inputs and their expected wire bytes, request contents, display
+outputs, success/failure results and fee estimates through migration parts 2/3
+and 3/3. These observable behaviors are the contract; stacks.js Clarity object
+layouts and the bytes of test files are not.
+
+Tests, serialization drivers and snapshots may change to call Kit, reorganize
+cases or represent the same expected bytes/outputs differently. Keep the
+captured expected behavior when adapting the drivers; do not replace it with
+whatever a new dependency happens to return. Snapshot updates must preserve the
+vector inputs and expected bytes/outputs rather than pin a new SDK object shape.
+There is no file-hash freeze manifest.
+
+Existing API and WebSocket tests remain regression coverage for retained clients.

@@ -56,23 +56,11 @@ exports[`serializes every post condition through the repository wallet boundary 
     {
       "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
       "functionArgs": [
-        {
-          "type": "uint",
-          "value": 42n,
-        },
-        {
-          "type": "ascii",
-          "value": "hello",
-        },
-        {
-          "type": "true",
-        },
-        {
-          "type": "false",
-        },
-        {
-          "type": "none",
-        },
+        "0x010000000000000000000000000000002a",
+        "0x0d0000000568656c6c6f",
+        "0x03",
+        "0x04",
+        "0x09",
       ],
       "functionName": "print",
       "network": "testnet",
@@ -87,23 +75,11 @@ exports[`serializes every post condition through the repository wallet boundary 
     {
       "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
       "functionArgs": [
-        {
-          "type": "uint",
-          "value": 42n,
-        },
-        {
-          "type": "ascii",
-          "value": "hello",
-        },
-        {
-          "type": "true",
-        },
-        {
-          "type": "false",
-        },
-        {
-          "type": "none",
-        },
+        "0x010000000000000000000000000000002a",
+        "0x0d0000000568656c6c6f",
+        "0x03",
+        "0x04",
+        "0x09",
       ],
       "functionName": "print",
       "network": "testnet",
@@ -118,23 +94,11 @@ exports[`serializes every post condition through the repository wallet boundary 
     {
       "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
       "functionArgs": [
-        {
-          "type": "uint",
-          "value": 42n,
-        },
-        {
-          "type": "ascii",
-          "value": "hello",
-        },
-        {
-          "type": "true",
-        },
-        {
-          "type": "false",
-        },
-        {
-          "type": "none",
-        },
+        "0x010000000000000000000000000000002a",
+        "0x0d0000000568656c6c6f",
+        "0x03",
+        "0x04",
+        "0x09",
       ],
       "functionName": "print",
       "network": "testnet",
@@ -149,23 +113,11 @@ exports[`serializes every post condition through the repository wallet boundary 
     {
       "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
       "functionArgs": [
-        {
-          "type": "uint",
-          "value": 42n,
-        },
-        {
-          "type": "ascii",
-          "value": "hello",
-        },
-        {
-          "type": "true",
-        },
-        {
-          "type": "false",
-        },
-        {
-          "type": "none",
-        },
+        "0x010000000000000000000000000000002a",
+        "0x0d0000000568656c6c6f",
+        "0x03",
+        "0x04",
+        "0x09",
       ],
       "functionName": "print",
       "network": "testnet",
@@ -180,23 +132,11 @@ exports[`serializes every post condition through the repository wallet boundary 
     {
       "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
       "functionArgs": [
-        {
-          "type": "uint",
-          "value": 42n,
-        },
-        {
-          "type": "ascii",
-          "value": "hello",
-        },
-        {
-          "type": "true",
-        },
-        {
-          "type": "false",
-        },
-        {
-          "type": "none",
-        },
+        "0x010000000000000000000000000000002a",
+        "0x0d0000000568656c6c6f",
+        "0x03",
+        "0x04",
+        "0x09",
       ],
       "functionName": "print",
       "network": "testnet",

@@ -1,145 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ABI form coercion coerces optional values 0 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "uint",
-    "value": 0n,
-  },
-}
+[
+  "0x0a0100000000000000000000000000000000",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 1 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "uint",
-    "value": 340282366920938463463374607431768211455n,
-  },
-}
+[
+  "0x0a01ffffffffffffffffffffffffffffffff",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 2 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "int",
-    "value": -170141183460469231731687303715884105728n,
-  },
-}
+[
+  "0x0a0080000000000000000000000000000000",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 3 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "true",
-  },
-}
+[
+  "0x0a03",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 4 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "false",
-  },
-}
+[
+  "0x0a04",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 5 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "buffer",
-    "value": "00ff80",
-  },
-}
+[
+  "0x0a020000000300ff80",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 6 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "ascii",
-    "value": "hello",
-  },
-}
+[
+  "0x0a0d0000000568656c6c6f",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 7 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "utf8",
-    "value": "hé🙂",
-  },
-}
+[
+  "0x0a0e0000000768c3a9f09f9982",
+]
 `;
 
 exports[`ABI form coercion coerces optional values 8 1`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "contract",
-    "value": "SP000000000000000000002Q6VF78.hello",
-  },
-}
+[
+  "0x0a061600000000000000000000000000000000000000000568656c6c6f",
+]
 `;
 
 exports[`ABI form coercion encodes tuples, optional tuples and optional fields 1`] = `
-{
-  "type": "tuple",
-  "value": {
-    "amount": {
-      "type": "uint",
-      "value": 42n,
-    },
-    "memo": {
-      "type": "none",
-    },
-  },
-}
+[
+  "0x0c0000000206616d6f756e74010000000000000000000000000000002a046d656d6f09",
+]
 `;
 
 exports[`ABI form coercion encodes tuples, optional tuples and optional fields 2`] = `
-{
-  "type": "tuple",
-  "value": {
-    "amount": {
-      "type": "uint",
-      "value": 42n,
-    },
-    "memo": {
-      "type": "some",
-      "value": {
-        "type": "ascii",
-        "value": "hi",
-      },
-    },
-  },
-}
+[
+  "0x0c0000000206616d6f756e74010000000000000000000000000000002a046d656d6f0a0d000000026869",
+]
 `;
 
 exports[`ABI form coercion encodes tuples, optional tuples and optional fields 3`] = `
-{
-  "type": "some",
-  "value": {
-    "type": "tuple",
-    "value": {
-      "amount": {
-        "type": "uint",
-        "value": 42n,
-      },
-      "memo": {
-        "type": "some",
-        "value": {
-          "type": "ascii",
-          "value": "hi",
-        },
-      },
-    },
-  },
-}
+[
+  "0x0a0c0000000206616d6f756e74010000000000000000000000000000002a046d656d6f0a0d000000026869",
+]
 `;

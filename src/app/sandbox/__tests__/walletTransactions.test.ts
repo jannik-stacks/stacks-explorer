@@ -1,5 +1,6 @@
 /** @jest-environment node */
 import { getPostCondition } from '@/app/txid/[txId]/redesign/function-called/function-call-post-condition-params-utils';
+import { serializeClarityValues } from '@/common/queries/test-utils/serializeClarityValues';
 
 import { request } from '@stacks/connect';
 
@@ -68,7 +69,15 @@ it('serializes every post condition through the repository wallet boundary', asy
     postConditionMode: 'originator',
   });
   await callContract({ contract: `${address}.hello`, functionName: 'print', functionArgs: [] });
-  expect(requestMock.mock.calls).toMatchSnapshot();
+  const calls = [];
+  for (const [method, params] of requestMock.mock.calls) {
+    const args = params as unknown as Parameters<typeof callContract>[0];
+    calls.push([
+      method,
+      { ...args, functionArgs: await serializeClarityValues(args.functionArgs) },
+    ]);
+  }
+  expect(calls).toMatchSnapshot();
 });
 
 it('returns addresses and preserves parsed values', async () => {

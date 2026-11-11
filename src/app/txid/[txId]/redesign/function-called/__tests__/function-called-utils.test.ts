@@ -588,10 +588,14 @@ describe('ABI form parameter vectors', () => {
       names: Object.keys(final),
       arguments: await serializeClarityValues(Object.values(final)),
     }).toMatchSnapshot();
-    expect(extractFunctionParams({ ...values, postConditionMode: 2 })).toEqual(values);
+    expect(extractFunctionParams({ ...values, postConditionMode: 'deny' })).toEqual(values);
     expect(isPublicFunction(abi)).toBe(true);
     expect(isPublicFunction({ ...abi, access: 'read_only' })).toBe(false);
-    expect([1, 2, 3].map(shouldUsePostConditions)).toEqual([false, true, true]);
+    expect((['allow', 'deny', 'originator'] as const).map(shouldUsePostConditions)).toEqual([
+      false,
+      true,
+      true,
+    ]);
   });
   it('pins empty optional fields and ignores arguments absent from the ABI', async () => {
     const final = processFunctionParameters(

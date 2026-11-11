@@ -1,6 +1,5 @@
+import { ClarityAbiType } from '@jannik-stacks/kit';
 import React from 'react';
-
-import { ClarityAbiType } from '@stacks/transactions';
 
 import { ListValueType, ValueType } from '../../types/values';
 

@@ -1,5 +1,5 @@
+import { Address, Network } from '@jannik-stacks/kit';
 import BigNumber from 'bignumber.js';
-import { c32addressDecode, versions } from 'c32check';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
@@ -54,8 +54,8 @@ export const hasBnsExtension = (name?: string): boolean => {
  */
 export const validateStacksAddress = (stacksAddress?: string): boolean => {
   try {
-    if (!stacksAddress) return false;
-    c32addressDecode(stacksAddress);
+    if (!stacksAddress || stacksAddress.includes('.')) return false;
+    Address.parse(stacksAddress);
     return true;
   } catch (e) {
     return false;
@@ -64,10 +64,10 @@ export const validateStacksAddress = (stacksAddress?: string): boolean => {
 
 export const isAddressForNetworkMode = (address: string, networkMode: NetworkModes): boolean => {
   try {
-    const [version] = c32addressDecode(address);
-    const { p2pkh, p2sh } =
-      networkMode === NetworkModes.Mainnet ? versions.mainnet : versions.testnet;
-    return version === p2pkh || version === p2sh;
+    if (address.includes('.')) return false;
+    const { version } = Address.parse(address);
+    const { single, multi } = Network.from(networkMode).addressVersion;
+    return version === single || version === multi;
   } catch (e) {
     return false;
   }
@@ -96,7 +96,7 @@ export const validateStacksContractId = (contractId?: string): boolean => {
     if (!address || !contract) return false;
     if (rest.length > 0) return false;
     if (!CONTRACT_NAME_REGEX.test(contract)) return false;
-    c32addressDecode(address);
+    Address.parse(address);
     return true;
   } catch (e) {
     return false;

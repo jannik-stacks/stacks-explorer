@@ -3,18 +3,17 @@ import { getTuple } from '@/app/sandbox/utils';
 import { Button } from '@/ui/Button';
 import { IconButtonRedesign } from '@/ui/IconButton';
 import { Field, Flex, Stack } from '@chakra-ui/react';
+import { ClarityAbiType } from '@jannik-stacks/kit';
 import { X } from '@phosphor-icons/react';
 import { FieldArray } from 'formik';
 import { FC } from 'react';
-
-import { ClarityAbiTypeList } from '@stacks/transactions';
 
 import { Argument } from './index';
 import { CommonArgumentInputProps } from './types';
 
 export const ListArgumentInput: FC<
   CommonArgumentInputProps & {
-    type: ClarityAbiTypeList;
+    type: Extract<ClarityAbiType, { list: unknown }>;
     value: ListValueType;
   }
 > = ({ name, type, handleChange, error, value }) => {

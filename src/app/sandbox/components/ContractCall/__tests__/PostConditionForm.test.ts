@@ -1,10 +1,3 @@
-import {
-  FungibleConditionCode,
-  PostConditionMode,
-  PostConditionType,
-  PoxConditionCode,
-} from '@/common/utils/fixtures/stacks-behavior/sdk-constants';
-
 import { FunctionFormikState } from '../FunctionView';
 import {
   checkFunctionParameters,
@@ -16,9 +9,9 @@ describe('checkPostConditionParameters', () => {
   // TODO: fix this test
   it('should return no errors when post condition is not enabled', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Allow,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'allow',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAmount: 12345,
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -31,9 +24,9 @@ describe('checkPostConditionParameters', () => {
 
   it('should return no errors when all values are correct', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAmount: 12345,
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -46,9 +39,9 @@ describe('checkPostConditionParameters', () => {
 
   it('should return no errors if postConditionType is missing in deny mode', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
+      postConditionMode: 'deny',
       postConditionType: undefined,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAmount: 12345,
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -61,8 +54,8 @@ describe('checkPostConditionParameters', () => {
 
   it('should return error if postConditionConditionCode is missing', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
       postConditionConditionCode: undefined,
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAmount: 12345,
@@ -78,9 +71,9 @@ describe('checkPostConditionParameters', () => {
 
   it('should return error for invalid Stacks address', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'INVALID_ADDRESS',
       postConditionAmount: 12345,
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -95,9 +88,9 @@ describe('checkPostConditionParameters', () => {
 
   it('should return error if postConditionAmount is not a valid number', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAmount: -1,
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -112,9 +105,9 @@ describe('checkPostConditionParameters', () => {
 
   it('should return multiple errors if there are multiple errors', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'INVALID_ADDRESS',
       postConditionAmount: -1,
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -136,18 +129,20 @@ describe('getPostCondition', () => {
   it('builds the pox-5 staking and pox post conditions', () => {
     expect(
       getPostCondition({
-        postConditionType: PostConditionType.Staking,
+        postConditionType: 'staking-postcondition',
         postConditionAddress: address,
-        postConditionConditionCode: FungibleConditionCode.LessEqual,
+        postConditionConditionCode: 'lte',
         postConditionAmount: 1100000,
       })
-    ).toEqual([{ type: 'staking-postcondition', address, condition: 'lte', amount: '1100000' }]);
+    ).toEqual([
+      { type: 'staking-postcondition', address, condition: 'lte', amount: BigInt(1100000) },
+    ]);
 
     expect(
       getPostCondition({
-        postConditionType: PostConditionType.PoX,
+        postConditionType: 'pox-postcondition',
         postConditionAddress: address,
-        postConditionConditionCode: PoxConditionCode.WillPerform,
+        postConditionConditionCode: 'will-perform',
       })
     ).toEqual([{ type: 'pox-postcondition', address, condition: 'will-perform' }]);
   });
@@ -155,9 +150,9 @@ describe('getPostCondition', () => {
   it('returns an empty list rather than [undefined] when nothing matches', () => {
     expect(
       getPostCondition({
-        postConditionType: PostConditionType.PoX,
+        postConditionType: 'pox-postcondition',
         postConditionAddress: address,
-        postConditionConditionCode: FungibleConditionCode.Equal,
+        postConditionConditionCode: 'eq',
       })
     ).toEqual([]);
   });

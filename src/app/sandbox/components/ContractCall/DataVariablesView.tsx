@@ -1,8 +1,8 @@
+import { formatAbiType } from '@/common/utils/clarity-display';
 import { Box, Flex, Grid, Icon, Spinner, Stack, chakra } from '@chakra-ui/react';
+import { ClarityAbiArg } from '@jannik-stacks/kit';
 import { Atom } from '@phosphor-icons/react';
 import { FC, memo, useId, useState } from 'react';
-
-import { ClarityAbiVariable, getTypeString } from '@stacks/transactions';
 
 import { Section } from '../../../../common/components/Section';
 import { useGlobalContext } from '../../../../common/context/useGlobalContext';
@@ -13,7 +13,7 @@ import { parseHexClarityValue } from '../../utils';
 
 const DataVariableRow: FC<{
   contractId: string;
-  variable: ClarityAbiVariable;
+  variable: ClarityAbiArg;
 }> = memo(function DataVariableRow({ contractId, variable }) {
   const [expanded, setExpanded] = useState(false);
   const panelId = useId();
@@ -27,7 +27,7 @@ const DataVariableRow: FC<{
     enabled: expanded,
   });
 
-  const typeLabel = getTypeString(variable.type);
+  const typeLabel = formatAbiType(variable.type);
 
   return (
     <Box>
@@ -111,7 +111,9 @@ export const DataVariablesView: FC<{
   contract: ContractWithParsedAbi;
   contractId: string;
 }> = ({ contract, contractId }) => {
-  const variables = (contract?.abi?.variables ?? []) as unknown as ClarityAbiVariable[];
+  const variables = (contract?.abi?.variables ?? []) as unknown as (ClarityAbiArg & {
+    access: string;
+  })[];
   const dataVars = variables.filter(v => v.access === 'variable');
 
   if (dataVars.length === 0) return null;

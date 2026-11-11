@@ -1,8 +1,7 @@
 'use client';
 
+import { ClarityAbiType } from '@jannik-stacks/kit';
 import { FC } from 'react';
-
-import { ClarityAbiTypeTuple, isClarityAbiList } from '@stacks/transactions';
 
 import { ListValueType, TupleValueType } from '../../types/values';
 import { getTuple } from '../../utils';
@@ -19,7 +18,7 @@ export const Argument: FC<CommonArgumentInputProps & ArgumentInputProps> = ({
   value,
 }) => {
   const tuple = getTuple(type);
-  const isList = isClarityAbiList(type);
+  const isList = typeof type === 'object' && 'list' in type;
   if (isList) {
     return (
       <ListArgumentInput
@@ -35,7 +34,7 @@ export const Argument: FC<CommonArgumentInputProps & ArgumentInputProps> = ({
     return (
       <TupleArgumentInput
         name={name}
-        type={type as ClarityAbiTypeTuple}
+        type={type as Extract<ClarityAbiType, { tuple: unknown }>}
         handleChange={handleChange}
         error={error}
         value={value as TupleValueType}

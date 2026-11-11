@@ -6,9 +6,8 @@ import { isConfirmedTxDetails } from '@/common/utils/tx-details-utils';
 import { Button } from '@/ui/Button';
 import { Text } from '@/ui/Text';
 import { Box, Flex, Grid, Stack } from '@chakra-ui/react';
+import { ClarityAbiFunction } from '@jannik-stacks/kit';
 import { useState } from 'react';
-
-import { ClarityAbiFunction } from '@stacks/transactions';
 
 import { FunctionArgsTable } from './FunctionArgsTable';
 import { FunctionCallForm } from './FunctionCallForm';

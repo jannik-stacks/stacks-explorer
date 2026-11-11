@@ -1,17 +1,8 @@
 import { stacksAPIFetch } from '@/api/stacksAPIFetch';
 import type { PoxInfo } from '@/common/queries/usePoxInforRaw';
+import { displayClarityValue } from '@/common/utils/clarity-display';
 import { getApiUrl } from '@/common/utils/network-utils';
-
-import {
-  ClarityValue,
-  cvToHex,
-  cvToString,
-  deserializeCV,
-  listCV,
-  noneCV,
-  someCV,
-  uintCV,
-} from '@stacks/transactions';
+import { Cl, ClarityValue } from '@jannik-stacks/kit';
 
 import type { Bond } from './data';
 import { readUint } from './data';
@@ -65,7 +56,10 @@ export async function fetchCurrentCycleEstimate(
         redirect: 'error',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sender: address, arguments: args.map(cvToHex) }),
+        body: JSON.stringify({
+          sender: address,
+          arguments: args.map(value => `0x${Cl.serialize(value)}`),
+        }),
         cache: 'default',
         next: { revalidate: 60, tags: ['staking-reward-estimate'] },
       }
@@ -73,7 +67,7 @@ export async function fetchCurrentCycleEstimate(
     if (!result.ok) throw new Error(`Reward estimate read failed: ${result.status}`);
     const data: { okay?: boolean; result?: string } = await result.json();
     if (!data.okay || !data.result) throw new Error(`Reward estimate read failed: ${fn}`);
-    return cvToString(deserializeCV(data.result));
+    return displayClarityValue(Cl.deserialize(data.result));
   }
   async function readUintValue(fn: string, args: ClarityValue[] = []): Promise<bigint> {
     const repr = await read(fn, args);
@@ -83,7 +77,7 @@ export async function fetchCurrentCycleEstimate(
   const cycleNumber = Number(await readUintValue('current-pox-reward-cycle'));
   if (cycleNumber !== poxInfo.current_cycle?.id)
     throw new Error('Reward estimate crossed a cycle boundary');
-  const args = [uintCV(cycleNumber), noneCV()];
+  const args = [Cl.uint(cycleNumber), Cl.none()];
   const [creditedPerToken, shares, incoming, distributionIndex, lastCalculation] =
     await Promise.all([
       readUintValue('get-rewards-per-token-for-cycle', args),
@@ -113,18 +107,18 @@ export async function fetchCurrentCycleEstimate(
   );
   if (active.length > 6) throw new Error('Invalid active bond set for reward estimate');
   const complete = await read('assert-all-active-bonds-included', [
-    listCV(active.map(bond => uintCV(bond.index))),
-    uintCV(calculationHeight),
+    Cl.list(active.map(bond => Cl.uint(bond.index))),
+    Cl.uint(calculationHeight),
   ]);
   if (complete !== '(ok true)') throw new Error('Reward estimate is missing an active bond');
   const targets = await Promise.all(
     active.map(async bond => {
       const [principalSats, protocolBond] = await Promise.all([
         readUintValue('get-total-shares-staked-for-cycle', [
-          uintCV(pendingCycle),
-          someCV(uintCV(bond.index)),
+          Cl.uint(pendingCycle),
+          Cl.some(Cl.uint(bond.index)),
         ]),
-        read('get-protocol-bond', [uintCV(bond.index)]),
+        read('get-protocol-bond', [Cl.uint(bond.index)]),
       ]);
       const targetRateBps = readUint(protocolBond, 'target-rate');
       if (targetRateBps === undefined)

@@ -1,9 +1,9 @@
 import { NetworkModes } from '@/common/types/network';
+import { Cl } from '@jannik-stacks/kit';
 import { getBnsFromId, getNameInfo } from 'bns-v2-sdk';
 import { useEffect, useState } from 'react';
 
 import { NonFungibleTokenHoldingsList } from '@stacks/stacks-blockchain-api-types';
-import { cvToJSON, hexToCV } from '@stacks/transactions';
 
 import { BNSV1_CONTRACT, BNSV2_CONTRACT } from '../../../../common/constants/constants';
 import { hexToString } from '../../../../common/utils/utils';
@@ -43,7 +43,7 @@ export function useBnsNames(
         await Promise.allSettled(
           bnsHoldings.map(async holding => {
             try {
-              const decodedValue = cvToJSON(hexToCV(holding.value.hex));
+              const decodedValue = Cl.deserialize(holding.value.hex);
 
               if (holding.asset_identifier === BNSV1_CONTRACT) {
                 const nameInfo = await resolveBnsV1Name(decodedValue, network);

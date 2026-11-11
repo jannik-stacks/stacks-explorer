@@ -81,3 +81,32 @@ describe('getContractIdParts', () => {
     });
   });
 });
+
+it('encodes contract form principals as Kit values before the wallet boundary', () => {
+  const { processFunctionParameters } = require('../function-call-function-params-utils');
+  const { Cl } = require('@jannik-stacks/kit');
+  const address = 'SP000000000000000000002Q6VF78';
+  const abi = {
+    name: 'send',
+    access: 'public',
+    args: [{ name: 'recipient', type: 'principal' }],
+    outputs: { type: 'bool' },
+  };
+  expect(processFunctionParameters({ recipient: address }, abi)).toEqual({
+    recipient: Cl.address(address),
+  });
+});
+
+it('preserves memo input bytes without requiring a browser Buffer global', () => {
+  const { processOptionalValue } = require('../function-call-function-params-utils');
+  const { Cl } = require('@jannik-stacks/kit');
+  const previousBuffer = global.Buffer;
+  try {
+    global.Buffer = undefined as any;
+    expect(Cl.serialize(processOptionalValue('memo', 'hi', { buffer: { length: 34 } }))).toBe(
+      '0a02000000026869'
+    );
+  } finally {
+    global.Buffer = previousBuffer;
+  }
+});

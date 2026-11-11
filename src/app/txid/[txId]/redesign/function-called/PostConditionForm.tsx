@@ -2,10 +2,9 @@ import { Select } from '@/common/components/Select';
 import { Input } from '@/ui/Input';
 import { Caption } from '@/ui/typography';
 import { Box, Field, Stack } from '@chakra-ui/react';
+import { PostCondition, StacksTransaction } from '@jannik-stacks/kit';
 import { FormikErrors } from 'formik';
 import { ChangeEvent, useMemo } from 'react';
-
-import { PostConditionMode, PostConditionType } from '@stacks/transactions';
 
 import { FormikSetFieldValueFunction, FunctionFormikState } from './FunctionCallForm';
 import {
@@ -38,10 +37,7 @@ export function PostConditionForm({
     ): T extends React.ChangeEvent<any> ? void : (e: string | React.ChangeEvent<any>) => void;
   };
 }) {
-  const postConditionType =
-    values.postConditionType != null
-      ? (Number(values.postConditionType) as PostConditionType)
-      : undefined;
+  const postConditionType = values.postConditionType != null ? values.postConditionType : undefined;
 
   const postConditionConditionCodeOptions = useMemo(() => {
     return postConditionType != null ? getPostConditionConditionCodeOptions(postConditionType) : [];
@@ -53,7 +49,7 @@ export function PostConditionForm({
 
   return (
     <>
-      {values.postConditionMode !== PostConditionMode.Allow && (
+      {values.postConditionMode !== 'allow' && (
         <Stack gap={4}>
           <Stack gap={2}>
             <Select<PostConditionTypeValue, PostConditionTypeLabel>

@@ -1,7 +1,7 @@
+import { formatAbiType } from '@/common/utils/clarity-display';
 import { Box, HStack } from '@chakra-ui/react';
+import { ClarityAbiType } from '@jannik-stacks/kit';
 import { FC } from 'react';
-
-import { ClarityAbiTypeTuple, getTypeString, isClarityAbiOptional } from '@stacks/transactions';
 
 import { Field } from '../../../../components/ui/field';
 import { Input } from '../../../../ui/Input';
@@ -11,13 +11,15 @@ import { CommonArgumentInputProps } from './types';
 
 export const TupleArgumentInput: FC<
   CommonArgumentInputProps & {
-    type: ClarityAbiTypeTuple;
+    type: Extract<ClarityAbiType, { tuple: unknown }>;
     value: TupleValueType;
-    tuple: ClarityAbiTypeTuple['tuple'];
+    tuple: Extract<ClarityAbiType, { tuple: unknown }>['tuple'];
   }
 > = ({ name, type, handleChange, error, value, tuple }) => {
-  const isOptional = isClarityAbiOptional(type);
-  const tupleType = isOptional ? (type.optional as ClarityAbiTypeTuple) : type;
+  const isOptional = typeof type === 'object' && 'optional' in type;
+  const tupleType = isOptional
+    ? (type.optional as Extract<ClarityAbiType, { tuple: unknown }>)
+    : type;
   return (
     <Box>
       <HStack id={name} gap={4} width="100%">
@@ -33,12 +35,12 @@ export const TupleArgumentInput: FC<
               <Box width="100%">
                 <Input
                   width="100%"
-                  type={getTypeString(tupleType.tuple[i].type).includes('int') ? 'number' : 'text'}
+                  type={formatAbiType(tupleType.tuple[i].type).includes('int') ? 'number' : 'text'}
                   name={`${name}.${tupleEntry.name}`}
                   id={name}
                   onChange={handleChange}
                   value={value[tupleEntry.name]}
-                  placeholder={`${getTypeString(tupleType.tuple[i].type)}`}
+                  placeholder={`${formatAbiType(tupleType.tuple[i].type)}`}
                 />
                 {error && <Caption color={'error'}>{error}</Caption>}
               </Box>

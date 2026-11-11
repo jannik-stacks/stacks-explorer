@@ -1,0 +1,87 @@
+[
+  {
+    "name": "uint-zero",
+    "hex": "0x0100000000000000000000000000000000",
+    "repr": "u0"
+  },
+  {
+    "name": "uint-max",
+    "hex": "0x01ffffffffffffffffffffffffffffffff",
+    "repr": "u340282366920938463463374607431768211455"
+  },
+  {
+    "name": "int-min",
+    "hex": "0x0080000000000000000000000000000000",
+    "repr": "-170141183460469231731687303715884105728"
+  },
+  {
+    "name": "int-max",
+    "hex": "0x007fffffffffffffffffffffffffffffff",
+    "repr": "170141183460469231731687303715884105727"
+  },
+  {
+    "name": "int-negative",
+    "hex": "0x00ffffffffffffffffffffffffffffffff",
+    "repr": "-1"
+  },
+  {
+    "name": "true",
+    "hex": "0x03",
+    "repr": "true"
+  },
+  {
+    "name": "false",
+    "hex": "0x04",
+    "repr": "false"
+  },
+  {
+    "name": "ascii",
+    "hex": "0x0d0000000d48656c6c6f2c20776f726c6421",
+    "repr": "\"Hello, world!\""
+  },
+  {
+    "name": "utf8",
+    "hex": "0x0e0000000768c3a9f09f9982",
+    "repr": "u\"hé🙂\""
+  },
+  {
+    "name": "buffer",
+    "hex": "0x020000000300ff80",
+    "repr": "0x00ff80"
+  },
+  {
+    "name": "principal",
+    "hex": "0x05160000000000000000000000000000000000000000",
+    "repr": "SP000000000000000000002Q6VF78"
+  },
+  {
+    "name": "contract",
+    "hex": "0x0616000000000000000000000000000000000000000005706f782d34",
+    "repr": "SP000000000000000000002Q6VF78.pox-4"
+  },
+  {
+    "name": "none",
+    "hex": "0x09",
+    "repr": "none"
+  },
+  {
+    "name": "some",
+    "hex": "0x0a0100000000000000000000000000000007",
+    "repr": "(some u7)"
+  },
+  {
+    "name": "ok",
+    "hex": "0x0703",
+    "repr": "(ok true)"
+  },
+  {
+    "name": "err",
+    "hex": "0x080100000000000000000000000000000001",
+    "repr": "(err u1)"
+  },
+  {
+    "name": "nested",
+    "hex": "0x070a0c0000000201610b0000000201000000000000000000000000000000000100000000000000000000000000000001016209",
+    "repr": "(ok (some (tuple (a (list u0 u1)) (b none))))"
+  }
+]

@@ -31,4 +31,11 @@ const customJestConfig = {
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig);
+module.exports = async () => {
+  const config = await createJestConfig(customJestConfig)();
+  config.transformIgnorePatterns = [
+    '/node_modules/(?!(?:\\.pnpm/|@leather\\.io/|@fungible-systems/|p-queue/|p-timeout/|url-join/|uuid/))',
+    '^.+\\.module\\.(css|sass|scss)$',
+  ];
+  return config;
+};

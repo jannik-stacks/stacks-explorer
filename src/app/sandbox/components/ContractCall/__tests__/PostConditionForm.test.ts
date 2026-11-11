@@ -3,10 +3,14 @@ import {
   PostConditionMode,
   PostConditionType,
   PoxConditionCode,
-} from '@stacks/transactions';
+} from '@/common/utils/fixtures/stacks-behavior/sdk-constants';
 
 import { FunctionFormikState } from '../FunctionView';
-import { checkPostConditionParameters, getPostCondition } from '../PostConditionForm';
+import {
+  checkFunctionParameters,
+  checkPostConditionParameters,
+  getPostCondition,
+} from '../PostConditionForm';
 
 describe('checkPostConditionParameters', () => {
   // TODO: fix this test
@@ -156,5 +160,46 @@ describe('getPostCondition', () => {
         postConditionConditionCode: FungibleConditionCode.Equal,
       })
     ).toEqual([]);
+  });
+});
+
+describe('ABI form validation', () => {
+  const fn = {
+    name: 'call',
+    access: 'public',
+    outputs: { type: 'bool' },
+    args: [
+      { name: 'amount', type: 'uint128' },
+      { name: 'who', type: 'principal' },
+      { name: 'optional-who', type: { optional: 'principal' } },
+    ],
+  } as const;
+  it.each([
+    [{ amount: '42', who: 'SP000000000000000000002Q6VF78', 'optional-who': '' }, {}],
+    [
+      { amount: '', who: '' },
+      { amount: 'amount is required', who: 'who is required' },
+    ],
+    [
+      { amount: '-1', who: 'invalid', 'optional-who': 'invalid' },
+      {
+        amount: 'Invalid uint128 value',
+        who: 'Invalid Stacks address',
+        'optional-who': 'Invalid Stacks address',
+      },
+    ],
+    [
+      {
+        amount: '340282366920938463463374607431768211455',
+        who: 'SP000000000000000000002Q6VF78.hello',
+      },
+      {},
+    ],
+    [
+      { amount: '340282366920938463463374607431768211456', who: 'SP000000000000000000002Q6VF78' },
+      { amount: 'Invalid uint128 value' },
+    ],
+  ])('validates captured form values %#', (values, errors) => {
+    expect(checkFunctionParameters(fn as any, values as any)).toEqual(errors);
   });
 });

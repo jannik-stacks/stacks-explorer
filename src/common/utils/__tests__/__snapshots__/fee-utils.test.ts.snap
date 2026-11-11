@@ -1,0 +1,697 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pins devnet defaults fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins devnet defaults fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins devnet high fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 60000000267,
+    "low_priority": 17733,
+    "medium_priority": 170133,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 90000000000,
+    "low_priority": 2999,
+    "medium_priority": 10000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 90000000000,
+    "low_priority": 50000,
+    "medium_priority": 500000,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins devnet high fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins devnet low fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 336934,
+    "low_priority": 67,
+    "medium_priority": 34467,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 10000,
+    "low_priority": 0,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 1000001,
+    "low_priority": 0,
+    "medium_priority": 100001,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins devnet low fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins devnet rounding fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 336934,
+    "low_priority": 1733,
+    "medium_priority": 34908,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 10000,
+    "low_priority": 2500.1,
+    "medium_priority": 4321.6,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 1000001,
+    "low_priority": 2500.1,
+    "medium_priority": 100001,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins devnet rounding fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins mainnet defaults fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins mainnet defaults fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins mainnet high fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 60000000267,
+    "low_priority": 17733,
+    "medium_priority": 170133,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 90000000000,
+    "low_priority": 2999,
+    "medium_priority": 10000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 90000000000,
+    "low_priority": 50000,
+    "medium_priority": 500000,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins mainnet high fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins mainnet low fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 336934,
+    "low_priority": 67,
+    "medium_priority": 34467,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 10000,
+    "low_priority": 0,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 1000001,
+    "low_priority": 0,
+    "medium_priority": 100001,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins mainnet low fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins mainnet rounding fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 336934,
+    "low_priority": 1733,
+    "medium_priority": 34908,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 10000,
+    "low_priority": 2500.1,
+    "medium_priority": 4321.6,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 1000001,
+    "low_priority": 2500.1,
+    "medium_priority": 100001,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins mainnet rounding fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins testnet defaults fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 3500,
+    "low_priority": 2500,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins testnet defaults fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins testnet high fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 60000000267,
+    "low_priority": 17733,
+    "medium_priority": 170133,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 90000000000,
+    "low_priority": 2999,
+    "medium_priority": 10000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 90000000000,
+    "low_priority": 50000,
+    "medium_priority": 500000,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins testnet high fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins testnet low fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 336934,
+    "low_priority": 67,
+    "medium_priority": 34467,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 10000,
+    "low_priority": 0,
+    "medium_priority": 3000,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 1000001,
+    "low_priority": 0,
+    "medium_priority": 100001,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins testnet low fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;
+
+exports[`pins testnet rounding fees, sample payloads, lengths and averages 1`] = `
+{
+  "averageFees": {
+    "high_priority": 336934,
+    "low_priority": 1733,
+    "medium_priority": 34908,
+    "no_priority": 0,
+  },
+  "contractCallFees": {
+    "high_priority": 10000,
+    "low_priority": 2500.1,
+    "medium_priority": 4321.6,
+    "no_priority": 0,
+  },
+  "contractDeployFees": {
+    "high_priority": 1000001,
+    "low_priority": 2500.1,
+    "medium_priority": 100001,
+    "no_priority": 0,
+  },
+  "tokenTransferFees": {
+    "high_priority": 800,
+    "low_priority": 200,
+    "medium_priority": 400,
+    "no_priority": 0,
+  },
+}
+`;
+
+exports[`pins testnet rounding fees, sample payloads, lengths and averages 2`] = `
+[
+  {
+    "body": {
+      "estimated_len": 180,
+      "transaction_payload": "00051a5dd8ff3545259925b982524807686567eec2933f000000000000006400000000000000000000000000000000000000000000000000000000000000000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 159,
+      "transaction_payload": "021a5dd8ff3545259925b982524807686567eec2933f0b68656c6c6f2d776f726c64057072696e7400000000",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+  {
+    "body": {
+      "estimated_len": 177,
+      "transaction_payload": "06040b68656c6c6f2d776f726c640000002c28646566696e652d7075626c696320287072696e742920286f6b202248656c6c6f2c20776f726c6421222929",
+    },
+    "method": "POST",
+    "url": "https://custom.example:3999/v2/fees/transaction",
+  },
+]
+`;

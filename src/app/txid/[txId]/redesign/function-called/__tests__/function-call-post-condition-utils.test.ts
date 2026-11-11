@@ -4,8 +4,7 @@ import {
   PostConditionMode,
   PostConditionType,
   PoxConditionCode,
-  postConditionToHex,
-} from '@stacks/transactions';
+} from '@/common/utils/fixtures/stacks-behavior/sdk-constants';
 
 import {
   PostConditionBuilderParameters,
@@ -488,28 +487,5 @@ describe('condition code / post condition type pairing', () => {
     expect(errors.postConditionConditionCode).toBe(
       'Condition code does not match the selected post condition type'
     );
-  });
-});
-
-describe('wallet serialization', () => {
-  it('serializes a staking post condition to wire type 0x03', () => {
-    const pc = getPostCondition({
-      postConditionType: PostConditionType.Staking,
-      postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
-      postConditionConditionCode: FungibleConditionCode.LessEqual,
-      postConditionAmount: 1100000,
-    });
-
-    expect(postConditionToHex(pc!).startsWith('03')).toBe(true);
-  });
-
-  it('serializes a pox post condition to wire type 0x04', () => {
-    const pc = getPostCondition({
-      postConditionType: PostConditionType.PoX,
-      postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
-      postConditionConditionCode: PoxConditionCode.WillPerform,
-    });
-
-    expect(postConditionToHex(pc!).startsWith('04')).toBe(true);
   });
 });

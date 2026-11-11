@@ -96,3 +96,10 @@ it.each(clarityVectors)(
     expect(parseReadOnlyResponse({ okay: true, result: hex })).toBe(repr);
   }
 );
+
+it('retains trait-reference form coercion bytes for a bare address', async () => {
+  const { Cl } = await import('@jannik-stacks/kit');
+  expect(Cl.serialize(encodeOptional('trait_reference', 'SP000000000000000000002Q6VF78'))).toBe(
+    '0a0616000000000000000000000000000000000000000009756e646566696e6564'
+  );
+});

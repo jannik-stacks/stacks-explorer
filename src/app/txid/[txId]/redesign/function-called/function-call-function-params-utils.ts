@@ -6,28 +6,22 @@ import {
   isNonTupleValueType,
   isTupleValueType,
 } from '@/app/sandbox/types/values';
+import { encodeFormValue, encodeMemoInput } from '@/app/sandbox/utils';
 import { encodeOptional, encodeOptionalTuple, encodeTuple, getTuple } from '@/app/sandbox/utils';
 import { callContract } from '@/app/sandbox/utils/walletTransactions';
 import { PRINCIPAL_MEMPOOL_TX_SUMMARIES_INFINITE_KEY } from '@/common/queries/useMempoolTxSummaries';
 import { isUint128 } from '@/common/utils/number-utils';
-import { postConditionModeNames } from '@/common/utils/post-condition-mode-utils';
-import { QueryClient } from '@tanstack/react-query';
-
-import { asciiToBytes, bytesToHex } from '@stacks/common';
-import { NetworkString } from '@stacks/connect/dist/types/methods';
+import { validateStacksAddress } from '@/common/utils/utils';
 import {
+  Cl,
   ClarityAbiFunction,
   ClarityAbiType,
-  ClarityAbiTypeList,
   ClarityValue,
-  PostConditionMode,
-  encodeAbiClarityValue,
-  isClarityAbiList,
-  isClarityAbiOptional,
-  isClarityAbiPrimitive,
-  listCV,
-  validateStacksAddress,
-} from '@stacks/transactions';
+  StacksTransaction,
+} from '@jannik-stacks/kit';
+import { QueryClient } from '@tanstack/react-query';
+
+import { NetworkString } from '@stacks/connect/dist/types/methods';
 
 import { FunctionFormikState, FunctionParameters } from './FunctionCallForm';
 import {
@@ -47,8 +41,9 @@ export function processFunctionParameters(
     if (!type) return;
 
     const tuple = getTuple(type);
-    const isList = isClarityAbiList(type);
-    const optionalType = isClarityAbiOptional(type) ? type?.optional : undefined;
+    const isList = typeof type === 'object' && 'list' in type;
+    const optionalType =
+      typeof type === 'object' && 'optional' in type ? type?.optional : undefined;
 
     if (tuple && isTupleValueType(functionParameters[arg])) {
       final[arg] = optionalType
@@ -59,7 +54,7 @@ export function processFunctionParameters(
     } else if (optionalType && isNonTupleValueType(functionParameters[arg])) {
       final[arg] = processOptionalValue(arg, functionParameters[arg], optionalType);
     } else {
-      final[arg] = encodeAbiClarityValue(functionParameters[arg].toString(), type);
+      final[arg] = encodeFormValue(functionParameters[arg].toString(), type);
     }
   });
 
@@ -68,22 +63,20 @@ export function processFunctionParameters(
 
 export function processListValue(
   listValues: ListValueType,
-  type: ClarityAbiTypeList
+  type: Extract<ClarityAbiType, { list: unknown }>
 ): ClarityValue {
   const listType = type.list.type;
-  const optionalListType = isClarityAbiOptional(listType) ? listType?.optional : undefined;
+  const optionalListType =
+    typeof listType === 'object' && 'optional' in listType ? listType?.optional : undefined;
   const listTuple = getTuple(listType);
 
   const listData = listValues.map(listValue =>
     listTuple
       ? encodeTuple(listTuple, listValue as TupleValueType)
-      : encodeAbiClarityValue(
-          (listValue as NonTupleValueType).toString(),
-          optionalListType || listType
-        )
+      : encodeFormValue((listValue as NonTupleValueType).toString(), optionalListType || listType)
   );
 
-  return listCV(listData);
+  return Cl.list(listData);
 }
 
 export function processOptionalValue(
@@ -91,13 +84,14 @@ export function processOptionalValue(
   value: NonTupleValueType,
   optionalType: ClarityAbiType
 ): ClarityValue {
-  const val = arg === 'memo' ? bytesToHex(asciiToBytes(value.toString())) : value;
+  const val = arg === 'memo' ? encodeMemoInput(value.toString()) : value;
   return encodeOptional(optionalType, val.toString());
 }
 
 export const isPublicFunction = (fnAbi: ClarityAbiFunction) => fnAbi.access === 'public';
-export const shouldUsePostConditions = (mode: PostConditionMode) =>
-  mode !== PostConditionMode.Allow;
+export const shouldUsePostConditions = (
+  mode: NonNullable<StacksTransaction['postConditionMode']>
+) => mode !== 'allow';
 
 export function extractFunctionParams(values: FunctionFormikState): FunctionParameters {
   const functionParams: FunctionParameters = {};
@@ -134,7 +128,7 @@ export async function handlePublicFunctionCall(
     functionArgs,
     network: network,
     postConditions: postCondition ? [postCondition] : undefined,
-    postConditionMode: postConditionModeNames[postConditionParams.postConditionMode],
+    postConditionMode: postConditionParams.postConditionMode,
   }).then(() => {
     void queryClient.invalidateQueries({ queryKey: ['addressMempoolTxsInfinite'] });
     void queryClient.invalidateQueries({
@@ -149,7 +143,7 @@ export function createInitialFunctionParameterValues(
 ): FunctionParameters {
   return fnAbi.args.reduce((argsAcc, arg) => {
     const tuple = getTuple(arg.type);
-    const isList = isClarityAbiList(arg.type);
+    const isList = typeof arg.type === 'object' && 'list' in arg.type;
     argsAcc[arg.name] = !!tuple
       ? tuple.reduce(
           (tupleAcc, tupleEntry) => {
@@ -171,9 +165,9 @@ export const checkFunctionParameters = (fn: ClarityAbiFunction, values: Function
 
   Object.keys(values).forEach(arg => {
     const type = fn.args.find(({ name }) => name === arg)?.type;
-    const isOptional = type && isClarityAbiOptional(type);
+    const isOptional = type && typeof type === 'object' && 'optional' in type;
     const optionalTypeIsPrincipal =
-      isOptional && isClarityAbiPrimitive(type.optional) && type.optional === 'principal';
+      isOptional && typeof type.optional === 'string' && type.optional === 'principal';
 
     // If the argument is not optional and is not provided, add an error
     if (!isOptional && (values[arg] == null || values[arg] === '')) {

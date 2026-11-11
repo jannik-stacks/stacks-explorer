@@ -1,13 +1,11 @@
 import { TxDetailsOf } from '@/common/types/tx-v3';
-
 import {
-  Cl,
-  ClarityAbiFunction,
-  ClarityType,
-  cvToJSON,
-  getTypeString,
-  hexToCV,
-} from '@stacks/transactions';
+  describeClarityType,
+  displayClarityValue,
+  formatAbiType,
+  prettyClarityValue,
+} from '@/common/utils/clarity-display';
+import { Cl, ClarityAbiFunction, ClarityValue as KitValue } from '@jannik-stacks/kit';
 
 export interface PrettyFunctionResult {
   display: string;
@@ -17,11 +15,11 @@ export interface PrettyFunctionResult {
 
 export function prettyFunctionResult(hex: string): PrettyFunctionResult {
   try {
-    const cv = hexToCV(hex);
-    const display = Cl.stringify(cv, 2);
+    const cv = Cl.deserialize(hex);
+    const display = prettyClarityValue(cv, 2);
     let success: boolean | undefined;
-    if (cv.type === ClarityType.ResponseOk) success = true;
-    else if (cv.type === ClarityType.ResponseErr) success = false;
+    if (cv.type === 'ok') success = true;
+    else if (cv.type === 'err') success = false;
     return { display, decoded: true, success };
   } catch {
     return { display: `Unable to decode value:\n${hex}`, decoded: false };
@@ -104,7 +102,9 @@ type ClarityValue = {
 export function formatClarityValue(cv: ClarityValue): FormattedClarityValue {
   let value: string | number = cv.repr;
   if (cv.type === 'principal') {
-    const principal: string = cv.hex ? (cvToJSON(hexToCV(cv.hex)) || {}).value : '';
+    const principal: string = cv.hex
+      ? (Cl.deserialize(cv.hex) as Extract<KitValue, { type: 'address' | 'contract' }>).value
+      : '';
     const isContract = principal.includes('.');
     // remove the extra single quote from repr
     value = isContract ? principal : principal || cv.repr.toString().replace(/^'/, '');
@@ -142,43 +142,67 @@ export interface FormattedFunctionResult {
   value: string;
 }
 
-interface ReprValueProps {
-  type: string;
-  value: string | number | (string | number)[];
+export function formatFunctionResult(result: ContractCallTxResult): FormattedClarityValue[] {
+  const cv = Cl.deserialize(result.hex);
+  const inner = cv.type === 'ok' || cv.type === 'err' || cv.type === 'some' ? cv.value : undefined;
+  if (inner?.type === 'tuple') {
+    return Object.entries(inner.value).map(([name, entry]) =>
+      formatClarityValue({
+        name,
+        type: describeClarityType(entry),
+        repr: resultEntryDisplay(entry),
+      })
+    );
+  }
+  return [
+    formatClarityValue({
+      type: describeClarityType(cv).replace('UnknownType', '').trim(),
+      repr: result.repr,
+    }),
+  ];
 }
 
-// TODO: Function name isn't descriptive and types are opaque
-const getReprValue = ({ type, value }: ReprValueProps) => {
-  let reprValue = value ?? 'none';
-  if (type.includes('list') && Array.isArray(value)) {
-    reprValue = value.map((listEntry: any) => listEntry.value).join(', ');
-  }
-  return typeof reprValue === 'object' ? JSON.stringify(reprValue) : reprValue;
-};
-
-// TODO: add tests for this
-export function formatFunctionResult(result: ContractCallTxResult): FormattedClarityValue[] {
-  const { success, type, value } = cvToJSON(hexToCV(result.hex)); // TODO: what type are we handling here?
-  if (isTupleType(value?.type)) {
-    const formattedResult = Object.keys(value.value).map((name: string) => {
-      const isNestedType = Object.keys(value.value).includes('type');
-      const entry = isNestedType ? value.value : value.value[name];
-      const repr = getReprValue(entry);
-      const clarityValue = formatClarityValue({
-        type: entry.type,
-        repr,
-        name,
-      });
-      return clarityValue;
+function resultEntryDisplay(cv: KitValue): string {
+  if (
+    cv.type === 'int' ||
+    cv.type === 'uint' ||
+    cv.type === 'address' ||
+    cv.type === 'contract' ||
+    cv.type === 'ascii' ||
+    cv.type === 'utf8'
+  )
+    return cv.value.toString();
+  if (cv.type === 'buffer') return `0x${cv.value}`;
+  if (cv.type === 'true' || cv.type === 'false') return cv.type;
+  if (cv.type === 'none') return 'none';
+  if (cv.type === 'list') return cv.value.map(value => resultEntryDisplay(value)).join(', ');
+  if (cv.type === 'tuple') {
+    const displayField = (value: KitValue): unknown => ({
+      type: describeClarityType(value),
+      value:
+        value.type === 'none'
+          ? null
+          : value.type === 'tuple'
+            ? Object.fromEntries(
+                Object.entries(value.value).map(([key, field]) => [key, displayField(field)])
+              )
+            : value.type === 'some' || value.type === 'ok' || value.type === 'err'
+              ? displayField(value.value)
+              : value.type === 'list'
+                ? value.value.map(displayField)
+                : value.type === 'true'
+                  ? true
+                  : value.type === 'false'
+                    ? false
+                    : value.type === 'buffer'
+                      ? `0x${value.value}`
+                      : value.value.toString(),
     });
-    return formattedResult;
-  } else {
-    const formattedResult = formatClarityValue({
-      type: type.replace('UnknownType', '').trim(),
-      repr: result.repr,
-    });
-    return [formattedResult];
+    return JSON.stringify(
+      Object.fromEntries(Object.entries(cv.value).map(([key, value]) => [key, displayField(value)]))
+    );
   }
+  return displayClarityValue(cv);
 }
 
 /**
@@ -196,12 +220,12 @@ export function getContractCallTxFunctionArgs(
       hex: arg.hex,
       repr: arg.repr,
       name: abiArg?.name ?? '',
-      type: abiArg ? getTypeString(abiArg.type) : '',
+      type: abiArg ? formatAbiType(abiArg.type) : '',
     };
   });
 }
 
 export function getFunctionResultSuccessStatus(result: ContractCallTxResult) {
-  const { success } = cvToJSON(hexToCV(result.hex));
-  return success;
+  const cv = Cl.deserialize(result.hex);
+  return cv.type === 'ok' ? true : cv.type === 'err' ? false : undefined;
 }

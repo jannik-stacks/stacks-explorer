@@ -1,5 +1,3 @@
-import { createMoney } from '@leather.io/utils';
-
 export const SAMPLE_PUBLIC_KEY =
   '8721c6a5237f5e8d361161a7855aa56885a3e19e2ea6ee268fb14eabc5e2ed9001';
 
@@ -24,9 +22,9 @@ export const FEE_CONFIG = {
 };
 
 export const feeEstimationsMaxValues = FEE_CONFIG.feeEstimations.maxValuesEnabled
-  ? FEE_CONFIG.feeEstimations.maxValues.map(value => createMoney(value, 'STX'))
+  ? FEE_CONFIG.feeEstimations.maxValues
   : undefined;
 
 export const feeEstimationsMinValues = FEE_CONFIG.feeEstimations.minValuesEnabled
-  ? FEE_CONFIG.feeEstimations.minValues.map(value => createMoney(value, 'STX'))
+  ? FEE_CONFIG.feeEstimations.minValues
   : undefined;

@@ -1,18 +1,18 @@
 'use client';
 
 import { logError } from '@/common/utils/error-utils';
+import { Cl, ClarityValue, Codec, PostCondition, StacksTransaction } from '@jannik-stacks/kit';
 
 import { request } from '@stacks/connect';
 import { NetworkString } from '@stacks/connect/dist/types/methods';
-import { Cl, PostCondition, PostConditionModeName, postConditionToHex } from '@stacks/transactions';
 
-const formatClarityArgs = (args: any[]): any[] => {
+const formatClarityArgs = (args: (number | string | boolean | ClarityValue)[]): ClarityValue[] => {
   return args.map(arg => {
     if (typeof arg === 'number') {
       return Cl.uint(arg);
     }
     if (typeof arg === 'string') {
-      return Cl.stringAscii(arg);
+      return Cl.ascii(arg);
     }
     if (typeof arg === 'boolean') {
       return Cl.bool(arg);
@@ -73,10 +73,10 @@ export const deployContract = async (params: {
 export const callContract = async (params: {
   contract: string;
   functionName: string;
-  functionArgs: any[];
+  functionArgs: (number | string | boolean | ClarityValue)[];
   network?: string | NetworkString;
   postConditions?: string[] | PostCondition[];
-  postConditionMode?: PostConditionModeName;
+  postConditionMode?: NonNullable<StacksTransaction['postConditionMode']>;
 }) => {
   try {
     const clarityArgs = formatClarityArgs(params.functionArgs);
@@ -84,10 +84,12 @@ export const callContract = async (params: {
     const response = await request('stx_callContract', {
       contract: params.contract as `${string}.${string}`,
       functionName: params.functionName,
-      functionArgs: clarityArgs,
+      functionArgs: clarityArgs.map(arg => `0x${Cl.serialize(arg)}`),
       network: params.network || 'mainnet',
       postConditions: params.postConditions?.map(postCondition =>
-        typeof postCondition === 'string' ? postCondition : postConditionToHex(postCondition)
+        typeof postCondition === 'string'
+          ? postCondition
+          : Codec.Raw.PostCondition.encode(postCondition)
       ),
       postConditionMode: params.postConditionMode,
     });

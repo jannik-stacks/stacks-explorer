@@ -4,11 +4,11 @@ import { useBulkFtMetadata } from '@/common/queries/useBulkTokenMetadata';
 import { useNftHoldings } from '@/common/queries/useNftHoldings';
 import { getContractIdFromAssetId } from '@/common/utils/utils';
 import { Box, Flex, Grid } from '@chakra-ui/react';
+import { Cl } from '@jannik-stacks/kit';
 import { PaginationState } from '@tanstack/react-table';
 import { useCallback, useMemo, useState } from 'react';
 
 import { NftBalance } from '@stacks/stacks-blockchain-api-types';
-import { cvToJSON, hexToCV } from '@stacks/transactions';
 
 import { useAddressIdPageData } from '../AddressIdPageContext';
 import { CollectibleCard } from './CollectibleCard';
@@ -53,11 +53,11 @@ export function NFTTable() {
     if (!nftHoldings?.results) return [];
     return nftHoldings.results.map(nft => {
       const hex = nft.value.hex;
-      const cv = hexToCV(hex);
-      const json = cvToJSON(cv);
-      const value = json.value;
+      const cv = Cl.deserialize(hex);
+      const value =
+        'value' in cv ? cv.value : cv.type === 'true' ? true : cv.type === 'false' ? false : null;
       const isNumericString = typeof value === 'string' && /^\d+$/.test(value);
-      const tokenId = isNumericString ? BigInt(value) : value;
+      const tokenId = isNumericString ? BigInt(value) : (value as bigint | string);
       return {
         assetId: nft.asset_identifier,
         tokenId,

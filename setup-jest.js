@@ -10,3 +10,6 @@ if (typeof window !== 'undefined') {
 }
 
 process.env.TZ = 'UTC';
+
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;

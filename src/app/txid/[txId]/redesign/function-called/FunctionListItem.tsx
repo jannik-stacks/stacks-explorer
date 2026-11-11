@@ -3,9 +3,8 @@ import { DefaultBadge, DefaultBadgeIcon, DefaultBadgeLabel } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
 import { ButtonLink } from '@/ui/ButtonLink';
 import { Flex, FlexProps, Icon } from '@chakra-ui/react';
+import { ClarityAbiFunction } from '@jannik-stacks/kit';
 import { Eye, Function, Lock } from '@phosphor-icons/react';
-
-import { ClarityAbiFunction } from '@stacks/transactions';
 
 export function FunctionListItem({
   functionAbi,

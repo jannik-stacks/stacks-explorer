@@ -1,3 +1,6 @@
+import { prettyClarityValue } from '@/common/utils/clarity-display';
+import { Cl } from '@jannik-stacks/kit';
+
 import {
   CoinbaseTransaction,
   ContractCallTransaction,
@@ -7,7 +10,6 @@ import {
   TokenTransferTransaction,
   Transaction,
 } from '@stacks/stacks-blockchain-api-types';
-import { deserialize, prettyPrint } from '@stacks/transactions/dist/cl';
 
 export function getToAddress(tx: Transaction | MempoolTransaction): string {
   switch (tx.tx_type) {
@@ -227,8 +229,8 @@ export const getTicker = (name: string) => {
 };
 
 function formatValue(repr: string, hex: string) {
-  const value = deserialize(hex);
-  const formattedString = prettyPrint(value, 2);
+  const value = Cl.deserialize(hex);
+  const formattedString = prettyClarityValue(value, 2);
   return formattedString;
 }
 

@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`combines confirmed credits with a bond-first estimate at one pinned block 1`] = `
+[
+  {
+    "body": {
+      "arguments": [],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/current-pox-reward-cycle",
+  },
+  {
+    "body": {
+      "arguments": [
+        "0x010000000000000000000000000000008e",
+        "0x09",
+      ],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/get-rewards-per-token-for-cycle",
+  },
+  {
+    "body": {
+      "arguments": [
+        "0x010000000000000000000000000000008e",
+        "0x09",
+      ],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/get-total-shares-staked-for-cycle",
+  },
+  {
+    "body": {
+      "arguments": [],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/get-new-rewards",
+  },
+  {
+    "body": {
+      "arguments": [],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/current-distribution-cycle",
+  },
+  {
+    "body": {
+      "arguments": [],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/get-last-reward-compute-height",
+  },
+  {
+    "body": {
+      "arguments": [
+        "0x0b000000010100000000000000000000000000000001",
+        "0x01000000000000000000000000000ebab3",
+      ],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/assert-all-active-bonds-included",
+  },
+  {
+    "body": {
+      "arguments": [
+        "0x010000000000000000000000000000008e",
+        "0x0a0100000000000000000000000000000001",
+      ],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/get-total-shares-staked-for-cycle",
+  },
+  {
+    "body": {
+      "arguments": [
+        "0x0100000000000000000000000000000001",
+      ],
+      "sender": "SP000000000000000000002Q6VF78",
+    },
+    "path": "/v2/contracts/call-read/SP000000000000000000002Q6VF78/pox-5/get-protocol-bond",
+  },
+]
+`;

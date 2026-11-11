@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ABI form coercion coerces optional values 0 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "uint",
+    "value": 0n,
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 1 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "uint",
+    "value": 340282366920938463463374607431768211455n,
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 2 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "int",
+    "value": -170141183460469231731687303715884105728n,
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 3 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "true",
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 4 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "false",
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 5 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "buffer",
+    "value": "00ff80",
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 6 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "ascii",
+    "value": "hello",
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 7 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "utf8",
+    "value": "hé🙂",
+  },
+}
+`;
+
+exports[`ABI form coercion coerces optional values 8 1`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "contract",
+    "value": "SP000000000000000000002Q6VF78.hello",
+  },
+}
+`;
+
+exports[`ABI form coercion encodes tuples, optional tuples and optional fields 1`] = `
+{
+  "type": "tuple",
+  "value": {
+    "amount": {
+      "type": "uint",
+      "value": 42n,
+    },
+    "memo": {
+      "type": "none",
+    },
+  },
+}
+`;
+
+exports[`ABI form coercion encodes tuples, optional tuples and optional fields 2`] = `
+{
+  "type": "tuple",
+  "value": {
+    "amount": {
+      "type": "uint",
+      "value": 42n,
+    },
+    "memo": {
+      "type": "some",
+      "value": {
+        "type": "ascii",
+        "value": "hi",
+      },
+    },
+  },
+}
+`;
+
+exports[`ABI form coercion encodes tuples, optional tuples and optional fields 3`] = `
+{
+  "type": "some",
+  "value": {
+    "type": "tuple",
+    "value": {
+      "amount": {
+        "type": "uint",
+        "value": 42n,
+      },
+      "memo": {
+        "type": "some",
+        "value": {
+          "type": "ascii",
+          "value": "hi",
+        },
+      },
+    },
+  },
+}
+`;

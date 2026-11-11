@@ -1,4 +1,4 @@
-import { PostConditionMode } from '@stacks/transactions';
+import { PostConditionMode } from '@/common/utils/fixtures/stacks-behavior/sdk-constants';
 
 import { postConditionModeFromName, postConditionModeNames } from '../post-condition-mode-utils';
 
@@ -21,4 +21,9 @@ describe('post condition mode names', () => {
     expect(postConditionModeFromName('toString')).toBeUndefined();
     expect(postConditionModeFromName('__proto__')).toBeUndefined();
   });
+});
+
+it('pins the wire mode numbers and wallet names', () => {
+  expect(postConditionModeNames).toEqual({ 1: 'allow', 2: 'deny', 3: 'originator' });
+  expect(['allow', 'deny', 'originator'].map(postConditionModeFromName)).toEqual([1, 2, 3]);
 });

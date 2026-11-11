@@ -1,7 +1,15 @@
+/** @jest-environment node */
 import { TxDetailsOf } from '@/common/types/tx-v3';
+import clarityVectors from '@/common/utils/fixtures/stacks-behavior/clarity.json';
 
-import { ClarityAbiFunction, cvToJSON, hexToCV } from '@stacks/transactions';
-
+import {
+  checkFunctionParameters,
+  createInitialFunctionParameterValues,
+  extractFunctionParams,
+  isPublicFunction,
+  processFunctionParameters,
+  shouldUsePostConditions,
+} from '../function-call-function-params-utils';
 import {
   formatClarityValue,
   formatFunctionResult,
@@ -183,13 +191,6 @@ export const contractCallTxWithTupleResult = {
   },
 };
 
-// Mock cvToJSON and hexToCV since we're testing functions that use them
-jest.mock('@stacks/transactions', () => ({
-  cvToJSON: jest.fn(),
-  hexToCV: jest.fn(),
-  getTypeString: jest.requireActual('@stacks/transactions').getTypeString,
-}));
-
 // v3 encodes contract call arguments as bare `{ hex, repr }` values.
 function toV3ContractCallTx(tx: {
   contract_call: {
@@ -254,7 +255,7 @@ const delegateStxAbi = {
       },
     },
   ],
-} as unknown as ClarityAbiFunction;
+} as NonNullable<Parameters<typeof getContractCallTxFunctionArgs>[1]>;
 
 describe('isTupleType', () => {
   it('returns true for direct tuple types', () => {
@@ -294,18 +295,16 @@ describe('isTupleType', () => {
 });
 
 describe('Function Called Utils', () => {
-  // Reset mocks before each test
-  beforeEach(() => {
-    jest.resetAllMocks();
-  });
-
   describe('formatClarityValueType', () => {
     // This function is not exported, so we'll test it indirectly through formatClarityValue
     it('formats basic clarity types correctly', () => {
       // Test through formatClarityValue
       const boolValue = formatClarityValue({ type: 'bool', repr: 'true' });
       const intValue = formatClarityValue({ type: 'int', repr: '42' });
-      const principalValue = formatClarityValue({ type: 'principal', repr: 'SP123...' });
+      const principalValue = formatClarityValue({
+        type: 'principal',
+        repr: 'SP000000000000000000002Q6VF78',
+      });
       const uintValue = formatClarityValue({ type: 'uint', repr: 'u100' });
 
       expect(boolValue.type).toBe('Boolean');
@@ -331,15 +330,12 @@ describe('Function Called Utils', () => {
 
   describe('formatClarityValue', () => {
     it('handles principal values correctly', () => {
-      // Mock the hexToCV and cvToJSON functions
       const mockPrincipal = 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B.my-contract';
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({ value: mockPrincipal });
 
       const result = formatClarityValue({
         type: 'principal',
         repr: 'SP2J...02B',
-        hex: '0x1234',
+        hex: '0x0616a5d9d331000f5b79578ce56bd157f29a9056f0d60b6d792d636f6e7472616374',
       });
 
       expect(result).toEqual({
@@ -347,20 +343,12 @@ describe('Function Called Utils', () => {
         value: mockPrincipal,
         type: 'Principal',
       });
-
-      // Verify hexToCV and cvToJSON were called
-      expect(hexToCV).toHaveBeenCalledWith('0x1234');
-      expect(cvToJSON).toHaveBeenCalled();
     });
 
     it('removes single quote prefix from principal address', () => {
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({ value: '' });
-
       const result = formatClarityValue({
         type: 'principal',
         repr: "'SP1Y3FBARS8CVANS1GCYVN3B6NZFMA7H61Z6TP6RK",
-        hex: '0x1234',
       });
 
       expect(result).toEqual({
@@ -368,9 +356,6 @@ describe('Function Called Utils', () => {
         value: 'SP1Y3FBARS8CVANS1GCYVN3B6NZFMA7H61Z6TP6RK',
         type: 'Principal',
       });
-
-      expect(hexToCV).toHaveBeenCalledWith('0x1234');
-      expect(cvToJSON).toHaveBeenCalled();
     });
 
     it('works normally for principal addresses without single quote prefix', () => {
@@ -442,14 +427,6 @@ describe('Function Called Utils', () => {
 
   describe('formatFunctionResult', () => {
     it('formats non-tuple results correctly', () => {
-      // Mock the hexToCV and cvToJSON functions for a non-tuple result
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({
-        success: true,
-        type: 'bool',
-        value: true,
-      });
-
       const result = formatFunctionResult({
         hex: '0x0703',
         repr: '(ok true)',
@@ -459,75 +436,34 @@ describe('Function Called Utils', () => {
       expect(result[0]).toEqual({
         name: '',
         value: '(ok true)',
-        type: 'Boolean',
+        type: '(response bool )',
       });
-
-      // Verify hexToCV was called with the correct hex value
-      expect(hexToCV).toHaveBeenCalledWith('0x0703');
     });
 
     it('formats tuple results correctly', () => {
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({
-        success: true,
-        type: '(response (tuple (amount uint) (recipient principal)) UnknownType)',
-        value: {
-          type: '(tuple (amount uint) (recipient principal))',
-          value: {
-            amount: { type: 'uint', value: 1000 },
-            recipient: { type: 'principal', value: 'SP123...' },
-          },
-        },
-      });
-
       const result = formatFunctionResult({
-        hex: '0x070a...',
-        repr: '(ok (tuple (amount u1000) (recipient SP123...)))',
+        hex: '0x070c0000000206616d6f756e7401000000000000000000000000000003e809726563697069656e7405160000000000000000000000000000000000000000',
+        repr: '(ok (tuple (amount u1000) (recipient SP000000000000000000002Q6VF78)))',
       });
 
       expect(result).toHaveLength(2);
       expect(result).toContainEqual({
         name: 'amount',
-        value: '1000',
+        value: '1,000',
         type: 'Unsigned Integer',
       });
       expect(result).toContainEqual({
         name: 'recipient',
-        value: 'SP123...',
+        value: 'SP000000000000000000002Q6VF78',
         type: 'Principal',
       });
     });
 
     it('formats list-of-tuples results using repr instead of tuple rendering', () => {
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({
-        success: true,
-        type: '(response (list 2 (tuple (x-amount uint) (y-amount uint))) UnknownType)',
-        value: {
-          type: '(list 2 (tuple (x-amount uint) (y-amount uint)))',
-          value: [
-            {
-              type: '(tuple (x-amount uint) (y-amount uint))',
-              value: {
-                'x-amount': { type: 'uint', value: '0' },
-                'y-amount': { type: 'uint', value: '100' },
-              },
-            },
-            {
-              type: '(tuple (x-amount uint) (y-amount uint))',
-              value: {
-                'x-amount': { type: 'uint', value: '1' },
-                'y-amount': { type: 'uint', value: '200' },
-              },
-            },
-          ],
-        },
-      });
-
       const repr =
         '(ok (list (tuple (x-amount u0) (y-amount u100)) (tuple (x-amount u1) (y-amount u200))))';
       const result = formatFunctionResult({
-        hex: '0x070b...',
+        hex: '0x070b000000020c0000000208782d616d6f756e74010000000000000000000000000000000008792d616d6f756e7401000000000000000000000000000000640c0000000208782d616d6f756e74010000000000000000000000000000000108792d616d6f756e7401000000000000000000000000000000c8',
         repr,
       });
 
@@ -539,21 +475,13 @@ describe('Function Called Utils', () => {
       // Use the real transaction data from our examples
       const txResult = contractCallTxWithNonTupleResult.tx_result;
 
-      // Mock the hexToCV and cvToJSON functions to return what we expect from this tx
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({
-        success: true,
-        type: '(response bool)',
-        value: true,
-      });
-
       const result = formatFunctionResult(txResult);
 
       const expectedResult = [
         {
           name: '',
           value: '(ok true)',
-          type: '(response bool)',
+          type: '(response bool )',
         },
       ];
 
@@ -563,39 +491,16 @@ describe('Function Called Utils', () => {
       expect(firstResult.name).toEqual(expectedFirstResult.name);
       expect(firstResult.value).toEqual(expectedFirstResult.value);
       expect(firstResult.type).toEqual(expectedFirstResult.type);
-      expect(hexToCV).toHaveBeenCalledWith('0x0703');
     });
 
     it('formats results from real transaction data (optional-wrapped tuple uses repr)', () => {
       const txResult = contractCallTxWithTupleResult.tx_result;
-
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({
-        success: true,
-        type: '(response (optional (tuple (amount-ustx uint) (delegated-to principal) (pox-addr (optional none)) (until-burn-ht (optional none)))) UnknownType)',
-        value: {
-          type: '(optional (tuple (amount-ustx uint) (delegated-to principal) (pox-addr (optional none)) (until-burn-ht (optional none))))',
-          value: {
-            type: '(tuple (amount-ustx uint) (delegated-to principal) (pox-addr (optional none)) (until-burn-ht (optional none)))',
-            value: {
-              'amount-ustx': { type: 'uint', value: '24183461872' },
-              'delegated-to': {
-                type: 'principal',
-                value: 'SP21YTSM60CAY6D011EZVEVNKXVW8FVZE198XEFFP.pox4-fast-pool-v3',
-              },
-              'pox-addr': { type: '(optional none)', value: null },
-              'until-burn-ht': { type: '(optional none)', value: null },
-            },
-          },
-        },
-      });
 
       const result = formatFunctionResult(txResult);
 
       // Optional-wrapped tuples use the non-tuple path and display repr directly
       expect(result).toHaveLength(1);
       expect(result[0].value).toBe(txResult.repr);
-      expect(hexToCV).toHaveBeenCalledWith(txResult.hex);
     });
   });
 
@@ -640,24 +545,72 @@ describe('Function Called Utils', () => {
 
   describe('getFunctionResultSuccessStatus', () => {
     it('returns success status from function result', () => {
-      // Mock the hexToCV and cvToJSON functions
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({ success: true });
-
       const result = getFunctionResultSuccessStatus(contractCallTxWithNonTupleResult.tx_result);
 
       expect(result).toBe(true);
-      expect(hexToCV).toHaveBeenCalledWith('0x0703');
     });
 
     it('returns false for failed function result', () => {
-      // Mock the hexToCV and cvToJSON functions
-      (hexToCV as jest.Mock).mockReturnValue({});
-      (cvToJSON as jest.Mock).mockReturnValue({ success: false });
-
-      const result = getFunctionResultSuccessStatus(contractCallTxWithNonTupleResult.tx_result);
+      const result = getFunctionResultSuccessStatus({
+        hex: '0x080100000000000000000000000000000001',
+        repr: '(err u1)',
+      });
 
       expect(result).toBe(false);
+    });
+  });
+});
+
+it.each(clarityVectors)('formats $name and detects its response status', ({ hex, repr }) => {
+  expect(formatFunctionResult({ hex, repr })).toMatchSnapshot();
+  expect(getFunctionResultSuccessStatus({ hex, repr })).toMatchSnapshot();
+});
+
+it('formats captured PoX contract logs', () => {
+  for (const event of contractCallTxWithNonTupleResult.events) {
+    expect(formatFunctionResult(event.contract_log.value)).toMatchSnapshot();
+  }
+});
+
+it('throws for malformed function result bytes', () => {
+  expect(() => formatFunctionResult({ hex: 'not-hex', repr: '' })).toThrow();
+  expect(() => getFunctionResultSuccessStatus({ hex: 'not-hex', repr: '' })).toThrow();
+});
+
+describe('ABI form parameter vectors', () => {
+  const { abi, values } = require('@/common/utils/fixtures/stacks-behavior/abi-form.json');
+  it('pins initial values, validation and coercion for every argument path', () => {
+    expect(createInitialFunctionParameterValues(abi)).toMatchSnapshot();
+    expect(checkFunctionParameters(abi, values)).toEqual({});
+    expect(processFunctionParameters(values, abi)).toMatchSnapshot();
+    expect(extractFunctionParams({ ...values, postConditionMode: 2 })).toEqual(values);
+    expect(isPublicFunction(abi)).toBe(true);
+    expect(isPublicFunction({ ...abi, access: 'read_only' })).toBe(false);
+    expect([1, 2, 3].map(shouldUsePostConditions)).toEqual([false, true, true]);
+  });
+  it('pins empty optional fields and ignores arguments absent from the ABI', () => {
+    expect(
+      processFunctionParameters(
+        { optional: '', 'optional-tuple': { x: '' }, list: [], unknown: 'ignored' },
+        abi
+      )
+    ).toMatchSnapshot();
+  });
+  it.each([
+    ['amount', '-1'],
+    ['amount', '340282366920938463463374607431768211456'],
+    ['signed', '-170141183460469231731687303715884105729'],
+    ['signed', '170141183460469231731687303715884105728'],
+    ['who', 'invalid'],
+    ['bytes', 'not hex'],
+  ])('rejects invalid %s value %s', (name, value) => {
+    expect(() => processFunctionParameters({ [name]: value }, abi)).toThrow();
+  });
+  it('preserves validation errors for required, principal and uint fields', () => {
+    expect(checkFunctionParameters(abi, { amount: '-1', who: 'invalid', text: '' })).toEqual({
+      amount: 'Invalid uint128 value',
+      who: 'Invalid Stacks address',
+      text: 'text is required',
     });
   });
 });

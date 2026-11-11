@@ -1,0 +1,429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ABI form parameter vectors pins empty optional fields and ignores arguments absent from the ABI 1`] = `
+{
+  "list": {
+    "type": "list",
+    "value": [],
+  },
+  "optional": {
+    "type": "none",
+  },
+  "optional-tuple": {
+    "type": "none",
+  },
+}
+`;
+
+exports[`ABI form parameter vectors pins initial values, validation and coercion for every argument path 1`] = `
+{
+  "amount": "",
+  "bytes": "",
+  "flag": "",
+  "list": [],
+  "memo": "",
+  "optional": "",
+  "optional-list": [],
+  "optional-tuple": {
+    "x": "",
+  },
+  "signed": "",
+  "text": "",
+  "tuple": {
+    "x": "",
+  },
+  "tuple-list": [],
+  "unicode": "",
+  "who": "",
+}
+`;
+
+exports[`ABI form parameter vectors pins initial values, validation and coercion for every argument path 2`] = `
+{
+  "amount": {
+    "type": "uint",
+    "value": 340282366920938463463374607431768211455n,
+  },
+  "bytes": {
+    "type": "buffer",
+    "value": "00ff80",
+  },
+  "flag": {
+    "type": "false",
+  },
+  "list": {
+    "type": "list",
+    "value": [
+      {
+        "type": "uint",
+        "value": 0n,
+      },
+      {
+        "type": "uint",
+        "value": 1n,
+      },
+    ],
+  },
+  "memo": {
+    "type": "some",
+    "value": {
+      "type": "buffer",
+      "value": "6869",
+    },
+  },
+  "optional": {
+    "type": "some",
+    "value": {
+      "type": "uint",
+      "value": 42n,
+    },
+  },
+  "optional-list": {
+    "type": "list",
+    "value": [
+      {
+        "type": "uint",
+        "value": 5n,
+      },
+      {
+        "type": "uint",
+        "value": 6n,
+      },
+    ],
+  },
+  "optional-tuple": {
+    "type": "some",
+    "value": {
+      "type": "tuple",
+      "value": {
+        "x": {
+          "type": "uint",
+          "value": 2n,
+        },
+      },
+    },
+  },
+  "signed": {
+    "type": "int",
+    "value": -170141183460469231731687303715884105728n,
+  },
+  "text": {
+    "type": "ascii",
+    "value": "hello",
+  },
+  "tuple": {
+    "type": "tuple",
+    "value": {
+      "x": {
+        "type": "uint",
+        "value": 1n,
+      },
+    },
+  },
+  "tuple-list": {
+    "type": "list",
+    "value": [
+      {
+        "type": "tuple",
+        "value": {
+          "x": {
+            "type": "uint",
+            "value": 3n,
+          },
+        },
+      },
+      {
+        "type": "tuple",
+        "value": {
+          "x": {
+            "type": "uint",
+            "value": 4n,
+          },
+        },
+      },
+    ],
+  },
+  "unicode": {
+    "type": "utf8",
+    "value": "hé🙂",
+  },
+  "who": {
+    "type": "contract",
+    "value": "SP000000000000000000002Q6VF78.hello",
+  },
+}
+`;
+
+exports[`formats ascii and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(string-ascii 13)",
+    "value": ""Hello, world!"",
+  },
+]
+`;
+
+exports[`formats ascii and detects its response status 2`] = `undefined`;
+
+exports[`formats buffer and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(buff 3)",
+    "value": "0x00ff80",
+  },
+]
+`;
+
+exports[`formats buffer and detects its response status 2`] = `undefined`;
+
+exports[`formats captured PoX contract logs 1`] = `
+[
+  {
+    "name": "balance",
+    "type": "Unsigned Integer",
+    "value": "11,716,146",
+  },
+  {
+    "name": "burnchain-unlock-height",
+    "type": "Unsigned Integer",
+    "value": "909,650",
+  },
+  {
+    "name": "data",
+    "type": "Tuple",
+    "value": "{"delegate-to":{"type":"principal","value":"SPXVRSEH2BKSXAEJ00F1BY562P45D5ERPSKR4Q33"},"end-cycle-id":{"type":"optional: none","value":null},"start-cycle-id":{"type":"uint","value":"116"}}, ",
+  },
+  {
+    "name": "locked",
+    "type": "Unsigned Integer",
+    "value": "1,436,750,000",
+  },
+  {
+    "name": "name",
+    "type": "(string-ascii 19)",
+    "value": "revoke-delegate-stx",
+  },
+  {
+    "name": "stacker",
+    "type": "Principal",
+    "value": "SP3T156FGQ9J6H9A6AZY2BA6SJJCCHPZB0Z97STDF",
+  },
+]
+`;
+
+exports[`formats captured PoX contract logs 2`] = `
+[
+  {
+    "name": "balance",
+    "type": "Unsigned Integer",
+    "value": "11,716,146",
+  },
+  {
+    "name": "burnchain-unlock-height",
+    "type": "Unsigned Integer",
+    "value": "909,650",
+  },
+  {
+    "name": "data",
+    "type": "Tuple",
+    "value": "{"amount-ustx":{"type":"uint","value":"1447750000"},"delegate-to":{"type":"principal","value":"SPXVRSEH2BKSXAEJ00F1BY562P45D5ERPSKR4Q33"},"end-cycle-id":{"type":"optional: none","value":null},"pox-addr":{"type":"(optional, ",
+  },
+  {
+    "name": "locked",
+    "type": "Unsigned Integer",
+    "value": "1,436,750,000",
+  },
+  {
+    "name": "name",
+    "type": "(string-ascii 12)",
+    "value": "delegate-stx",
+  },
+  {
+    "name": "stacker",
+    "type": "Principal",
+    "value": "SP3T156FGQ9J6H9A6AZY2BA6SJJCCHPZB0Z97STDF",
+  },
+]
+`;
+
+exports[`formats contract and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Principal",
+    "value": "SP000000000000000000002Q6VF78.pox-4",
+  },
+]
+`;
+
+exports[`formats contract and detects its response status 2`] = `undefined`;
+
+exports[`formats err and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(response  uint)",
+    "value": "(err u1)",
+  },
+]
+`;
+
+exports[`formats err and detects its response status 2`] = `false`;
+
+exports[`formats false and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Boolean",
+    "value": "false",
+  },
+]
+`;
+
+exports[`formats false and detects its response status 2`] = `undefined`;
+
+exports[`formats int-max and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Integer",
+    "value": "170141183460469231731687303715884105727",
+  },
+]
+`;
+
+exports[`formats int-max and detects its response status 2`] = `undefined`;
+
+exports[`formats int-min and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Integer",
+    "value": "-170141183460469231731687303715884105728",
+  },
+]
+`;
+
+exports[`formats int-min and detects its response status 2`] = `undefined`;
+
+exports[`formats int-negative and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Integer",
+    "value": "-1",
+  },
+]
+`;
+
+exports[`formats int-negative and detects its response status 2`] = `undefined`;
+
+exports[`formats nested and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(response (optional (tuple (a (list 2 uint)) (b (optional none)))) )",
+    "value": "(ok (some (tuple (a (list u0 u1)) (b none))))",
+  },
+]
+`;
+
+exports[`formats nested and detects its response status 2`] = `true`;
+
+exports[`formats none and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(optional none)",
+    "value": "none",
+  },
+]
+`;
+
+exports[`formats none and detects its response status 2`] = `undefined`;
+
+exports[`formats ok and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(response bool )",
+    "value": "(ok true)",
+  },
+]
+`;
+
+exports[`formats ok and detects its response status 2`] = `true`;
+
+exports[`formats principal and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Principal",
+    "value": "SP000000000000000000002Q6VF78",
+  },
+]
+`;
+
+exports[`formats principal and detects its response status 2`] = `undefined`;
+
+exports[`formats some and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(optional uint)",
+    "value": "(some u7)",
+  },
+]
+`;
+
+exports[`formats some and detects its response status 2`] = `undefined`;
+
+exports[`formats true and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Boolean",
+    "value": "true",
+  },
+]
+`;
+
+exports[`formats true and detects its response status 2`] = `undefined`;
+
+exports[`formats uint-max and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Unsigned Integer",
+    "value": "340,282,366,920,938,500,000,000,000,000,000,000,000",
+  },
+]
+`;
+
+exports[`formats uint-max and detects its response status 2`] = `undefined`;
+
+exports[`formats uint-zero and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "Unsigned Integer",
+    "value": "0",
+  },
+]
+`;
+
+exports[`formats uint-zero and detects its response status 2`] = `undefined`;
+
+exports[`formats utf8 and detects its response status 1`] = `
+[
+  {
+    "name": "",
+    "type": "(string-utf8 7)",
+    "value": "u"hé🙂"",
+  },
+]
+`;
+
+exports[`formats utf8 and detects its response status 2`] = `undefined`;

@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pins wallet request defaults and explicit transfer/deploy settings 1`] = `
+[
+  [
+    "stx_transferStx",
+    {
+      "amount": "123",
+      "memo": "",
+      "network": "mainnet",
+      "recipient": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    },
+  ],
+  [
+    "stx_transferStx",
+    {
+      "amount": "456",
+      "memo": "memo",
+      "network": "devnet",
+      "recipient": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    },
+  ],
+  [
+    "stx_deployContract",
+    {
+      "clarityCode": "(ok true)",
+      "clarityVersion": 4,
+      "name": "hello",
+      "network": "mainnet",
+      "postConditionMode": "allow",
+    },
+  ],
+  [
+    "stx_deployContract",
+    {
+      "clarityCode": "(ok true)",
+      "clarityVersion": 3,
+      "name": "hello",
+      "network": "testnet",
+      "postConditionMode": "allow",
+    },
+  ],
+  [
+    "stx_signMessage",
+    {
+      "message": "hello",
+    },
+  ],
+]
+`;
+
+exports[`serializes every post condition through the repository wallet boundary 1`] = `
+[
+  [
+    "stx_callContract",
+    {
+      "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
+      "functionArgs": [
+        {
+          "type": "uint",
+          "value": 42n,
+        },
+        {
+          "type": "ascii",
+          "value": "hello",
+        },
+        {
+          "type": "true",
+        },
+        {
+          "type": "false",
+        },
+        {
+          "type": "none",
+        },
+      ],
+      "functionName": "print",
+      "network": "testnet",
+      "postConditionMode": "deny",
+      "postConditions": [
+        "000216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
+      ],
+    },
+  ],
+  [
+    "stx_callContract",
+    {
+      "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
+      "functionArgs": [
+        {
+          "type": "uint",
+          "value": 42n,
+        },
+        {
+          "type": "ascii",
+          "value": "hello",
+        },
+        {
+          "type": "true",
+        },
+        {
+          "type": "false",
+        },
+        {
+          "type": "none",
+        },
+      ],
+      "functionName": "print",
+      "network": "testnet",
+      "postConditionMode": "deny",
+      "postConditions": [
+        "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
+      ],
+    },
+  ],
+  [
+    "stx_callContract",
+    {
+      "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
+      "functionArgs": [
+        {
+          "type": "uint",
+          "value": 42n,
+        },
+        {
+          "type": "ascii",
+          "value": "hello",
+        },
+        {
+          "type": "true",
+        },
+        {
+          "type": "false",
+        },
+        {
+          "type": "none",
+        },
+      ],
+      "functionName": "print",
+      "network": "testnet",
+      "postConditionMode": "deny",
+      "postConditions": [
+        "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
+      ],
+    },
+  ],
+  [
+    "stx_callContract",
+    {
+      "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
+      "functionArgs": [
+        {
+          "type": "uint",
+          "value": 42n,
+        },
+        {
+          "type": "ascii",
+          "value": "hello",
+        },
+        {
+          "type": "true",
+        },
+        {
+          "type": "false",
+        },
+        {
+          "type": "none",
+        },
+      ],
+      "functionName": "print",
+      "network": "testnet",
+      "postConditionMode": "deny",
+      "postConditions": [
+        "030216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
+      ],
+    },
+  ],
+  [
+    "stx_callContract",
+    {
+      "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
+      "functionArgs": [
+        {
+          "type": "uint",
+          "value": 42n,
+        },
+        {
+          "type": "ascii",
+          "value": "hello",
+        },
+        {
+          "type": "true",
+        },
+        {
+          "type": "false",
+        },
+        {
+          "type": "none",
+        },
+      ],
+      "functionName": "print",
+      "network": "testnet",
+      "postConditionMode": "deny",
+      "postConditions": [
+        "040216a46ff88886c2ef9762d970b4d2c63678835bd39d32",
+      ],
+    },
+  ],
+  [
+    "stx_callContract",
+    {
+      "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
+      "functionArgs": [],
+      "functionName": "print",
+      "network": "mainnet",
+      "postConditionMode": "originator",
+      "postConditions": [
+        "deadbeef",
+      ],
+    },
+  ],
+  [
+    "stx_callContract",
+    {
+      "contract": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.hello",
+      "functionArgs": [],
+      "functionName": "print",
+      "network": "mainnet",
+      "postConditionMode": undefined,
+      "postConditions": undefined,
+    },
+  ],
+]
+`;

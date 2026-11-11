@@ -230,3 +230,23 @@ describe('sanitizeNetworkUrlForTag', () => {
     expect(sanitizeNetworkUrlForTag('not a url')).toBe('invalid');
   });
 });
+
+it('pins public and devnet chain IDs without a network SDK oracle', () => {
+  const {
+    mainnetNetwork,
+    testnetNetwork,
+    devnetNetwork,
+    NetworkIdModeMap,
+  } = require('../../constants/network');
+  expect(mainnetNetwork.networkId).toBe(1);
+  expect(testnetNetwork.networkId).toBe(2147483648);
+  expect(devnetNetwork.networkId).toBe(2147483648);
+  expect(devnetNetwork.url).toBe('http://localhost:3999');
+  expect(NetworkIdModeMap).toEqual({ 1: 'mainnet', 2147483648: 'testnet' });
+  expect(getConnectNetworkString(mainnetNetwork)).toBe('mainnet');
+  expect(getConnectNetworkString(testnetNetwork)).toBe('testnet');
+  expect(getConnectNetworkString(devnetNetwork)).toBe('devnet');
+  expect(getConnectNetworkString({ ...testnetNetwork, url: 'https://custom.example:3999' })).toBe(
+    'testnet'
+  );
+});

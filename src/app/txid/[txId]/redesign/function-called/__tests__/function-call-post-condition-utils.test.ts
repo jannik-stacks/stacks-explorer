@@ -370,10 +370,6 @@ describe('pox-5 post conditions', () => {
     expect(isPoxConditionCode('maybe-sent')).toBe(false);
   });
 
-  it('maps PoX condition codes to comparators', () => {});
-
-  it('maps the new NFT maybe-sent comparator', () => {});
-
   it('builds a staking post condition', () => {
     const params: PostConditionBuilderParameters = {
       postConditionType: 'staking-postcondition',

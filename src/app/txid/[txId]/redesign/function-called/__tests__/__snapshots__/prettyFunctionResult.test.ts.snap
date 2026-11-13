@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pretty prints captured ascii 1`] = `
+{
+  "decoded": true,
+  "display": ""Hello, world!"",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured buffer 1`] = `
+{
+  "decoded": true,
+  "display": "0x00ff80",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured contract 1`] = `
+{
+  "decoded": true,
+  "display": "'SP000000000000000000002Q6VF78.pox-4",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured err 1`] = `
+{
+  "decoded": true,
+  "display": "(err u1)",
+  "success": false,
+}
+`;
+
+exports[`pretty prints captured false 1`] = `
+{
+  "decoded": true,
+  "display": "false",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured int-max 1`] = `
+{
+  "decoded": true,
+  "display": "170141183460469231731687303715884105727",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured int-min 1`] = `
+{
+  "decoded": true,
+  "display": "-170141183460469231731687303715884105728",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured int-negative 1`] = `
+{
+  "decoded": true,
+  "display": "-1",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured nested 1`] = `
+{
+  "decoded": true,
+  "display": "(ok (some {
+  a: (list
+    u0
+    u1
+  ),
+  b: none
+}))",
+  "success": true,
+}
+`;
+
+exports[`pretty prints captured none 1`] = `
+{
+  "decoded": true,
+  "display": "none",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured ok 1`] = `
+{
+  "decoded": true,
+  "display": "(ok true)",
+  "success": true,
+}
+`;
+
+exports[`pretty prints captured principal 1`] = `
+{
+  "decoded": true,
+  "display": "'SP000000000000000000002Q6VF78",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured some 1`] = `
+{
+  "decoded": true,
+  "display": "(some u7)",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured true 1`] = `
+{
+  "decoded": true,
+  "display": "true",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured uint-max 1`] = `
+{
+  "decoded": true,
+  "display": "u340282366920938463463374607431768211455",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured uint-zero 1`] = `
+{
+  "decoded": true,
+  "display": "u0",
+  "success": undefined,
+}
+`;
+
+exports[`pretty prints captured utf8 1`] = `
+{
+  "decoded": true,
+  "display": "u"hé🙂"",
+  "success": undefined,
+}
+`;

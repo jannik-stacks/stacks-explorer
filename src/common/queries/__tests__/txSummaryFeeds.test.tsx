@@ -131,3 +131,36 @@ describe('useMempoolTxSummariesInfinite', () => {
     expect(mempoolTxSummariesInfiniteQueryKey(1, 20, { order: 'asc' })).not.toEqual(byTime);
   });
 });
+
+it('pins SDK-derived chain IDs in every exported summary cache-key format', () => {
+  const mempool = require('../useMempoolTxSummaries');
+  const confirmed = require('../useConfirmedTxSummaries');
+  const principal = require('../usePrincipalTxSummaries');
+  for (const networkId of [1, 2147483648]) {
+    expect(mempool.mempoolTxSummariesQueryKey(networkId, 20)).toEqual([
+      'mempoolTxSummaries',
+      networkId,
+      20,
+    ]);
+    expect(mempool.mempoolTxSummariesInfiniteQueryKey(networkId, 20, {})).toMatchSnapshot();
+    expect(mempool.principalMempoolTxSummariesInfiniteQueryKey(networkId, 'SP-vector')).toEqual([
+      'principalMempoolTxSummariesInfinite',
+      networkId,
+      'SP-vector',
+    ]);
+    expect(confirmed.confirmedTxSummariesQueryKey(networkId, 20)).toEqual([
+      'confirmedTxSummaries',
+      networkId,
+      20,
+    ]);
+    expect(
+      confirmed.confirmedTxSummariesInfiniteQueryKey(networkId, 20, ['contract_call'])
+    ).toEqual(['confirmedTxSummariesInfinite', networkId, 20, ['contract_call']]);
+    expect(principal.principalTxSummariesQueryKey(networkId, 'SP-vector', 20)).toEqual([
+      'principalTxSummaries',
+      networkId,
+      'SP-vector',
+      20,
+    ]);
+  }
+});

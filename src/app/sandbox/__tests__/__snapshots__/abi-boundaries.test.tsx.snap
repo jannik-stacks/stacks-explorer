@@ -1,0 +1,1854 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pins every condition code and sandbox/redesign builder on standard and contract principals 1`] = `
+[
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
+    ],
+    "code": 16,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
+    ],
+    "code": 16,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
+    ],
+    "code": 17,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
+    ],
+    "code": 17,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
+    ],
+    "code": 18,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
+    ],
+    "code": 18,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "040216a46ff88886c2ef9762d970b4d2c63678835bd39d30",
+    ],
+    "code": 48,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040216a46ff88886c2ef9762d970b4d2c63678835bd39d30",
+    ],
+    "code": 48,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040216a46ff88886c2ef9762d970b4d2c63678835bd39d31",
+    ],
+    "code": 49,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040216a46ff88886c2ef9762d970b4d2c63678835bd39d31",
+    ],
+    "code": 49,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040216a46ff88886c2ef9762d970b4d2c63678835bd39d32",
+    ],
+    "code": 50,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040216a46ff88886c2ef9762d970b4d2c63678835bd39d32",
+    ],
+    "code": 50,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 0,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 1,
+  },
+  {
+    "bytes": [
+      "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
+    ],
+    "code": 16,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
+    ],
+    "code": 16,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
+    ],
+    "code": 17,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
+    ],
+    "code": 17,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
+    ],
+    "code": 18,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
+    ],
+    "code": 18,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 2,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
+    ],
+    "code": 1,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
+    ],
+    "code": 2,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
+    ],
+    "code": 3,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
+    ],
+    "code": 4,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
+    ],
+    "code": 5,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 3,
+  },
+  {
+    "bytes": [
+      "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7430",
+    ],
+    "code": 48,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7430",
+    ],
+    "code": 48,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7431",
+    ],
+    "code": 49,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7431",
+    ],
+    "code": 49,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7432",
+    ],
+    "code": 50,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 4,
+  },
+  {
+    "bytes": [
+      "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7432",
+    ],
+    "code": 50,
+    "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
+    "type": 4,
+  },
+]
+`;
+
+exports[`post-condition mode 1 controls shown fields in both forms 1`] = `
+{
+  "inputs": [],
+  "text": "",
+}
+`;
+
+exports[`post-condition mode 1 controls shown fields in both forms 2`] = `
+{
+  "inputs": [],
+  "text": "",
+}
+`;
+
+exports[`post-condition mode 2 controls shown fields in both forms 1`] = `
+{
+  "inputs": [
+    {
+      "name": "",
+      "type": "text",
+      "value": "",
+    },
+    {
+      "name": "",
+      "type": "number",
+      "value": "",
+    },
+  ],
+  "text": "Select a post conditionAddressSelect a condition codeAmount",
+}
+`;
+
+exports[`post-condition mode 2 controls shown fields in both forms 2`] = `
+{
+  "inputs": [
+    {
+      "name": "postConditionAddress",
+      "type": "text",
+      "value": "",
+    },
+    {
+      "name": "postConditionAmount",
+      "type": "number",
+      "value": "",
+    },
+  ],
+  "text": "STX Post ConditionFungible Post ConditionNon-Fungible Post ConditionStaking Post ConditionPoX Post ConditionPost-condition typeAddressEqualGreaterGreaterEqualLessLessEqualCondition codeAmount",
+}
+`;
+
+exports[`post-condition mode 3 controls shown fields in both forms 1`] = `
+{
+  "inputs": [
+    {
+      "name": "",
+      "type": "text",
+      "value": "",
+    },
+    {
+      "name": "",
+      "type": "number",
+      "value": "",
+    },
+  ],
+  "text": "Select a post conditionAddressSelect a condition codeAmount",
+}
+`;
+
+exports[`post-condition mode 3 controls shown fields in both forms 2`] = `
+{
+  "inputs": [
+    {
+      "name": "postConditionAddress",
+      "type": "text",
+      "value": "",
+    },
+    {
+      "name": "postConditionAmount",
+      "type": "number",
+      "value": "",
+    },
+  ],
+  "text": "STX Post ConditionFungible Post ConditionNon-Fungible Post ConditionStaking Post ConditionPoX Post ConditionPost-condition typeAddressEqualGreaterGreaterEqualLessLessEqualCondition codeAmount",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 0 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "uint",
+  "type": "number",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 1 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "int",
+  "type": "number",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 2 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "bool",
+  "type": "text",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 3 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "principal",
+  "type": "text",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 4 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(buff 3)",
+  "type": "text",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 5 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(string-ascii 5)",
+  "type": "text",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 6 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(string-utf8 5)",
+  "type": "text",
+}
+`;
+
+exports[`redesign ABI primitive shown attributes 7 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(optional uint)",
+  "type": "number",
+}
+`;
+
+exports[`redesign ABI tuple, optional tuple and list shown attributes 1`] = `
+{
+  "inputs": [
+    {
+      "name": "value.amount",
+      "placeholder": "uint",
+      "type": "number",
+    },
+    {
+      "name": "value.memo",
+      "placeholder": "(buff 3)",
+      "type": "text",
+    },
+  ],
+  "label": "value: amountvalue: memo",
+}
+`;
+
+exports[`redesign ABI tuple, optional tuple and list shown attributes 2`] = `
+{
+  "inputs": [
+    {
+      "name": "value.amount",
+      "placeholder": "uint",
+      "type": "number",
+    },
+    {
+      "name": "value.memo",
+      "placeholder": "(buff 3)",
+      "type": "text",
+    },
+  ],
+  "label": "value: amount (optional)value: memo (optional)",
+}
+`;
+
+exports[`redesign ABI tuple, optional tuple and list shown attributes 3`] = `
+{
+  "inputs": [
+    {
+      "name": "value.0",
+      "placeholder": "uint",
+      "type": "number",
+    },
+  ],
+  "label": "valuevalue.0+ Add list item",
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 0 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x010000000000000000000000000000002a",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 1 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x00ffffffffffffffffffffffffffffffff",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 2 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x04",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 3 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x05160000000000000000000000000000000000000000",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 4 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x020000000300ff80",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 5 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0d0000000568656c6c6f",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 6 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0e0000000368c3a9",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 7 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0a02000000026869",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 8 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x09",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 9 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0c0000000101780100000000000000000000000000000007",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 10 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0a0c0000000101780100000000000000000000000000000008",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 11 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0b000000010100000000000000000000000000000009",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 12 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0b00000001010000000000000000000000000000000a",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign real form produces wallet argument bytes 13 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0b000000010c000000010178010000000000000000000000000000000b",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "allow",
+  "postConditions": undefined,
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 1`] = `
+{
+  "inputs": [
+    {
+      "name": "amount",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "340282366920938463463374607431768211455",
+    },
+  ],
+  "name": "amount",
+  "text": "amount",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 2`] = `
+{
+  "inputs": [
+    {
+      "name": "signed",
+      "placeholder": "int",
+      "type": "number",
+      "value": "-170141183460469231731687303715884105728",
+    },
+  ],
+  "name": "signed",
+  "text": "signed",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 3`] = `
+{
+  "inputs": [
+    {
+      "name": "flag",
+      "placeholder": "bool",
+      "type": "text",
+      "value": "false",
+    },
+  ],
+  "name": "flag",
+  "text": "flag",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 4`] = `
+{
+  "inputs": [
+    {
+      "name": "text",
+      "placeholder": "(string-ascii 20)",
+      "type": "text",
+      "value": "hello",
+    },
+  ],
+  "name": "text",
+  "text": "text",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 5`] = `
+{
+  "inputs": [
+    {
+      "name": "unicode",
+      "placeholder": "(string-utf8 20)",
+      "type": "text",
+      "value": "hé🙂",
+    },
+  ],
+  "name": "unicode",
+  "text": "unicode",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 6`] = `
+{
+  "inputs": [
+    {
+      "name": "bytes",
+      "placeholder": "(buff 3)",
+      "type": "text",
+      "value": "00ff80",
+    },
+  ],
+  "name": "bytes",
+  "text": "bytes",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 7`] = `
+{
+  "inputs": [
+    {
+      "name": "who",
+      "placeholder": "principal",
+      "type": "text",
+      "value": "SP000000000000000000002Q6VF78.hello",
+    },
+  ],
+  "name": "who",
+  "text": "who",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 8`] = `
+{
+  "inputs": [
+    {
+      "name": "memo",
+      "placeholder": "(optional (buff 34))",
+      "type": "text",
+      "value": "hi",
+    },
+  ],
+  "name": "memo",
+  "text": "memo",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 9`] = `
+{
+  "inputs": [
+    {
+      "name": "optional",
+      "placeholder": "(optional uint)",
+      "type": "number",
+      "value": "42",
+    },
+  ],
+  "name": "optional",
+  "text": "optional",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 10`] = `
+{
+  "inputs": [
+    {
+      "name": "tuple.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "1",
+    },
+  ],
+  "name": "tuple",
+  "text": "tuple: x",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 11`] = `
+{
+  "inputs": [
+    {
+      "name": "optional-tuple.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "2",
+    },
+  ],
+  "name": "optional-tuple",
+  "text": "optional-tuple: x (optional)",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 12`] = `
+{
+  "inputs": [
+    {
+      "name": "list.0",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "0",
+    },
+    {
+      "name": "list.1",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "1",
+    },
+  ],
+  "name": "list",
+  "text": "listlist.0list.1+ Add list item",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 13`] = `
+{
+  "inputs": [
+    {
+      "name": "tuple-list.0.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "3",
+    },
+    {
+      "name": "tuple-list.1.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "4",
+    },
+  ],
+  "name": "tuple-list",
+  "text": "tuple-listtuple-list.0: xtuple-list.1: x+ Add list item",
+}
+`;
+
+exports[`redesign shared ABI fixture labels and widget selection 14`] = `
+{
+  "inputs": [
+    {
+      "name": "optional-list.0",
+      "placeholder": "(optional uint)",
+      "type": "number",
+      "value": "5",
+    },
+    {
+      "name": "optional-list.1",
+      "placeholder": "(optional uint)",
+      "type": "number",
+      "value": "6",
+    },
+  ],
+  "name": "optional-list",
+  "text": "optional-listoptional-list.0optional-list.1+ Add list item",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 0 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "uint",
+  "type": "number",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 1 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "int",
+  "type": "number",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 2 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "bool",
+  "type": "text",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 3 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "principal",
+  "type": "text",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 4 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(buff 3)",
+  "type": "text",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 5 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(string-ascii 5)",
+  "type": "text",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 6 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(string-utf8 5)",
+  "type": "text",
+}
+`;
+
+exports[`sandbox ABI primitive shown attributes 7 1`] = `
+{
+  "label": "value",
+  "name": "value",
+  "placeholder": "(optional uint)",
+  "type": "number",
+}
+`;
+
+exports[`sandbox ABI tuple, optional tuple and list shown attributes 1`] = `
+{
+  "inputs": [
+    {
+      "name": "value.amount",
+      "placeholder": "uint",
+      "type": "number",
+    },
+    {
+      "name": "value.memo",
+      "placeholder": "(buff 3)",
+      "type": "text",
+    },
+  ],
+  "label": "value: amountvalue: memo",
+}
+`;
+
+exports[`sandbox ABI tuple, optional tuple and list shown attributes 2`] = `
+{
+  "inputs": [
+    {
+      "name": "value.amount",
+      "placeholder": "uint",
+      "type": "number",
+    },
+    {
+      "name": "value.memo",
+      "placeholder": "(buff 3)",
+      "type": "text",
+    },
+  ],
+  "label": "value: amount (optional)value: memo (optional)",
+}
+`;
+
+exports[`sandbox ABI tuple, optional tuple and list shown attributes 3`] = `
+{
+  "inputs": [
+    {
+      "name": "value.0",
+      "placeholder": "uint",
+      "type": "number",
+    },
+  ],
+  "label": "valuevalue.0+ Add list item",
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 0 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x010000000000000000000000000000002a",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 1 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x00ffffffffffffffffffffffffffffffff",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 2 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x04",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 3 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x05160000000000000000000000000000000000000000",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 4 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x020000000300ff80",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 5 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0d0000000568656c6c6f",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 6 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0e0000000368c3a9",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 7 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0a02000000026869",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 8 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x09",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 9 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0c0000000101780100000000000000000000000000000007",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 10 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0a0c0000000101780100000000000000000000000000000008",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 11 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0b000000010100000000000000000000000000000009",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 12 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0b00000001010000000000000000000000000000000a",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox real form produces wallet argument bytes 13 1`] = `
+{
+  "contract": "SP000000000000000000002Q6VF78.vectors",
+  "functionArgs": [
+    "0x0b000000010c000000010178010000000000000000000000000000000b",
+  ],
+  "functionName": "exercise",
+  "method": "stx_callContract",
+  "network": "mainnet",
+  "postConditionMode": "deny",
+  "postConditions": [],
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 1`] = `
+{
+  "inputs": [
+    {
+      "name": "amount",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "340282366920938463463374607431768211455",
+    },
+  ],
+  "name": "amount",
+  "text": "amount",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 2`] = `
+{
+  "inputs": [
+    {
+      "name": "signed",
+      "placeholder": "int",
+      "type": "number",
+      "value": "-170141183460469231731687303715884105728",
+    },
+  ],
+  "name": "signed",
+  "text": "signed",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 3`] = `
+{
+  "inputs": [
+    {
+      "name": "flag",
+      "placeholder": "bool",
+      "type": "text",
+      "value": "false",
+    },
+  ],
+  "name": "flag",
+  "text": "flag",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 4`] = `
+{
+  "inputs": [
+    {
+      "name": "text",
+      "placeholder": "(string-ascii 20)",
+      "type": "text",
+      "value": "hello",
+    },
+  ],
+  "name": "text",
+  "text": "text",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 5`] = `
+{
+  "inputs": [
+    {
+      "name": "unicode",
+      "placeholder": "(string-utf8 20)",
+      "type": "text",
+      "value": "hé🙂",
+    },
+  ],
+  "name": "unicode",
+  "text": "unicode",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 6`] = `
+{
+  "inputs": [
+    {
+      "name": "bytes",
+      "placeholder": "(buff 3)",
+      "type": "text",
+      "value": "00ff80",
+    },
+  ],
+  "name": "bytes",
+  "text": "bytes",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 7`] = `
+{
+  "inputs": [
+    {
+      "name": "who",
+      "placeholder": "principal",
+      "type": "text",
+      "value": "SP000000000000000000002Q6VF78.hello",
+    },
+  ],
+  "name": "who",
+  "text": "who",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 8`] = `
+{
+  "inputs": [
+    {
+      "name": "memo",
+      "placeholder": "(optional (buff 34))",
+      "type": "text",
+      "value": "hi",
+    },
+  ],
+  "name": "memo",
+  "text": "memo",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 9`] = `
+{
+  "inputs": [
+    {
+      "name": "optional",
+      "placeholder": "(optional uint)",
+      "type": "number",
+      "value": "42",
+    },
+  ],
+  "name": "optional",
+  "text": "optional",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 10`] = `
+{
+  "inputs": [
+    {
+      "name": "tuple.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "1",
+    },
+  ],
+  "name": "tuple",
+  "text": "tuple: x",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 11`] = `
+{
+  "inputs": [
+    {
+      "name": "optional-tuple.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "2",
+    },
+  ],
+  "name": "optional-tuple",
+  "text": "optional-tuple: x (optional)",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 12`] = `
+{
+  "inputs": [
+    {
+      "name": "list.0",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "0",
+    },
+    {
+      "name": "list.1",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "1",
+    },
+  ],
+  "name": "list",
+  "text": "listlist.0list.1+ Add list item",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 13`] = `
+{
+  "inputs": [
+    {
+      "name": "tuple-list.0.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "3",
+    },
+    {
+      "name": "tuple-list.1.x",
+      "placeholder": "uint",
+      "type": "number",
+      "value": "4",
+    },
+  ],
+  "name": "tuple-list",
+  "text": "tuple-listtuple-list.0: xtuple-list.1: x+ Add list item",
+}
+`;
+
+exports[`sandbox shared ABI fixture labels and widget selection 14`] = `
+{
+  "inputs": [
+    {
+      "name": "optional-list.0",
+      "placeholder": "(optional uint)",
+      "type": "number",
+      "value": "5",
+    },
+    {
+      "name": "optional-list.1",
+      "placeholder": "(optional uint)",
+      "type": "number",
+      "value": "6",
+    },
+  ],
+  "name": "optional-list",
+  "text": "optional-listoptional-list.0optional-list.1+ Add list item",
+}
+`;

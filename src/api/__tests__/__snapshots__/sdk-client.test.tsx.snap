@@ -1,0 +1,379 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`retained route wire contract /extended/v2/addresses/{principal}/balances/stx 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/addresses/SP000000000000000000002Q6VF78.vectors/balances/stx?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/addresses/{principal}/balances/ft 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/addresses/SP000000000000000000002Q6VF78.vectors/balances/ft?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/addresses/{address}/transactions 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/addresses/SP000000000000000000002Q6VF78.vectors/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v1/tx/mempool 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v1/tx/mempool?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/blocks/{height_or_hash} 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/blocks/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/blocks/ 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/blocks/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/blocks/{height_or_hash}/transactions 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/blocks/0xabc/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/burn-blocks/{height_or_hash}/blocks 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/burn-blocks/0xabc/blocks?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /metadata/v1/search 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/metadata/v1/search?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/burn-blocks/{height_or_hash} 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/burn-blocks/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/burn-blocks/ 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/burn-blocks/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v1/tx/ 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v1/tx/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/transactions 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v1/contract/{contract_id} 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v1/contract/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /metadata/v1/ft/{principal} 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/metadata/v1/ft/SP000000000000000000002Q6VF78.vectors?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /metadata/v1/ft 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/metadata/v1/ft?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/tokens/stx/holders 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/tokens/stx/holders?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/tokens/ft/{asset_identifier}/holders 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/tokens/ft/0xabc/holders?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/tokens/stx/supply 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/tokens/stx/supply?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/tokens/ft/{asset_identifier}/supply 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/tokens/ft/0xabc/supply?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v2/mempool/fees 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v2/mempool/fees?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v1/tx/mempool/stats 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v1/tx/mempool/stats?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/principals/{principal}/mempool/transactions 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/principals/SP000000000000000000002Q6VF78.vectors/mempool/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/mempool/transactions 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/mempool/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v1/tokens/nft/holdings 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v1/tokens/nft/holdings?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /metadata/v1/nft/{principal}/{token_id} 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/metadata/v1/nft/SP000000000000000000002Q6VF78.vectors/42?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/principals/{principal}/transactions 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/principals/SP000000000000000000002Q6VF78.vectors/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v1/search/{id} 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v1/search/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/transactions/{tx_id} 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/transactions/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained route wire contract /extended/v3/transactions/{tx_id}/events 1`] = `
+{
+  "body": "",
+  "data": {
+    "integer": "340282366920938463463374607431768211455",
+    "vector": "unchanged",
+  },
+  "method": "GET",
+  "url": "https://vectors.example/extended/v3/transactions/0xabc/events?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
+}
+`;
+
+exports[`retained sbtc faucet serializes a restored wallet address and keeps response bytes 1`] = `
+{
+  "body": "",
+  "contentType": null,
+  "method": "POST",
+  "url": "https://vectors.example/extended/v1/faucets/sbtc?address=SP000000000000000000002Q6VF78",
+}
+`;
+
+exports[`retained stx faucet serializes a restored wallet address and keeps response bytes 1`] = `
+{
+  "body": "{"content":"application/json"}",
+  "contentType": "application/json",
+  "method": "POST",
+  "url": "https://vectors.example/extended/v1/faucets/stx?address=SP000000000000000000002Q6VF78&stacking=true",
+}
+`;

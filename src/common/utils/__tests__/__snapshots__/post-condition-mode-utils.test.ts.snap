@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`post-condition mode descriptions and UI options remain stable 1`] = `
+{
+  "descriptions": {
+    "1": "The post-conditions listed below are still enforced, but transfers they do not cover are permitted too. It is the least restrictive mode.",
+    "2": "Deny mode only permits the asset transfers explicitly listed in the post-conditions below. Any transfer that is not listed will cause the transaction to fail.",
+    "3": "Originator mode requires every asset transfer out of your account to be covered by a post-condition listed below. Transfers between other accounts, such as contracts, are unrestricted.",
+  },
+  "options": [
+    {
+      "label": "Allow mode",
+      "value": "allow",
+    },
+    {
+      "label": "Originator mode",
+      "value": "originator",
+    },
+    {
+      "label": "Deny mode",
+      "value": "deny",
+    },
+  ],
+}
+`;

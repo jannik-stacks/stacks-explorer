@@ -1,10 +1,11 @@
-import { cvToHex, responseErrorCV, responseOkCV, uintCV } from '@stacks/transactions';
+/** @jest-environment node */
+import clarityVectors from '@/common/utils/fixtures/stacks-behavior/clarity.json';
 
 import { prettyFunctionResult } from '../utils';
 
 describe('prettyFunctionResult', () => {
   it('returns the pretty-printed clarity value on success', () => {
-    expect(prettyFunctionResult(cvToHex(uintCV(42)))).toEqual({
+    expect(prettyFunctionResult('0x010000000000000000000000000000002a')).toEqual({
       display: 'u42',
       decoded: true,
       success: undefined,
@@ -12,13 +13,13 @@ describe('prettyFunctionResult', () => {
   });
 
   it('reports response-ok status', () => {
-    const result = prettyFunctionResult(cvToHex(responseOkCV(uintCV(1))));
+    const result = prettyFunctionResult('0x070100000000000000000000000000000001');
     expect(result.decoded).toBe(true);
     expect(result.success).toBe(true);
   });
 
   it('reports response-err status', () => {
-    const result = prettyFunctionResult(cvToHex(responseErrorCV(uintCV(1))));
+    const result = prettyFunctionResult('0x080100000000000000000000000000000001');
     expect(result.decoded).toBe(true);
     expect(result.success).toBe(false);
   });
@@ -28,4 +29,9 @@ describe('prettyFunctionResult', () => {
     expect(result.decoded).toBe(false);
     expect(result.display).toBe('Unable to decode value:\nnot-hex');
   });
+});
+
+it.each(clarityVectors)('pretty prints captured $name', ({ hex }) => {
+  expect(prettyFunctionResult(hex)).toMatchSnapshot();
+  expect(prettyFunctionResult(hex.slice(2))).toEqual(prettyFunctionResult(hex));
 });

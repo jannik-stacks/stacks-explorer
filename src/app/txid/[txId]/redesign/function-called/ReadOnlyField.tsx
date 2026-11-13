@@ -6,9 +6,8 @@ import { useCallReadOnlyFunction } from '@/common/queries/useCallReadOnlyFunctio
 import { ButtonLink } from '@/ui/ButtonLink';
 import { Text } from '@/ui/Text';
 import { Stack } from '@chakra-ui/react';
+import { ClarityAbiFunction, ClarityValue } from '@jannik-stacks/kit';
 import { FC } from 'react';
-
-import { ClarityAbiFunction, ClarityValue } from '@stacks/transactions';
 
 const CodeEditorWithControls = withControls(CodeEditor, true, false);
 

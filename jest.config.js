@@ -15,6 +15,7 @@ const customJestConfig = {
   rootDir: '',
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
+    '^@jannik-stacks/kit$': '<rootDir>/node_modules/@jannik-stacks/kit/dist/index.mjs',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
@@ -34,8 +35,9 @@ const customJestConfig = {
 module.exports = async () => {
   const config = await createJestConfig(customJestConfig)();
   config.transformIgnorePatterns = [
-    '/node_modules/(?!(?:\\.pnpm/|@leather\\.io/|@fungible-systems/|p-queue/|p-timeout/|url-join/|uuid/))',
+    '/node_modules/(?!(?:\\.pnpm/|@jannik-stacks/|@noble/|@scure/|micro-packed/|openapi-fetch/|@leather\\.io/|@fungible-systems/|p-queue/|p-timeout/|url-join/|uuid/))',
     '^.+\\.module\\.(css|sass|scss)$',
   ];
+  config.transform['^.+\\.mjs$'] = config.transform[Object.keys(config.transform)[0]];
   return config;
 };

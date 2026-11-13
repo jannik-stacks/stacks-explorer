@@ -1,4 +1,4 @@
-import { bufferCVFromString, cvToHex, tupleCV } from '@stacks/transactions';
+import { Cl } from '@jannik-stacks/kit';
 
 import { BNSV1_CONTRACT } from '../constants/constants';
 import { GenericResponseType } from '../hooks/useInfiniteQueryResult';
@@ -47,12 +47,13 @@ export async function fetchBnsHistory(
   const bnsNftHistory = await fetchNftHistory(
     apiUrl,
     BNSV1_CONTRACT,
-    cvToHex(
-      tupleCV({
-        ['name']: bufferCVFromString(bnsName.replace(new RegExp('.btc$'), '')),
-        ['namespace']: bufferCVFromString('btc'),
-      })
-    )
+    '0x' +
+      Cl.serialize(
+        Cl.tuple({
+          ['name']: Cl.buffer(new TextEncoder().encode(bnsName.replace(new RegExp('.btc$'), ''))),
+          ['namespace']: Cl.buffer(new TextEncoder().encode('btc')),
+        })
+      )
   );
 
   return bnsNftHistory;

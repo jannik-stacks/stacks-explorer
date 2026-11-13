@@ -1,10 +1,3 @@
-import {
-  FungibleConditionCode,
-  PostConditionMode,
-  PostConditionType,
-  PoxConditionCode,
-} from '@/common/utils/fixtures/stacks-behavior/sdk-constants';
-
 import { FunctionFormikState } from '../FunctionView';
 import {
   checkFunctionParameters,
@@ -16,11 +9,11 @@ describe('checkPostConditionParameters', () => {
   // TODO: fix this test
   it('should return no errors when post condition is not enabled', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Allow,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'allow',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -31,11 +24,11 @@ describe('checkPostConditionParameters', () => {
 
   it('should return no errors when all values are correct', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -46,11 +39,11 @@ describe('checkPostConditionParameters', () => {
 
   it('should return no errors if postConditionType is missing in deny mode', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
+      postConditionMode: 'deny',
       postConditionType: undefined,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -61,11 +54,11 @@ describe('checkPostConditionParameters', () => {
 
   it('should return error if postConditionConditionCode is missing', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
       postConditionConditionCode: undefined,
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -78,11 +71,11 @@ describe('checkPostConditionParameters', () => {
 
   it('should return error for invalid Stacks address', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'INVALID_ADDRESS',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -95,11 +88,11 @@ describe('checkPostConditionParameters', () => {
 
   it('should return error if postConditionAmount is not a valid number', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: -1,
+      postConditionAmount: BigInt(-1),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -112,11 +105,11 @@ describe('checkPostConditionParameters', () => {
 
   it('should return multiple errors if there are multiple errors', () => {
     const pcValues: FunctionFormikState = {
-      postConditionMode: PostConditionMode.Deny,
-      postConditionType: PostConditionType.Fungible,
-      postConditionConditionCode: FungibleConditionCode.Equal,
+      postConditionMode: 'deny',
+      postConditionType: 'ft-postcondition',
+      postConditionConditionCode: 'eq',
       postConditionAddress: 'INVALID_ADDRESS',
-      postConditionAmount: -1,
+      postConditionAmount: BigInt(-1),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: undefined,
       postConditionAssetName: 'asset-name',
@@ -136,18 +129,20 @@ describe('getPostCondition', () => {
   it('builds the pox-5 staking and pox post conditions', () => {
     expect(
       getPostCondition({
-        postConditionType: PostConditionType.Staking,
+        postConditionType: 'staking-postcondition',
         postConditionAddress: address,
-        postConditionConditionCode: FungibleConditionCode.LessEqual,
-        postConditionAmount: 1100000,
+        postConditionConditionCode: 'lte',
+        postConditionAmount: BigInt(1100000),
       })
-    ).toEqual([{ type: 'staking-postcondition', address, condition: 'lte', amount: '1100000' }]);
+    ).toEqual([
+      { type: 'staking-postcondition', address, condition: 'lte', amount: BigInt(1100000) },
+    ]);
 
     expect(
       getPostCondition({
-        postConditionType: PostConditionType.PoX,
+        postConditionType: 'pox-postcondition',
         postConditionAddress: address,
-        postConditionConditionCode: PoxConditionCode.WillPerform,
+        postConditionConditionCode: 'will-perform',
       })
     ).toEqual([{ type: 'pox-postcondition', address, condition: 'will-perform' }]);
   });
@@ -155,9 +150,9 @@ describe('getPostCondition', () => {
   it('returns an empty list rather than [undefined] when nothing matches', () => {
     expect(
       getPostCondition({
-        postConditionType: PostConditionType.PoX,
+        postConditionType: 'pox-postcondition',
         postConditionAddress: address,
-        postConditionConditionCode: FungibleConditionCode.Equal,
+        postConditionConditionCode: 'eq',
       })
     ).toEqual([]);
   });
@@ -203,3 +198,40 @@ describe('ABI form validation', () => {
     expect(checkFunctionParameters(fn as any, values as any)).toEqual(errors);
   });
 });
+
+it('keeps a sandbox post-condition amount above Number.MAX_SAFE_INTEGER exact', async () => {
+  const { Codec } = await import('@jannik-stacks/kit');
+  const params = {
+    postConditionMode: 'deny',
+    postConditionType: 'stx-postcondition',
+    postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
+    postConditionConditionCode: 'eq',
+    postConditionAmount: BigInt('9007199254740993'),
+  } as const;
+  expect(checkPostConditionParameters(params as FunctionFormikState)).toEqual({});
+  expect(Codec.Raw.PostCondition.encode(getPostCondition(params)[0])).toBe(
+    '000216a46ff88886c2ef9762d970b4d2c63678835bd39d010020000000000001'
+  );
+});
+
+it.each(['trait_reference', { optional: 'trait_reference' }] as const)(
+  'reports incomplete sandbox trait arguments %#',
+  type => {
+    const fn = {
+      name: 'call',
+      access: 'public',
+      outputs: { type: 'bool' },
+      args: [{ name: 'trait', type }],
+    } as const;
+    expect(
+      checkFunctionParameters(fn, { trait: 'SP000000000000000000002Q6VF78' } as FunctionFormikState)
+    ).toEqual({
+      trait: 'Trait reference must include a valid contract address and name',
+    });
+    expect(
+      checkFunctionParameters(fn, {
+        trait: 'SP000000000000000000002Q6VF78.hello',
+      } as FunctionFormikState)
+    ).toEqual({});
+  }
+);

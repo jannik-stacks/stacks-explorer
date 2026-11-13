@@ -1,6 +1,5 @@
+import { StacksNetwork } from '@jannik-stacks/kit';
 import { string } from 'yup';
-
-import { ChainId } from '@stacks/network';
 
 import { fetchFromApi } from '../../../api/fetch';
 import { DEFAULT_V2_INFO_ENDPOINT } from '../../../constants/constants';
@@ -41,7 +40,7 @@ export const buildCustomNetworkUrl = (url: string) => {
 export const fetchCustomNetworkId: (
   url: string,
   isSubnet: boolean
-) => Promise<ChainId | undefined> = (url, isSubnet) => {
+) => Promise<StacksNetwork['chainId'] | undefined> = (url, isSubnet) => {
   return fetchFromApi(url)(DEFAULT_V2_INFO_ENDPOINT)
     .then(res => res.json())
     .then(res => res.network_id)

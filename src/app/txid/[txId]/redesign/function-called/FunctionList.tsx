@@ -1,9 +1,8 @@
 import { SectionTabsContentContainer } from '@/common/components/SectionTabs';
 import { useContractById } from '@/common/queries/useContractById';
 import { Stack } from '@chakra-ui/react';
+import { ClarityAbiFunction } from '@jannik-stacks/kit';
 import { useState } from 'react';
-
-import { ClarityAbiFunction } from '@stacks/transactions';
 
 import { FunctionCallForm } from './FunctionCallForm';
 import { FunctionListItem } from './FunctionListItem';

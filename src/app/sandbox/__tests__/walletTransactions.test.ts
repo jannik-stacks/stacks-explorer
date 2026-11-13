@@ -1,6 +1,5 @@
 /** @jest-environment node */
 import { getPostCondition } from '@/app/txid/[txId]/redesign/function-called/function-call-post-condition-params-utils';
-import { serializeClarityValues } from '@/common/queries/test-utils/serializeClarityValues';
 
 import { request } from '@stacks/connect';
 
@@ -36,17 +35,17 @@ it('pins wallet request defaults and explicit transfer/deploy settings', async (
 it('serializes every post condition through the repository wallet boundary', async () => {
   requestMock.mockResolvedValue({ txid: 'tx' } as any);
   for (const [postConditionType, postConditionConditionCode] of [
-    [0, 1],
-    [1, 2],
-    [2, 16],
-    [3, 5],
-    [4, 50],
-  ]) {
+    ['stx-postcondition', 'eq'],
+    ['ft-postcondition', 'gt'],
+    ['nft-postcondition', 'sent'],
+    ['staking-postcondition', 'lte'],
+    ['pox-postcondition', 'will-perform'],
+  ] as const) {
     const pc = getPostCondition({
       postConditionType,
       postConditionConditionCode,
       postConditionAddress: address,
-      postConditionAmount: 1100000,
+      postConditionAmount: BigInt(1100000),
       postConditionAssetAddress: address,
       postConditionAssetContractName: 'asset',
       postConditionAssetName: 'token',
@@ -69,15 +68,7 @@ it('serializes every post condition through the repository wallet boundary', asy
     postConditionMode: 'originator',
   });
   await callContract({ contract: `${address}.hello`, functionName: 'print', functionArgs: [] });
-  const calls = [];
-  for (const [method, params] of requestMock.mock.calls) {
-    const args = params as unknown as Parameters<typeof callContract>[0];
-    calls.push([
-      method,
-      { ...args, functionArgs: await serializeClarityValues(args.functionArgs) },
-    ]);
-  }
-  expect(calls).toMatchSnapshot();
+  expect(requestMock.mock.calls).toMatchSnapshot();
 });
 
 it('returns addresses and preserves parsed values', async () => {
@@ -109,4 +100,24 @@ it.each(operations)('propagates other wallet errors (%#)', async operation => {
   const error = new Error('Wallet unavailable');
   requestMock.mockRejectedValue(error);
   await expect(operation()).rejects.toBe(error);
+});
+
+it('serializes nested Kit values before handing a contract call to Connect', async () => {
+  const { Cl, Pc } = await import('@jannik-stacks/kit');
+  requestMock.mockResolvedValue({ txid: 'tx' } as any);
+  const hex =
+    '0x070a0c0000000201610b0000000201000000000000000000000000000000000100000000000000000000000000000001016209';
+  await callContract({
+    contract: `${address}.hello`,
+    functionName: 'print',
+    functionArgs: [Cl.deserialize(hex)],
+    postConditions: [Pc.principal(address).willSendEq(1100000).ustx()],
+  });
+  expect(requestMock).toHaveBeenCalledWith(
+    'stx_callContract',
+    expect.objectContaining({
+      functionArgs: [hex],
+      postConditions: ['000216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0'],
+    })
+  );
 });

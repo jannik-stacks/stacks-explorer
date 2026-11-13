@@ -1,4 +1,4 @@
-import { ChainId } from '@stacks/network';
+import { StacksNetwork } from '@jannik-stacks/kit';
 
 export enum NetworkModes {
   Testnet = 'testnet',
@@ -13,7 +13,7 @@ export interface Network {
   btcBlockBaseUrl: string;
   btcTxBaseUrl: string;
   btcAddressBaseUrl: string;
-  networkId: ChainId;
+  networkId: StacksNetwork['chainId'];
   mode: NetworkModes;
   wsUrl?: string;
   isCustomNetwork?: boolean;

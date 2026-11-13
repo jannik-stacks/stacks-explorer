@@ -1,85 +1,48 @@
 import { fetchTxFeeEstimation } from '@/app/data';
-import {
-  FEE_CONFIG,
-  SAMPLE_PUBLIC_KEY,
-  feeEstimationsMaxValues,
-  feeEstimationsMinValues,
-} from '@/app/feeConfig';
-import {
-  getEstimatedUnsignedStacksTxByteLength,
-  getSerializedUnsignedStacksTxPayload,
-  parseStacksTxFeeEstimationResponse,
-} from '@leather.io/query';
-import {
-  StacksUnsignedContractCallOptions,
-  StacksUnsignedContractDeployOptions,
-  StacksUnsignedTokenTransferOptions,
-  TransactionTypes,
-  generateStacksUnsignedTransaction,
-} from '@leather.io/stacks';
-import { convertAmountToBaseUnit, createMoney, stxToMicroStx } from '@leather.io/utils';
-import BigNumber from 'bignumber.js';
+import { FEE_CONFIG } from '@/app/feeConfig';
+import { Codec, NetworkName, Payload, Transaction, Tx } from '@jannik-stacks/kit';
 import { unstable_cache } from 'next/cache';
 
-import { StacksNetworkName } from '@stacks/network';
-import { StacksTransactionWire } from '@stacks/transactions';
-
-export function createSampleTokenTransferOptions(
-  network: StacksNetworkName
-): StacksUnsignedTokenTransferOptions {
+export function createSampleTokenTransferOptions(network: NetworkName): Transaction {
   return {
-    txType: TransactionTypes.StxTokenTransfer,
-    fee: createMoney(new BigNumber(0), 'STX'),
-    nonce: '1',
+    type: 'transfer',
+    network,
+    fee: BigInt(0),
+    nonce: BigInt(1),
     recipient: 'ST1EXHZSN8MJSJ9DSG994G1V8CNKYXGMK7Z4SA6DH',
-    amount: createMoney(new BigNumber(100), 'STX'),
-    publicKey: SAMPLE_PUBLIC_KEY,
-    network,
+    amount: BigInt(100),
   };
 }
 
-export function createSampleContractCallOptions(
-  network: StacksNetworkName
-): StacksUnsignedContractCallOptions {
+export function createSampleContractCallOptions(network: NetworkName): Transaction {
   return {
-    txType: TransactionTypes.ContractCall,
-    contractAddress: 'ST1EXHZSN8MJSJ9DSG994G1V8CNKYXGMK7Z4SA6DH',
-    contractName: 'hello-world',
+    type: 'call',
+    network,
+    fee: BigInt(0),
+    nonce: BigInt(1),
+    contract: 'ST1EXHZSN8MJSJ9DSG994G1V8CNKYXGMK7Z4SA6DH.hello-world',
     functionName: 'print',
-    fee: createMoney(new BigNumber(0), 'STX'),
-    functionArgs: [],
-    nonce: '1',
-    postConditions: [],
-    publicKey: SAMPLE_PUBLIC_KEY,
-    network,
+    args: [],
   };
 }
 
-export function createSampleContractDeployOptions(
-  network: StacksNetworkName
-): StacksUnsignedContractDeployOptions {
+export function createSampleContractDeployOptions(network: NetworkName): Transaction {
   return {
-    txType: TransactionTypes.ContractDeploy,
-    codeBody: '(define-public (print) (ok "Hello, world!"))',
-    contractName: 'hello-world',
-    fee: createMoney(new BigNumber(0), 'STX'),
-    nonce: '1',
-    publicKey: SAMPLE_PUBLIC_KEY,
+    type: 'deploy',
     network,
+    fee: BigInt(0),
+    nonce: BigInt(1),
+    code: '(define-public (print) (ok "Hello, world!"))',
+    name: 'hello-world',
+    clarityVersion: 4,
   };
 }
 
-export async function generateSampleTxs(network: StacksNetworkName) {
-  const [tokenTransferTx, contractCallTx, contractDeployTx] = await Promise.all([
-    generateStacksUnsignedTransaction(createSampleTokenTransferOptions(network)),
-    generateStacksUnsignedTransaction(createSampleContractCallOptions(network)),
-    generateStacksUnsignedTransaction(createSampleContractDeployOptions(network)),
-  ]);
-
+export async function generateSampleTxs(network: NetworkName) {
   return {
-    tokenTransferTx,
-    contractCallTx,
-    contractDeployTx,
+    tokenTransferTx: createSampleTokenTransferOptions(network),
+    contractCallTx: createSampleContractCallOptions(network),
+    contractDeployTx: createSampleContractDeployOptions(network),
   };
 }
 
@@ -91,35 +54,58 @@ export interface TxFeeEstimate {
 }
 
 async function getStacksFeeEstimate(
-  unsignedTx: StacksTransactionWire,
+  unsignedTx: Transaction,
   chain: string,
   api: string
 ): Promise<TxFeeEstimate> {
-  const txByteLength = getEstimatedUnsignedStacksTxByteLength(unsignedTx);
-  const txPayload = getSerializedUnsignedStacksTxPayload(unsignedTx);
-
-  const feeEstimation = await fetchTxFeeEstimation(txPayload, txByteLength, chain, api);
-
-  const processedFees = parseStacksTxFeeEstimationResponse({
-    feeEstimation,
-    payloadType: unsignedTx.payload.payloadType,
-    maxValues: feeEstimationsMaxValues,
-    minValues: feeEstimationsMinValues,
-    txByteLength,
-    tokenTransferFeeEstimations: FEE_CONFIG.tokenTransferFeeEstimations,
-    contractCallDefaultFeeEstimations: FEE_CONFIG.stacksContractCallFeeEstimations,
-    contractDeploymentDefaultFeeEstimations: FEE_CONFIG.stacksContractDeploymentFeeEstimations,
-  });
-
+  const txByteLength = Tx.from(unsignedTx).toHex().length / 2;
+  let payload: Payload;
+  if (unsignedTx.type === 'transfer')
+    payload = {
+      type: 'token-transfer',
+      recipient: unsignedTx.recipient,
+      amount: unsignedTx.amount,
+      memo: unsignedTx.memo || '',
+    };
+  else if (unsignedTx.type === 'call') {
+    const [contractAddress, contractName] = unsignedTx.contract.split('.');
+    payload = {
+      type: 'contract-call',
+      contractAddress,
+      contractName,
+      functionName: unsignedTx.functionName,
+      functionArgs: unsignedTx.args,
+    };
+  } else
+    payload = {
+      type: 'versioned-smart-contract',
+      clarityVersion: unsignedTx.clarityVersion!,
+      contractName: unsignedTx.name,
+      codeBody: unsignedTx.code,
+    };
+  const txPayload = Codec.Raw.Payload.encode(payload);
+  const response = await fetchTxFeeEstimation(txPayload, txByteLength, chain, api);
+  let fees: number[];
+  if (response.error) fees = FEE_CONFIG.fallbackFeeEstimations;
+  else if (unsignedTx.type === 'transfer') fees = FEE_CONFIG.tokenTransferFeeEstimations;
+  else {
+    const ranges =
+      unsignedTx.type === 'call'
+        ? FEE_CONFIG.stacksContractCallFeeEstimations
+        : FEE_CONFIG.stacksContractDeploymentFeeEstimations;
+    fees = (['low', 'standard', 'high'] as const).map((priority, index) => {
+      const fee = response.estimations[index].fee;
+      const { min, max } = ranges[priority];
+      if (fee > max) return priority === 'high' ? fee : max;
+      if (fee < min) return priority === 'low' ? fee : min;
+      return fee;
+    });
+  }
   return {
     no_priority: 0,
-    low_priority: stxToMicroStx(convertAmountToBaseUnit(processedFees.estimates[0].fee)).toNumber(),
-    medium_priority: stxToMicroStx(
-      convertAmountToBaseUnit(processedFees.estimates[1].fee)
-    ).toNumber(),
-    high_priority: stxToMicroStx(
-      convertAmountToBaseUnit(processedFees.estimates[2].fee)
-    ).toNumber(),
+    low_priority: fees[0],
+    medium_priority: fees[1],
+    high_priority: fees[2],
   };
 }
 
@@ -131,7 +117,7 @@ export interface SampleTxsFeeEstimate {
 }
 
 export async function fetchSampleTxsFeeEstimate(
-  chain: StacksNetworkName,
+  chain: NetworkName,
   api: string
 ): Promise<SampleTxsFeeEstimate> {
   const { tokenTransferTx, contractCallTx, contractDeployTx } = await generateSampleTxs(chain);
@@ -172,7 +158,7 @@ export async function fetchSampleTxsFeeEstimate(
 }
 
 const cachedFeeEstimate = unstable_cache(
-  async (chain: StacksNetworkName, api: string) => {
+  async (chain: NetworkName, api: string) => {
     const result = await fetchSampleTxsFeeEstimate(chain, api);
     return result;
   },
@@ -183,6 +169,6 @@ const cachedFeeEstimate = unstable_cache(
   }
 );
 
-export async function getSampleTxsFeeEstimate(chain: StacksNetworkName, api: string) {
+export async function getSampleTxsFeeEstimate(chain: NetworkName, api: string) {
   return await cachedFeeEstimate(chain, api);
 }

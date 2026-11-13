@@ -1,5 +1,5 @@
 import { getPostCondition as buildFormPostCondition } from '@/app/txid/[txId]/redesign/function-called/function-call-post-condition-params-utils';
-import { validateStacksAddress } from '@/common/utils/utils';
+import { validateStacksAddress, validateStacksContractId } from '@/common/utils/utils';
 import { Box, Flex, Icon, Stack } from '@chakra-ui/react';
 import {
   Cl,
@@ -12,7 +12,7 @@ import {
 } from '@jannik-stacks/kit';
 import { CaretDown } from '@phosphor-icons/react';
 import { Field, FormikErrors } from 'formik';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { isUint128 } from '../../../../common/utils/number-utils';
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from '../../../../components/ui/menu';
@@ -56,7 +56,7 @@ export interface PostConditionParameters {
   postConditionType?: PostCondition['type'];
   postConditionAddress?: string;
   postConditionConditionCode?: PostConditionConditionCode;
-  postConditionAmount?: number;
+  postConditionAmount?: bigint;
   postConditionAssetAddress?: string;
   postConditionAssetContractName?: string;
   postConditionAssetName?: string;
@@ -222,6 +222,15 @@ export const checkFunctionParameters = (fn: ClarityAbiFunction, values: Function
         return;
       }
     }
+    if (
+      (type === 'trait_reference' || (isOptional && type.optional === 'trait_reference')) &&
+      values[arg] &&
+      !validateStacksContractId(values[arg].toString())
+    ) {
+      errors[arg] = 'Trait reference must include a valid contract address and name';
+      return;
+    }
+
     if (type === 'uint128' && !isUint128(values[arg] as number)) {
       errors[arg] = 'Invalid uint128 value';
       return;
@@ -261,11 +270,7 @@ export const checkPostConditionParameters = (
       return;
     }
     if (key === 'postConditionAmount') {
-      if (
-        typeof formikState[key] !== 'number' ||
-        !Number.isFinite(formikState[key]) ||
-        (formikState[key] as number) < 0
-      ) {
+      if (typeof formikState[key] !== 'bigint' || !isUint128(formikState[key])) {
         errors[key] = 'Invalid amount';
         return;
       }
@@ -467,11 +472,21 @@ export function PostConditionForm({
                       </Text>
                       <Box width="100%">
                         <Field
-                          type={parameter === 'postConditionAmount' ? 'number' : 'text'}
+                          type="text"
                           name={parameter}
                           id={parameter}
                           component={Input}
-                          onChange={handleChange}
+                          onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                            if (parameter === 'postConditionAmount') {
+                              const amount = event.target.value;
+                              formikSetFieldValue(
+                                parameter,
+                                amount !== '' && isUint128(amount) ? BigInt(amount) : amount
+                              );
+                            } else {
+                              handleChange(event);
+                            }
+                          }}
                         />
                       </Box>
                       {errors[parameter] && <Caption color="error">{errors[parameter]}</Caption>}

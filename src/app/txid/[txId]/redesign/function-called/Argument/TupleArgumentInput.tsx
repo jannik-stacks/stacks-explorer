@@ -29,7 +29,7 @@ export const TupleArgumentInput: FC<
             <Input
               variant="redesignPrimary"
               width="full"
-              type={formatAbiType(tupleType.tuple[i].type).includes('int') ? 'number' : 'text'}
+              type="text"
               name={`${name}.${tupleEntry.name}`}
               id={`${name}.${tupleEntry.name}`}
               onChange={handleChange}

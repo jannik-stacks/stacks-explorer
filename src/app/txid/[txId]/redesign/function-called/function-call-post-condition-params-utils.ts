@@ -49,7 +49,7 @@ export interface PostConditionParameters {
   postConditionType?: PostCondition['type'];
   postConditionAddress?: string;
   postConditionConditionCode?: PostConditionConditionCode;
-  postConditionAmount?: number;
+  postConditionAmount?: bigint;
   postConditionAssetAddress?: string;
   postConditionAssetContractName?: string;
   postConditionAssetName?: string;
@@ -342,11 +342,7 @@ export const checkPostConditionParameters = (
       return;
     }
     if (key === 'postConditionAmount') {
-      if (
-        typeof formikState[key] !== 'number' ||
-        !Number.isFinite(formikState[key]) ||
-        (formikState[key] as number) < 0
-      ) {
+      if (typeof formikState[key] !== 'bigint' || !isUint128(formikState[key])) {
         errors[key] = 'Invalid amount';
         return;
       }
@@ -591,7 +587,7 @@ export function extractPostConditionParams(values: FunctionFormikState): PostCon
     postConditionAddress,
     postConditionConditionCode:
       postConditionConditionCode != null ? postConditionConditionCode : undefined,
-    postConditionAmount: postConditionAmount != null ? Number(postConditionAmount) : undefined,
+    postConditionAmount,
     postConditionAssetAddress,
     postConditionAssetContractName,
     postConditionAssetName,

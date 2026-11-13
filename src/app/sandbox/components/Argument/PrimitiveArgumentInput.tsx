@@ -19,7 +19,7 @@ export const PrimitiveArgumentInput: FC<
       <Box width="100%">
         <Input
           width="100%"
-          type={formatAbiType(type).includes('int') ? 'number' : 'text'}
+          type="text"
           name={name}
           id={name}
           onChange={handleChange}

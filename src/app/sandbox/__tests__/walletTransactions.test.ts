@@ -45,7 +45,7 @@ it('serializes every post condition through the repository wallet boundary', asy
       postConditionType,
       postConditionConditionCode,
       postConditionAddress: address,
-      postConditionAmount: 1100000,
+      postConditionAmount: BigInt(1100000),
       postConditionAssetAddress: address,
       postConditionAssetContractName: 'asset',
       postConditionAssetName: 'token',

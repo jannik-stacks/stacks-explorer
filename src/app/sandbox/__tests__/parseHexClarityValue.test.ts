@@ -89,9 +89,34 @@ describe('ABI form coercion', () => {
   });
 });
 
-it('retains trait-reference form coercion bytes for a bare address', async () => {
+it.each([
+  ['int128', '000000000000000000000000000000002a'],
+  ['uint128', '010000000000000000000000000000002a'],
+] as const)('encodes hexadecimal %s input without changing its bytes', async (type, hex) => {
   const { Cl } = await import('@jannik-stacks/kit');
-  expect(Cl.serialize(encodeOptional('trait_reference', 'SP000000000000000000002Q6VF78'))).toBe(
-    '0a0616000000000000000000000000000000000000000009756e646566696e6564'
-  );
+  const { encodeFormValue } = await import('../utils');
+  expect(Cl.serialize(encodeFormValue('0x2a', type))).toBe(hex);
+  expect(Cl.serialize(encodeOptional(type, '0x2a'))).toBe('0a' + hex);
+});
+
+it.each(['SP000000000000000000002Q6VF78', 'SP000000000000000000002Q6VF78.'])(
+  'rejects an incomplete trait reference %s',
+  async value => {
+    const { encodeFormValue } = await import('../utils');
+    expect(() => encodeFormValue(value, 'trait_reference')).toThrow(
+      'Trait reference must include a valid contract address and name'
+    );
+    expect(() => encodeOptional('trait_reference', value)).toThrow(
+      'Trait reference must include a valid contract address and name'
+    );
+  }
+);
+
+it('retains valid trait-reference bytes and empty optional traits', async () => {
+  const { Cl } = await import('@jannik-stacks/kit');
+  const { encodeFormValue } = await import('../utils');
+  expect(
+    Cl.serialize(encodeFormValue('SP000000000000000000002Q6VF78.hello', 'trait_reference'))
+  ).toBe('061600000000000000000000000000000000000000000568656c6c6f');
+  expect(Cl.serialize(encodeOptional('trait_reference', ''))).toBe('09');
 });

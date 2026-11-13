@@ -35,7 +35,7 @@ export const TupleArgumentInput: FC<
               <Box width="100%">
                 <Input
                   width="100%"
-                  type={formatAbiType(tupleType.tuple[i].type).includes('int') ? 'number' : 'text'}
+                  type="text"
                   name={`${name}.${tupleEntry.name}`}
                   id={name}
                   onChange={handleChange}

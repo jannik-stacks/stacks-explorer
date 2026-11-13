@@ -58,7 +58,7 @@ it.each([
     postConditionType: 'stx-postcondition',
     postConditionConditionCode: condition,
     postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
-    postConditionAmount: 100,
+    postConditionAmount: BigInt(100),
   });
   expect(pc).toBeDefined();
   expect(Codec.Raw.PostCondition.encode(pc!)).toBe(
@@ -134,7 +134,7 @@ describe('Validation Functions', () => {
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'invalid-address',
         postConditionConditionCode: 'eq',
-        postConditionAmount: 100,
+        postConditionAmount: BigInt(100),
       };
       const errors = checkPostConditionParameters(params);
       expect(errors.postConditionAddress).toBe('Invalid Stacks address');
@@ -146,7 +146,7 @@ describe('Validation Functions', () => {
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'eq',
-        postConditionAmount: -100, // Invalid negative amount
+        postConditionAmount: BigInt(-100), // Invalid negative amount
       };
       const errors = checkPostConditionParameters(params);
       expect(errors.postConditionAmount).toBe('Invalid amount');
@@ -158,7 +158,7 @@ describe('Validation Functions', () => {
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'eq',
-        postConditionAmount: 100,
+        postConditionAmount: BigInt(100),
       };
       const errors = checkPostConditionParameters(params);
       expect(errors).toEqual({});
@@ -173,7 +173,7 @@ describe('Post Condition Creation', () => {
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'eq',
-        postConditionAmount: 100,
+        postConditionAmount: BigInt(100),
       };
       const result = getPostCondition(params);
       expect(result).toEqual({
@@ -189,7 +189,7 @@ describe('Post Condition Creation', () => {
         postConditionType: 'ft-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'gt',
-        postConditionAmount: 200,
+        postConditionAmount: BigInt(200),
         postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionAssetContractName: 'my-token',
         postConditionAssetName: 'token',
@@ -241,7 +241,7 @@ describe('Post Condition Creation', () => {
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'eq',
-        postConditionAmount: -100, // Invalid uint128
+        postConditionAmount: BigInt(-100), // Invalid uint128
       };
       const result = getPostCondition(params);
       expect(result).toEqual(undefined);
@@ -297,7 +297,7 @@ describe('Utility Functions', () => {
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'eq',
-        postConditionAmount: 100,
+        postConditionAmount: BigInt(100),
         postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionAssetContractName: 'my-contract',
         postConditionAssetName: 'my-asset',
@@ -309,20 +309,20 @@ describe('Utility Functions', () => {
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'eq',
-        postConditionAmount: 100,
+        postConditionAmount: BigInt(100),
         postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionAssetContractName: 'my-contract',
         postConditionAssetName: 'my-asset',
       });
     });
 
-    it('coerces the amount while retaining native Kit selections', () => {
+    it('retains bigint amounts and native Kit selections', () => {
       const formikState = {
         postConditionMode: 'deny',
         postConditionType: 'stx-postcondition',
         postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
         postConditionConditionCode: 'eq',
-        postConditionAmount: '100' as any,
+        postConditionAmount: BigInt(100),
         postConditionAssetAddress: undefined as any,
         postConditionAssetContractName: undefined as any,
         postConditionAssetName: undefined as any,
@@ -332,7 +332,7 @@ describe('Utility Functions', () => {
       expect(result.postConditionMode).toBe('deny');
       expect(result.postConditionType).toBe('stx-postcondition');
       expect(result.postConditionConditionCode).toBe('eq');
-      expect(result.postConditionAmount).toBe(100);
+      expect(result.postConditionAmount).toBe(BigInt(100));
     });
 
     it('should handle undefined post condition parameters', () => {
@@ -375,7 +375,7 @@ describe('pox-5 post conditions', () => {
       postConditionType: 'staking-postcondition',
       postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
       postConditionConditionCode: 'lte',
-      postConditionAmount: 1100000,
+      postConditionAmount: BigInt(1100000),
     };
 
     expect(getPostCondition(params)).toEqual({
@@ -446,4 +446,30 @@ describe('condition code / post condition type pairing', () => {
       'Condition code does not match the selected post condition type'
     );
   });
+});
+
+it('preserves a form amount above Number.MAX_SAFE_INTEGER through post-condition bytes', () => {
+  const params = extractPostConditionParams({
+    postConditionMode: 'deny',
+    postConditionType: 'stx-postcondition',
+    postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
+    postConditionConditionCode: 'eq',
+    postConditionAmount: BigInt('9007199254740993'),
+  } as any);
+  expect(params.postConditionAmount).toBe(BigInt('9007199254740993'));
+  expect(checkPostConditionParameters(params)).toEqual({});
+  expect(Codec.Raw.PostCondition.encode(getPostCondition(params)!)).toBe(
+    '000216a46ff88886c2ef9762d970b4d2c63678835bd39d010020000000000001'
+  );
+});
+
+it.each(['', 'invalid', '1.5'])('reports invalid form amount %s without throwing', amount => {
+  const params = extractPostConditionParams({
+    postConditionMode: 'deny',
+    postConditionType: 'stx-postcondition',
+    postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
+    postConditionConditionCode: 'eq',
+    postConditionAmount: amount,
+  } as any);
+  expect(checkPostConditionParameters(params)).toEqual({ postConditionAmount: 'Invalid amount' });
 });

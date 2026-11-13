@@ -86,7 +86,7 @@ async function getStacksFeeEstimate(
   const txPayload = Codec.Raw.Payload.encode(payload);
   const response = await fetchTxFeeEstimation(txPayload, txByteLength, chain, api);
   let fees: number[];
-  if (response.error) fees = [2500, 3000, 3500];
+  if (response.error) fees = FEE_CONFIG.fallbackFeeEstimations;
   else if (unsignedTx.type === 'transfer') fees = FEE_CONFIG.tokenTransferFeeEstimations;
   else {
     const ranges =

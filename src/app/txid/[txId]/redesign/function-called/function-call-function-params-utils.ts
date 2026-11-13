@@ -11,7 +11,7 @@ import { encodeOptional, encodeOptionalTuple, encodeTuple, getTuple } from '@/ap
 import { callContract } from '@/app/sandbox/utils/walletTransactions';
 import { PRINCIPAL_MEMPOOL_TX_SUMMARIES_INFINITE_KEY } from '@/common/queries/useMempoolTxSummaries';
 import { isUint128 } from '@/common/utils/number-utils';
-import { validateStacksAddress } from '@/common/utils/utils';
+import { validateStacksAddress, validateStacksContractId } from '@/common/utils/utils';
 import {
   Cl,
   ClarityAbiFunction,
@@ -184,6 +184,15 @@ export const checkFunctionParameters = (fn: ClarityAbiFunction, values: Function
         errors[arg] = 'Invalid Stacks address';
         return;
       }
+    }
+
+    if (
+      (type === 'trait_reference' || (isOptional && type.optional === 'trait_reference')) &&
+      values[arg] &&
+      !validateStacksContractId(values[arg].toString())
+    ) {
+      errors[arg] = 'Trait reference must include a valid contract address and name';
+      return;
     }
 
     // Validate uint128 arguments

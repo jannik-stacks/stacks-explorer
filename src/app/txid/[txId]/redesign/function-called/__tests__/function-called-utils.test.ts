@@ -625,3 +625,40 @@ describe('ABI form parameter vectors', () => {
     });
   });
 });
+
+it('preserves hexadecimal int and uint bytes through contract form processing', async () => {
+  const { Cl } = await import('@jannik-stacks/kit');
+  const abi = {
+    name: 'call',
+    access: 'public',
+    outputs: { type: 'bool' },
+    args: [
+      { name: 'signed', type: 'int128' },
+      { name: 'unsigned', type: 'uint128' },
+    ],
+  } as const;
+  const values = { signed: '0x2a', unsigned: '0x2a' };
+  expect(checkFunctionParameters(abi, values)).toEqual({});
+  expect(Object.values(processFunctionParameters(values, abi)).map(Cl.serialize)).toEqual([
+    '000000000000000000000000000000002a',
+    '010000000000000000000000000000002a',
+  ]);
+});
+
+it.each(['trait_reference', { optional: 'trait_reference' }] as const)(
+  'reports incomplete contract-page trait arguments %#',
+  type => {
+    const abi = {
+      name: 'call',
+      access: 'public',
+      outputs: { type: 'bool' },
+      args: [{ name: 'trait', type }],
+    } as const;
+    expect(checkFunctionParameters(abi, { trait: 'SP000000000000000000002Q6VF78' })).toEqual({
+      trait: 'Trait reference must include a valid contract address and name',
+    });
+    expect(checkFunctionParameters(abi, { trait: 'SP000000000000000000002Q6VF78.hello' })).toEqual(
+      {}
+    );
+  }
+);

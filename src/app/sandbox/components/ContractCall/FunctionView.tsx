@@ -43,7 +43,7 @@ interface FunctionViewProps {
 }
 
 interface FormType {
-  [key: string]: ValueType | ListValueType;
+  [key: string]: ValueType | ListValueType | bigint;
 }
 
 export type FormikHandleChangeFunction = {
@@ -283,7 +283,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
                             type={type}
                             error={errors[name]}
                             key={name}
-                            value={values[name]}
+                            value={values[name] as ValueType | ListValueType}
                           />
                         ))}
                       </>

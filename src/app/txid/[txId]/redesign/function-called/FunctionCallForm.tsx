@@ -45,12 +45,12 @@ interface FunctionCallFormProps {
 }
 
 export interface FunctionParameters {
-  [key: string]: ValueType | ListValueType;
+  [key: string]: ValueType | ListValueType | bigint;
 }
 
 export type FormikSetFieldValueFunction = (
   field: string,
-  value: string | number,
+  value: string | number | bigint,
   shouldValidate?: boolean
 ) => Promise<void | FormikErrors<FunctionFormikState>>;
 
@@ -179,7 +179,7 @@ export const FunctionCallForm: FC<FunctionCallFormProps> = ({
                         type={type}
                         error={errors[name]}
                         key={name}
-                        value={values[name]}
+                        value={values[name] as ValueType | ListValueType}
                       />
                     ))}
                   </>

@@ -133,6 +133,12 @@
             "file": "src/common/utils/__tests__/fee-utils.test.ts",
             "name": "fees, sample payloads, lengths and averages"
           }
+        },
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+            "name": "useFeeEstimates stores fetched fees under the mode-only cache key"
+          }
         }
       ],
       "flow": "Leather money/unsigned sample transaction -> real full-length estimation and payload serialization -> app/data.fetchTxFeeEstimation POST estimated_len/transaction_payload -> parsed fee priorities and rounded averages -> FeeSection/useFeeEstimates cache and displayed numbers. FEE_CONFIG maxValues branch is inactive; current defaults/min/max policy is pinned."
@@ -356,6 +362,12 @@
           "test": {
             "file": "src/app/sandbox/__tests__/abi-boundaries.test.tsx",
             "name": "data variables show ABI type labels and fetched display output"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+            "name": "useDataVarValue keys cached wire values by contract, variable, chain ID and API URL"
           }
         }
       ],
@@ -1632,6 +1644,12 @@
           "test": {
             "file": "src/common/utils/__tests__/fee-utils.test.ts",
             "name": "fees, sample payloads, lengths and averages"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+            "name": "useFeeEstimates stores fetched fees under the mode-only cache key"
           }
         }
       ],

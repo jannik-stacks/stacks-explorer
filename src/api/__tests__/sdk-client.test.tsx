@@ -150,14 +150,20 @@ it.each(['stx', 'sbtc'])(
   }
 );
 
-const retainedRoutes = (
-  require('../../../docs/behavior/stacks-inventory.json').boundaries as {
-    file: string;
-    line: number;
-    route?: string;
-  }[]
-).filter(site => site.route);
-it.each(retainedRoutes)('retained route wire contract $file:$line $route', async ({ route }) => {
+const retainedRoutes = Array.from(
+  new Set(
+    (
+      require('../../../docs/behavior/stacks-inventory.json').boundaries as {
+        file: string;
+        line: number;
+        route?: string;
+      }[]
+    )
+      .map(site => site.route)
+      .filter((route): route is string => !!route)
+  )
+);
+it.each(retainedRoutes)('retained route wire contract %s', async route => {
   const data = { vector: 'unchanged', integer: '340282366920938463463374607431768211455' };
   const fetchMock = jest.spyOn(global, 'fetch').mockResolvedValue(
     new Response(JSON.stringify(data), {
@@ -165,12 +171,12 @@ it.each(retainedRoutes)('retained route wire contract $file:$line $route', async
       headers: { 'Content-Type': 'application/json' },
     })
   );
-  const client = route!.startsWith('/metadata')
+  const client = route.startsWith('/metadata')
     ? renderHook(() => useMetadataApi(), { wrapper: createBehaviorWrapper().wrapper }).result
         .current
     : getApiClient('https://vectors.example');
   const path = Object.fromEntries(
-    Array.from(route!.matchAll(/\{([^}]+)\}/g)).map(([, key]) => [
+    Array.from(route.matchAll(/\{([^}]+)\}/g)).map(([, key]) => [
       key,
       key === 'token_id'
         ? 42

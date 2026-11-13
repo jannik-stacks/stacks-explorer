@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`retained route wire contract src/common/queries/useAccountBalance.ts:20 /extended/v2/addresses/{principal}/balances/stx 1`] = `
+exports[`retained route wire contract /extended/v2/addresses/{principal}/balances/stx 1`] = `
 {
   "body": "",
   "data": {
@@ -12,7 +12,7 @@ exports[`retained route wire contract src/common/queries/useAccountBalance.ts:20
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useAccountBalance.ts:25 /extended/v2/addresses/{principal}/balances/ft 1`] = `
+exports[`retained route wire contract /extended/v2/addresses/{principal}/balances/ft 1`] = `
 {
   "body": "",
   "data": {
@@ -24,19 +24,7 @@ exports[`retained route wire contract src/common/queries/useAccountBalance.ts:25
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useAccountStxBalance.ts:12 /extended/v2/addresses/{principal}/balances/stx 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/addresses/SP000000000000000000002Q6VF78.vectors/balances/stx?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useAddressConfirmedTxsWithTransfersInfinite.ts:24 /extended/v2/addresses/{address}/transactions 1`] = `
+exports[`retained route wire contract /extended/v2/addresses/{address}/transactions 1`] = `
 {
   "body": "",
   "data": {
@@ -48,7 +36,7 @@ exports[`retained route wire contract src/common/queries/useAddressConfirmedTxsW
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useAddressMempoolTxsInfinite.ts:29 /extended/v1/tx/mempool 1`] = `
+exports[`retained route wire contract /extended/v1/tx/mempool 1`] = `
 {
   "body": "",
   "data": {
@@ -60,19 +48,7 @@ exports[`retained route wire contract src/common/queries/useAddressMempoolTxsInf
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useAddressMempoolTxsInfinite.ts:49 /extended/v1/tx/mempool 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v1/tx/mempool?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBlockByHeightOrHash.ts:16 /extended/v2/blocks/{height_or_hash} 1`] = `
+exports[`retained route wire contract /extended/v2/blocks/{height_or_hash} 1`] = `
 {
   "body": "",
   "data": {
@@ -84,31 +60,7 @@ exports[`retained route wire contract src/common/queries/useBlockByHeightOrHash.
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useBlockByHeightOrHash.ts:33 /extended/v2/blocks/{height_or_hash} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/blocks/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBlockByHeightOrHash.ts:50 /extended/v2/blocks/{height_or_hash} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/blocks/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBlockListInfinite.ts:25 /extended/v2/blocks/ 1`] = `
+exports[`retained route wire contract /extended/v2/blocks/ 1`] = `
 {
   "body": "",
   "data": {
@@ -120,31 +72,7 @@ exports[`retained route wire contract src/common/queries/useBlockListInfinite.ts
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useBlockListInfinite.ts:50 /extended/v2/blocks/ 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/blocks/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBlockListInfinite.ts:74 /extended/v2/blocks/ 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/blocks/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBlockTxSummariesInfinite.ts:22 /extended/v3/blocks/{height_or_hash}/transactions 1`] = `
+exports[`retained route wire contract /extended/v3/blocks/{height_or_hash}/transactions 1`] = `
 {
   "body": "",
   "data": {
@@ -156,7 +84,7 @@ exports[`retained route wire contract src/common/queries/useBlockTxSummariesInfi
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useBlocksByBurnBlock.ts:31 /extended/v2/burn-blocks/{height_or_hash}/blocks 1`] = `
+exports[`retained route wire contract /extended/v2/burn-blocks/{height_or_hash}/blocks 1`] = `
 {
   "body": "",
   "data": {
@@ -168,31 +96,7 @@ exports[`retained route wire contract src/common/queries/useBlocksByBurnBlock.ts
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useBlocksByBurnBlock.ts:61 /extended/v2/burn-blocks/{height_or_hash}/blocks 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/burn-blocks/0xabc/blocks?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBlocksByBurnBlock.ts:87 /extended/v2/burn-blocks/{height_or_hash}/blocks 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/burn-blocks/0xabc/blocks?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBulkTokenMetadata.ts:33 /metadata/v1/search 1`] = `
+exports[`retained route wire contract /metadata/v1/search 1`] = `
 {
   "body": "",
   "data": {
@@ -204,7 +108,7 @@ exports[`retained route wire contract src/common/queries/useBulkTokenMetadata.ts
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useBurnBlock.ts:33 /extended/v2/burn-blocks/{height_or_hash} 1`] = `
+exports[`retained route wire contract /extended/v2/burn-blocks/{height_or_hash} 1`] = `
 {
   "body": "",
   "data": {
@@ -216,31 +120,7 @@ exports[`retained route wire contract src/common/queries/useBurnBlock.ts:33 /ext
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useBurnBlock.ts:73 /extended/v2/burn-blocks/{height_or_hash} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/burn-blocks/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBurnBlock.ts:95 /extended/v2/burn-blocks/{height_or_hash} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/burn-blocks/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBurnBlocksInfinite.ts:49 /extended/v2/burn-blocks/ 1`] = `
+exports[`retained route wire contract /extended/v2/burn-blocks/ 1`] = `
 {
   "body": "",
   "data": {
@@ -252,31 +132,7 @@ exports[`retained route wire contract src/common/queries/useBurnBlocksInfinite.t
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useBurnBlocksInfinite.ts:71 /extended/v2/burn-blocks/ 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/burn-blocks/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useBurnBlocksInfinite.ts:94 /extended/v2/burn-blocks/ 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/burn-blocks/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useConfirmedTransactionsInfinite.ts:61 /extended/v1/tx/ 1`] = `
+exports[`retained route wire contract /extended/v1/tx/ 1`] = `
 {
   "body": "",
   "data": {
@@ -288,19 +144,7 @@ exports[`retained route wire contract src/common/queries/useConfirmedTransaction
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useConfirmedTransactionsInfinite.ts:124 /extended/v1/tx/ 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v1/tx/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useConfirmedTxSummaries.ts:41 /extended/v3/transactions 1`] = `
+exports[`retained route wire contract /extended/v3/transactions 1`] = `
 {
   "body": "",
   "data": {
@@ -312,19 +156,7 @@ exports[`retained route wire contract src/common/queries/useConfirmedTxSummaries
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useConfirmedTxSummaries.ts:66 /extended/v3/transactions 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v3/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useContractById.ts:23 /extended/v1/contract/{contract_id} 1`] = `
+exports[`retained route wire contract /extended/v1/contract/{contract_id} 1`] = `
 {
   "body": "",
   "data": {
@@ -336,19 +168,7 @@ exports[`retained route wire contract src/common/queries/useContractById.ts:23 /
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useContractById.ts:51 /extended/v1/contract/{contract_id} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v1/contract/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useContractFtMetadata.ts:10 /metadata/v1/ft/{principal} 1`] = `
+exports[`retained route wire contract /metadata/v1/ft/{principal} 1`] = `
 {
   "body": "",
   "data": {
@@ -360,31 +180,7 @@ exports[`retained route wire contract src/common/queries/useContractFtMetadata.t
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useFtMetadata.ts:26 /metadata/v1/ft/{principal} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/metadata/v1/ft/SP000000000000000000002Q6VF78.vectors?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useFtMetadata.ts:48 /metadata/v1/ft/{principal} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/metadata/v1/ft/SP000000000000000000002Q6VF78.vectors?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useFtTokens.ts:42 /metadata/v1/ft 1`] = `
+exports[`retained route wire contract /metadata/v1/ft 1`] = `
 {
   "body": "",
   "data": {
@@ -396,19 +192,7 @@ exports[`retained route wire contract src/common/queries/useFtTokens.ts:42 /meta
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useFtTokens.ts:86 /metadata/v1/ft 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/metadata/v1/ft?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useHolders.ts:33 /extended/v3/tokens/stx/holders 1`] = `
+exports[`retained route wire contract /extended/v3/tokens/stx/holders 1`] = `
 {
   "body": "",
   "data": {
@@ -420,7 +204,7 @@ exports[`retained route wire contract src/common/queries/useHolders.ts:33 /exten
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useHolders.ts:37 /extended/v3/tokens/ft/{asset_identifier}/holders 1`] = `
+exports[`retained route wire contract /extended/v3/tokens/ft/{asset_identifier}/holders 1`] = `
 {
   "body": "",
   "data": {
@@ -432,7 +216,7 @@ exports[`retained route wire contract src/common/queries/useHolders.ts:37 /exten
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useHolders.ts:59 /extended/v3/tokens/stx/supply 1`] = `
+exports[`retained route wire contract /extended/v3/tokens/stx/supply 1`] = `
 {
   "body": "",
   "data": {
@@ -444,7 +228,7 @@ exports[`retained route wire contract src/common/queries/useHolders.ts:59 /exten
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useHolders.ts:62 /extended/v3/tokens/ft/{asset_identifier}/supply 1`] = `
+exports[`retained route wire contract /extended/v3/tokens/ft/{asset_identifier}/supply 1`] = `
 {
   "body": "",
   "data": {
@@ -456,7 +240,7 @@ exports[`retained route wire contract src/common/queries/useHolders.ts:62 /exten
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useMempoolFee.ts:14 /extended/v2/mempool/fees 1`] = `
+exports[`retained route wire contract /extended/v2/mempool/fees 1`] = `
 {
   "body": "",
   "data": {
@@ -468,31 +252,7 @@ exports[`retained route wire contract src/common/queries/useMempoolFee.ts:14 /ex
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useMempoolFee.ts:26 /extended/v2/mempool/fees 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/mempool/fees?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useMempoolTransactionsInfinite.ts:29 /extended/v1/tx/mempool 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v1/tx/mempool?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useMempoolTxStats.ts:14 /extended/v1/tx/mempool/stats 1`] = `
+exports[`retained route wire contract /extended/v1/tx/mempool/stats 1`] = `
 {
   "body": "",
   "data": {
@@ -504,19 +264,7 @@ exports[`retained route wire contract src/common/queries/useMempoolTxStats.ts:14
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useMempoolTxStats.ts:25 /extended/v1/tx/mempool/stats 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v1/tx/mempool/stats?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useMempoolTxSummaries.ts:72 /extended/v3/principals/{principal}/mempool/transactions 1`] = `
+exports[`retained route wire contract /extended/v3/principals/{principal}/mempool/transactions 1`] = `
 {
   "body": "",
   "data": {
@@ -528,7 +276,7 @@ exports[`retained route wire contract src/common/queries/useMempoolTxSummaries.t
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useMempoolTxSummaries.ts:99 /extended/v3/mempool/transactions 1`] = `
+exports[`retained route wire contract /extended/v3/mempool/transactions 1`] = `
 {
   "body": "",
   "data": {
@@ -540,19 +288,7 @@ exports[`retained route wire contract src/common/queries/useMempoolTxSummaries.t
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useMempoolTxSummaries.ts:131 /extended/v3/mempool/transactions 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v3/mempool/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useNftHoldings.ts:31 /extended/v1/tokens/nft/holdings 1`] = `
+exports[`retained route wire contract /extended/v1/tokens/nft/holdings 1`] = `
 {
   "body": "",
   "data": {
@@ -564,7 +300,7 @@ exports[`retained route wire contract src/common/queries/useNftHoldings.ts:31 /e
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useNftMetadata.ts:25 /metadata/v1/nft/{principal}/{token_id} 1`] = `
+exports[`retained route wire contract /metadata/v1/nft/{principal}/{token_id} 1`] = `
 {
   "body": "",
   "data": {
@@ -576,7 +312,7 @@ exports[`retained route wire contract src/common/queries/useNftMetadata.ts:25 /m
 }
 `;
 
-exports[`retained route wire contract src/common/queries/usePrincipalTxSummaries.ts:28 /extended/v3/principals/{principal}/transactions 1`] = `
+exports[`retained route wire contract /extended/v3/principals/{principal}/transactions 1`] = `
 {
   "body": "",
   "data": {
@@ -588,55 +324,7 @@ exports[`retained route wire contract src/common/queries/usePrincipalTxSummaries
 }
 `;
 
-exports[`retained route wire contract src/common/queries/usePrincipalTxSummaries.ts:57 /extended/v3/principals/{principal}/transactions 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v3/principals/SP000000000000000000002Q6VF78.vectors/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/usePrincipalTxSummaries.ts:94 /extended/v3/principals/{principal}/transactions 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v3/principals/SP000000000000000000002Q6VF78.vectors/transactions?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useSearchQuery.ts:381 /extended/v1/tx/ 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v1/tx/?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useSearchQuery.ts:423 /extended/v2/blocks/{height_or_hash} 1`] = `
-{
-  "body": "",
-  "data": {
-    "integer": "340282366920938463463374607431768211455",
-    "vector": "unchanged",
-  },
-  "method": "GET",
-  "url": "https://vectors.example/extended/v2/blocks/0xabc?limit=2&cursor=next%2B%2F%3D&type=coinbase&type=contract_call",
-}
-`;
-
-exports[`retained route wire contract src/common/queries/useSearchQuery.ts:444 /extended/v1/search/{id} 1`] = `
+exports[`retained route wire contract /extended/v1/search/{id} 1`] = `
 {
   "body": "",
   "data": {
@@ -648,7 +336,7 @@ exports[`retained route wire contract src/common/queries/useSearchQuery.ts:444 /
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useTxById.ts:19 /extended/v3/transactions/{tx_id} 1`] = `
+exports[`retained route wire contract /extended/v3/transactions/{tx_id} 1`] = `
 {
   "body": "",
   "data": {
@@ -660,7 +348,7 @@ exports[`retained route wire contract src/common/queries/useTxById.ts:19 /extend
 }
 `;
 
-exports[`retained route wire contract src/common/queries/useTxEventsById.ts:27 /extended/v3/transactions/{tx_id}/events 1`] = `
+exports[`retained route wire contract /extended/v3/transactions/{tx_id}/events 1`] = `
 {
   "body": "",
   "data": {

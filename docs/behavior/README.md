@@ -23,7 +23,7 @@ boundaries. Read `storedData` first for the persistence audit.
 | Custom/removed networks | `addedCustomNetworks`/`removedCustomNetworks` cookie JSON; numeric chain IDs, mode, public URLs | `src/common/context/__tests__/network-storage.test.tsx`: old cookie loading and actual cookie writes |
 | Recent BNS results | `recentResults` localStorage JSON: public owner, name and result kind | `src/common/queries/__tests__/cache-boundaries.test.tsx`: real BNS SDK output -> exact stored JSON -> restore and URL input |
 | Cached read-only results | Plain hex in React Query data; serialized argument bytes and chain ID in query identity | Same cache suite: literal `stored-query-cache.json` loads and displays; hydration round trip and key equality |
-| Cached fee values | Plain numeric fee priorities/averages, not SDK money/CV objects | Fee vector suite; fee query key is inventoried |
+| Cached fee values | Plain numeric fee priorities/averages, not SDK money/CV objects | Fee vector suite and actual `useFeeEstimates` cache-key proof in cache-boundaries suite |
 | Encrypted mnemonics/private keys | No app-owned store, encrypt/decrypt operation, mnemonic consumer or UserSession construction exists in production `src` | Runtime import and secret/transaction identifier inventory guard; full browser-storage audit; real wallet cache contains public addresses only |
 | Serialized signed transactions | Wallet returns `transaction`/`txid`/signature; Explorer returns or ignores them, does not persist/reload them | Actual provider RPC/returned-data proof in useUser suite; storage/transaction-codec guard |
 
@@ -44,8 +44,11 @@ links. BNS includes API success and deterministic contract-fallback argument
 bytes/decoded outputs. Contract logs and read-only displays cover all captured
 Clarity types. Fee vectors pin payloads, lengths and plain estimates.
 
-Retained SDK HTTP clients are exercised against mocked fetch, including every
-inventoried literal GET route; headers, POST bodies, returned JSON and WebSocket
+The cache-boundaries suite executes `useFeeEstimates` and `useDataVarValue`
+against real QueryClient caches and asserts their exact keys and cached outputs.
+
+Retained SDK HTTP clients are exercised against mocked fetch, including each
+distinct inventoried literal GET route; headers, POST bodies, returned JSON and WebSocket
 RPC bytes are checked. Existing API/WebSocket regressions remain in the suite.
 Server-origin JSON fields which merely have SDK-named TypeScript schema types
 are not a stacks.js computation or codec. Their retained-client transport is

@@ -111,3 +111,18 @@ The expanded requirement brings the full PR to 55 files, all below 1 MiB and bel
 Final boundary verification: `node stacks-kit-migration/check-coverage.mjs --force` passes (168 tracked, 0 missing, 0 proof problems). `pnpm lint` passes with the same six existing hook warnings. Final `CI=1 pnpm run test:unit` passes: 131 suites, 1,662 passed tests, 293 snapshots, 2 existing skips (43.198s). An intervening full run exposed the existing `page-loaders.test.tsx` timestamp comparison flake (1ms between independent Date.now calls); it passed on the unchanged full rerun. That unrelated behavior was not modified.
 
 `CIRCLE_NODE_TOTAL=2 NODE_OPTIONS=--max-old-space-size=2816 NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/scratch/google-fonts.cjs pnpm build` passed, including TypeScript, static pages, tracing and standalone output. Build output was symlinked into /scratch and local font responses were supplied only for verification; no checkout configuration or production behavior changed. `git diff --check` passes. The required checker matches the supplied source verbatim.
+
+### Cache-key proof and duplicate-route review
+
+- [x] Execute useFeeEstimates and useDataVarValue with real QueryClient caches and transport-only mocks; assert their exact keys and cached outputs.
+- [x] Replace unrelated selectors at those inventory boundaries with the hook-specific proofs.
+- [x] Deduplicate retained-route vectors by route and remove duplicate snapshots, preserving all distinct request outputs.
+- [x] Run focused tests, lint, full unit tests, coverage checks and build; finish workplan.
+
+These tests belong in the existing cache-boundaries suite. Production hooks and serialization stay unchanged.
+
+The new hook proofs use real QueryClient caches and mocked fetch only. Fee keys are asserted on mainnet, testnet and a local custom API; data-variable keys separate contract, variable, chain ID and API URL while concurrent consumers keep each cache entry alive. A temporary mutation adding API URL to the fee key and removing chain ID from the data-variable key made all four new cases fail; production files were then restored. The focused three-suite run passed 50 tests and 32 snapshots.
+
+Retained routes are deduplicated by their actual callback input (route), with stable route-only test names. All 30 distinct expected request snapshots are retained unchanged; 26 identical duplicate snapshots were removed after comparing their payloads. Both downstream hook inventory rows now reference their own cache-key tests; fee/data-variable producer entries also link these proofs.
+
+Review verification completed: `pnpm lint` passes (six existing hook warnings); `CI=1 pnpm run test:unit` passes 131 suites, 1,640 tests and 267 snapshots, with two existing skips (44.051s). The maintainer coverage check passes with 168 tracked imports and zero missing sites/proof problems; the detailed inventory guard passes in the suite. `CIRCLE_NODE_TOTAL=2 NODE_OPTIONS=--max-old-space-size=2816 NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/scratch/google-fonts.cjs pnpm build` passes, including TypeScript, static pages and tracing; build output remains in /scratch. The PR still contains 55 files, all below 1 MiB. Production code and dependencies remain unchanged.

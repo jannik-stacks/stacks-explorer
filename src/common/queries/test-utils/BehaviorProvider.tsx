@@ -42,17 +42,17 @@ export const behaviorNetwork = {
   btcAddressBaseUrl: '',
 };
 
-export function createBehaviorWrapper() {
+export function createBehaviorWrapper(network = behaviorNetwork) {
   const store = makeStore();
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
-  const apiClient = getApiClient(behaviorNetwork.url);
+  const apiClient = getApiClient(network.url);
   const wrapper = ({ children }: { children: ReactNode }) => (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <GlobalContext.Provider
           value={{
-            activeNetwork: behaviorNetwork,
-            activeNetworkKey: behaviorNetwork.url,
+            activeNetwork: network,
+            activeNetworkKey: network.url,
             networks: {},
             addCustomNetwork: () => {},
             removeCustomNetwork: () => {},

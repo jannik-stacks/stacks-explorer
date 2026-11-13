@@ -169,6 +169,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -184,6 +188,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -361,6 +369,10 @@
         {
           "file": "src/app/sandbox/__tests__/abi-boundaries.test.tsx",
           "test": "data variables show ABI type labels and fetched display output"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useDataVarValue keys cached wire values by contract, variable, chain ID and API URL"
         }
       ]
     },
@@ -6038,6 +6050,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6053,6 +6069,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6068,6 +6088,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6083,6 +6107,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6098,6 +6126,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6113,6 +6145,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6128,6 +6164,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6143,6 +6183,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6158,6 +6202,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6173,6 +6221,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6188,6 +6240,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6203,6 +6259,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6218,6 +6278,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6233,6 +6297,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6248,6 +6316,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6263,6 +6335,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6278,6 +6354,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6293,6 +6373,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -6308,6 +6392,10 @@
         {
           "file": "src/common/utils/__tests__/fee-utils.test.ts",
           "test": "fees, sample payloads, lengths and averages"
+        },
+        {
+          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },
@@ -7876,23 +7964,11 @@
       "line": 70,
       "kind": "chain-id-use",
       "expression": "network.networkId",
-      "flow": "SDK network chain ID -> query-key identity and cache prefill/invalidation (mainnet/testnet/devnet/custom); literal legacy cache and exported key formats pin stored identity.",
+      "flow": "SDK-derived network.networkId -> real useDataVarValue query key together with contract ID, variable name and API URL -> separate cached serialized data-variable values for each identity.",
       "proofs": [
         {
-          "file": "src/common/queries/__tests__/txSummaryFeeds.test.tsx",
-          "test": "pins SDK-derived chain IDs in every exported summary cache-key format"
-        },
-        {
           "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
-          "test": "keeps serialized read-only arguments in the query key"
-        },
-        {
-          "file": "src/common/context/__tests__/network-storage.test.tsx",
-          "test": "restores stored chain IDs, wallet network and URLs"
-        },
-        {
-          "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
-          "test": "seeds real summary table caches with the SDK chain ID"
+          "test": "useDataVarValue keys cached wire values by contract, variable, chain ID and API URL"
         }
       ]
     },
@@ -7926,19 +8002,11 @@
       "line": 11,
       "kind": "derived-cache-key",
       "expression": "queryKey: ['feeEstimates', activeNetwork.mode]",
-      "flow": "SDK-derived network mode or NFT identifier search strings -> public React Query cache key and corresponding result lookup.",
+      "flow": "SDK-derived activeNetwork.mode -> real useFeeEstimates mode-only query key -> fetched fee result stored and retrieved under that exact key across mainnet/testnet/custom API URLs.",
       "proofs": [
         {
-          "file": "src/app/address/[principal]/__tests__/sdk-boundaries.test.tsx",
-          "test": "produce stable links, metadata search URLs and cache keys"
-        },
-        {
-          "file": "src/common/utils/__tests__/fee-utils.test.ts",
-          "test": "fees, sample payloads, lengths and averages"
-        },
-        {
           "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
-          "test": "keeps serialized read-only arguments in the query key"
+          "test": "useFeeEstimates stores fetched fees under the mode-only cache key"
         }
       ]
     },

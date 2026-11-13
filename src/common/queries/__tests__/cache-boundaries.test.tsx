@@ -5,6 +5,8 @@ import { renderHook, waitFor } from '@testing-library/react';
 
 import { behaviorNetwork, createBehaviorWrapper } from '../test-utils/BehaviorProvider';
 import { useCallReadOnlyFunction } from '../useCallReadOnlyFunction';
+import { useDataVarValue } from '../useDataVarValue';
+import { useFeeEstimates } from '../useFeeEstimates';
 import {
   getSearchPageUrl,
   searchByBnsName,
@@ -159,3 +161,75 @@ it.each([
     );
   }
 );
+
+it.each([
+  [NetworkModes.Mainnet, 1, 'https://vectors.example'],
+  [NetworkModes.Testnet, 2147483648, 'https://testnet.vectors.example'],
+  [NetworkModes.Testnet, 2147483648, 'http://localhost:3999'],
+])(
+  'useFeeEstimates stores fetched fees under the mode-only cache key: %s %s %s',
+  async (mode, networkId, url) => {
+    const fetchMock = jest
+      .spyOn(global, 'fetch')
+      .mockImplementation(
+        async () =>
+          new Response(
+            JSON.stringify({ error: 'NoEstimateAvailable', reason: 'No fee estimate available' }),
+            { status: 200 }
+          )
+      );
+    const { wrapper, queryClient } = createBehaviorWrapper({
+      ...behaviorNetwork,
+      mode: mode as NetworkModes,
+      networkId: networkId as number,
+      url: url as string,
+    });
+    const { result } = renderHook(() => useFeeEstimates(), { wrapper });
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(
+      queryClient
+        .getQueryCache()
+        .getAll()
+        .map(query => query.queryKey)
+    ).toEqual([['feeEstimates', mode]]);
+    expect(queryClient.getQueryData(['feeEstimates', mode])).toEqual(result.current.data);
+    expect(result.current.data).toBeDefined();
+  }
+);
+
+it('useDataVarValue keys cached wire values by contract, variable, chain ID and API URL', async () => {
+  const value = { data: '0x010000000000000000000000000000002a' };
+  const fetchMock = jest
+    .spyOn(global, 'fetch')
+    .mockImplementation(async () => new Response(JSON.stringify(value), { status: 200 }));
+  const { wrapper, queryClient } = createBehaviorWrapper();
+  const contractId = 'SP000000000000000000002Q6VF78.vectors';
+  const initialProps = { contractId, varName: 'counter', network: behaviorNetwork, enabled: true };
+  const variants = [
+    initialProps,
+    { ...initialProps, contractId: 'SP000000000000000000002Q6VF78.other' },
+    { ...initialProps, varName: 'total' },
+    { ...initialProps, network: { ...behaviorNetwork, networkId: 2147483648 } },
+    { ...initialProps, network: { ...behaviorNetwork, url: 'https://custom.vectors.example' } },
+  ];
+  for (const props of variants) {
+    const { result } = renderHook(() => useDataVarValue(props), { wrapper });
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+  }
+  const keys = [
+    ['dataVar', contractId, 'counter', 1, 'https://vectors.example'],
+    ['dataVar', 'SP000000000000000000002Q6VF78.other', 'counter', 1, 'https://vectors.example'],
+    ['dataVar', contractId, 'total', 1, 'https://vectors.example'],
+    ['dataVar', contractId, 'counter', 2147483648, 'https://vectors.example'],
+    ['dataVar', contractId, 'counter', 1, 'https://custom.vectors.example'],
+  ];
+  expect(
+    queryClient
+      .getQueryCache()
+      .getAll()
+      .map(query => query.queryKey)
+  ).toEqual(keys);
+  for (const key of keys) expect(queryClient.getQueryData(key)).toEqual(value);
+  expect(fetchMock).toHaveBeenCalledTimes(5);
+});

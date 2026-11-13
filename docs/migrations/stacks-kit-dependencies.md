@@ -206,7 +206,19 @@ Found 2 versions of @stacks/transactions
 
 ## Verification results
 
-- Clean `pnpm install --frozen-lockfile --ignore-scripts` passed (1,638 packages).
+- Clean `pnpm install --frozen-lockfile` passed with lifecycle scripts enabled
+  (pnpm 10.33.0, 1,638 packages, exit 0). The installation directory initially
+  had no node_modules; it contained unchanged copies of the root package.json,
+  pnpm-lock.yaml, .npmrc and .husky, with a fresh Git repository for Husky.
+  Actual invocation: `CI=1 pnpm --dir /scratch/6-clean-scripts install --frozen-lockfile`.
+  No ignore-scripts flag, configuration or environment override was used.
+  `prepare` executed `husky install` and set `core.hooksPath` to `.husky/_`.
+  pnpm itself skips the exact `npx only-allow pnpm` preinstall guard.
+  Its default dependency-build approval policy warned about unapproved scripts
+  for @sentry/cli, @sentry/node-cpu-profiler, core-js-pure, core-js, esbuild and
+  unrs-resolver; no approval/ignore policy was changed. Husky emitted its
+  existing install-command deprecation warning. The manifest and lockfile
+  remained byte-identical. This supersedes the earlier scripts-disabled check.
 - Pre-pruning behavior gate: 11 suites, 244 tests and 99 snapshots passed.
 - After pruning, `pnpm lint` passed (six existing hook warnings);
   `CI=1 pnpm run test:unit` passed (123 suites, 1,454 tests, two skips,

@@ -22,7 +22,7 @@ Part-2 app migration and part-1 behavior vectors must pass before removal. Retai
 - [x] Review final diff against requirements, read news, complete workplan and propose one PR.
 
 ## Verification Steps
-Run existing behavior suites before and after removal; no dependency-audit test exists to extend and no issue-specific failing input is supplied, so do not introduce a new test category. Run clean pnpm install --frozen-lockfile with install scripts disabled, pnpm lint, CI=1 pnpm run test:unit, pnpm build, and pnpm test:e2e. Record actual results and environment limitations.
+Run existing behavior suites before and after removal; no dependency-audit test exists to extend and no issue-specific failing input is supplied, so do not introduce a new test category. Run clean pnpm install --frozen-lockfile with lifecycle scripts enabled, pnpm lint, CI=1 pnpm run test:unit, pnpm build, and pnpm test:e2e. Record actual results and environment limitations.
 
 ## Decision Authority
 Implementor makes minimal dependency/documentation changes; reviewer may return once; human merges. Engine commits/pushes/opens PR.
@@ -34,7 +34,7 @@ No implementation blockers. Browser coverage is unavailable because the sandbox 
 Keep transitive SDKs only for retained functionality without a Kit replacement. Preserve the transactions pin if retained integrations require its existing resolution. Keep formatting policy unchanged; no frozen-test changes or unrelated formatting.
 
 ## Status
-Completed — mandatory checks passed; browser smoke coverage remains unavailable under the explicit maintainer-approved exception.
+Completed — clean lifecycle-enabled frozen install passed; browser smoke coverage remains unavailable under the explicit maintainer-approved exception.
 
 ## Notes
 
@@ -53,7 +53,7 @@ Part-2 ownership/callers are recorded in docs/workplans/5-Migrate-Explorer-to-Ki
 ### Verification evidence
 
 - Before pruning: 11 existing focused behavior suites passed, 244 tests and 99 snapshots (Clarity parsing/display, ABI forms, wallet requests/post conditions, read-only/BNS, staking, networks, addresses and fees). No vectors or frozen tests were edited. No dependency-manifest regression test exists to extend.
-- Clean installation: copied only package.json, pnpm-lock.yaml and .npmrc into an empty /scratch directory; `CI=1 pnpm install --frozen-lockfile --ignore-scripts` exited 0 (1,638 packages). Subsequent checks use that clean node_modules installation through local untracked links. No dependencies/build artifacts are committed.
+- Initial scripts-disabled diagnostic: `CI=1 pnpm install --frozen-lockfile --ignore-scripts` exited 0 (1,638 packages). This alone did not verify the required default installation; the lifecycle-enabled clean install recorded in the review follow-up below supersedes it. No dependencies/build artifacts are committed.
 - `pnpm lint` exited 0: six existing React hook warnings, zero errors, Prettier passed.
 - `CI=1 pnpm run test:unit` exited 0: 123 suites, 1,454 passed / 2 skipped tests, all 104 snapshots passed.
 - Generated the complete `pnpm why` inventory and checked alias resolution; see docs/migrations/stacks-kit-dependencies.md. Removing the transactions override changed no retained Stacks versions.
@@ -84,5 +84,15 @@ Manual reviewer checklist (desktop and mobile; mainnet/testnet where supported):
 - `CIRCLE_NODE_TOTAL=2 NODE_OPTIONS=--max-old-space-size=2816 NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/scratch/6-google-fonts.cjs pnpm build`: exit 0, including TypeScript, all 21 static pages and standalone tracing. No source/font configuration changed.
 - `NODE_OPTIONS=--max-old-space-size=2816 pnpm typecheck`: exit 0 (`tsc --noEmit`).
 - Current `pnpm why` output still covers all 15 documented Stacks package versions. `git diff --check` passed; final scope is five files, each below 1 MiB. Source, tests and captured vectors remain unchanged.
-- The previously successful clean frozen install and documented unsuccessful browser-smoke attempts remain the installation/e2e evidence. The maintainer-approved PR explicitly discloses that the sandbox has no browser and provides the manual page checklist above.
+- The lifecycle-enabled clean frozen install recorded below and documented unsuccessful browser-smoke attempts are the installation/e2e evidence. The maintainer-approved PR explicitly discloses that the sandbox has no browser and provides the manual page checklist above.
 - Read /news/news.md before finalizing; no additional updates. Propose one PR from agentgraph/6 into agentgraph/5; human merges.
+
+### Review follow-up: lifecycle-enabled clean installation
+
+The review correctly identified that the earlier `--ignore-scripts` install does not establish the required default frozen installation. Run `pnpm install --frozen-lockfile` in an empty installation directory with the root manifest, lockfile, repository npm configuration and Git context; verify lifecycle execution and record the actual result in both documents. The browser exception does not waive installation checks. No new test category or frozen-test changes are needed for this verification.
+
+Review verification: created `/scratch/6-clean-scripts` with no node_modules, copied the unchanged root package.json, pnpm-lock.yaml, .npmrc and .husky, and initialized a fresh Git repository so Husky could configure hooks. With ignore-scripts unset (config lookup returned `undefined`, no suppression environment variables), ran `CI=1 pnpm --dir /scratch/6-clean-scripts install --frozen-lockfile`. It exited 0 in 26.1 seconds under pnpm 10.33.0, installing 1,638 packages. `prepare` executed `husky install`, generated the hook shims and configured `core.hooksPath = .husky/_`. The existing Husky deprecation warning is non-fatal. Inspection of the installed pnpm CLI confirms it intentionally skips the exact `npx only-allow pnpm` preinstall guard; lifecycle execution was enabled.
+
+pnpm reported its default unapproved dependency-build warning for @sentry/cli@2.58.6, @sentry/node-cpu-profiler@2.4.3, core-js-pure@3.50.0, core-js@3.50.0, esbuild@0.25.12 and unrs-resolver@1.12.2. No build approval policy was changed, and no ignore-scripts flag or override was used. `cmp` confirmed the installed manifest/lockfile are byte-identical to the reviewed files. No installation failure or code/dependency correction was needed. Both documents now record the actual default frozen-install result; the browser exception does not waive any install check.
+
+Only verification documentation changed for this review follow-up; previous lint/unit/typecheck/build evidence remains applicable. `git diff --check` passed, and /news/news.md was read before finalizing.

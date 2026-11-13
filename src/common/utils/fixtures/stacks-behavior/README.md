@@ -66,3 +66,36 @@ vector inputs and expected bytes/outputs rather than pin a new SDK object shape.
 There is no file-hash freeze manifest.
 
 Existing API and WebSocket tests remain regression coverage for retained clients.
+
+## Boundary inventory extension (2026-11-13)
+
+See `stacks-kit-migration/inventory.json`, the maintainer-supplied
+`check-coverage.mjs`, and the detailed `docs/behavior/stacks-inventory.json` ledger for each source location,
+destination and proving test. The companion completeness test detects unlisted
+runtime SDK sites, downstream boundaries and missing proof selectors.
+
+`stored-wallet.json` contains literal public-address cache bytes in the installed
+Connect `0.0.1` format. The real SDK storage loader and actual wallet-provider
+transport prove restore, write, public-key stripping and disconnect behavior.
+`stored-query-cache.json` contains literal pre-Kit plain JSON cache data and a
+serialized-argument key. Hydration and read-only display prove old data loads.
+`bns-fallback.json` captures current serialized contract responses; fallback
+requests use deterministic test entropy and real SDK serialization. No runtime
+SDK oracle or SDK object expectations are added.
+
+The browser test provider supplies platform TextEncoder/TextDecoder, a matching
+Uint8Array realm for Node Buffer, and geometry observers missing in JSDOM. It
+does not substitute the application encoders, decoders, wallet storage or API
+clients. The source/dependency audit found no application-owned encrypted
+mnemonic/private-key or persisted signed-transaction load/decrypt path; these
+remain wallet responsibilities, not an invented compatibility claim.
+
+Additional existing behavior is deliberately preserved: legacy NFT metadata
+requests round large IDs through parseInt; wallet connection currently logs an
+error after storing a successful address; BNS SDK fallback output retains the
+installed SDK's buffer/name handling. These are documented vectors, not fixes.
+
+Both actual read-only fields retain ok/err shown outputs, including the redesign
+field’s raw hex when the API returns `okay: false`. The Monaco host is replaced
+by a preformatted DOM host in those display tests; application response parsing
+and editor value formatting still execute.

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pins SDK-derived chain IDs in every exported summary cache-key format 1`] = `
+[
+  "mempoolTxSummariesInfinite",
+  1,
+  20,
+  [],
+  "receipt_time",
+  "desc",
+]
+`;
+
+exports[`pins SDK-derived chain IDs in every exported summary cache-key format 2`] = `
+[
+  "mempoolTxSummariesInfinite",
+  2147483648,
+  20,
+  [],
+  "receipt_time",
+  "desc",
+]
+`;

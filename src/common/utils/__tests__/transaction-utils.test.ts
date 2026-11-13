@@ -1,3 +1,4 @@
+/** @jest-environment node */
 import {
   compressMempoolTransaction,
   compressTransaction,
@@ -371,5 +372,24 @@ describe('transaction-utils', () => {
         expect(getTicker('---')).toBe('undefinedundefinedundefined');
       });
     });
+  });
+});
+
+describe('contract-log boundary outputs', () => {
+  const { handleContractLogHex } = require('../transaction-utils');
+  it.each(
+    require('../fixtures/stacks-behavior/clarity.json') as {
+      name: string;
+      hex: string;
+      repr: string;
+    }[]
+  )('shows captured $name log bytes', ({ hex, repr }) => {
+    expect(handleContractLogHex({ hex, repr })).toMatchSnapshot();
+  });
+  it('shows a raw buffer as UTF-8 and rejects malformed serialized values', () => {
+    expect(handleContractLogHex({ repr: '0x68656c6c6f', hex: '0x020000000568656c6c6f' })).toBe(
+      'hello'
+    );
+    expect(() => handleContractLogHex({ repr: 'bad', hex: 'not-hex' })).toThrow();
   });
 });

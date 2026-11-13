@@ -203,3 +203,11 @@ describe('ABI form validation', () => {
     expect(checkFunctionParameters(fn as any, values as any)).toEqual(errors);
   });
 });
+
+it('sandbox post-condition selectable labels and serialized values remain stable', () => {
+  const { PostConditionOptions, postConditionParameterMap } = require('../PostConditionForm');
+  expect({
+    options: PostConditionOptions,
+    parameters: postConditionParameterMap,
+  }).toMatchSnapshot();
+});

@@ -88,3 +88,11 @@ describe('ABI form coercion', () => {
     expect(getTuple()).toBeUndefined();
   });
 });
+
+it.each(clarityVectors)(
+  'read-only display preserves captured $name result bytes',
+  ({ hex, repr }) => {
+    const { parseReadOnlyResponse } = require('../utils');
+    expect(parseReadOnlyResponse({ okay: true, result: hex })).toBe(repr);
+  }
+);

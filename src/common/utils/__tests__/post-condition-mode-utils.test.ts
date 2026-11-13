@@ -27,3 +27,14 @@ it('pins the wire mode numbers and wallet names', () => {
   expect(postConditionModeNames).toEqual({ 1: 'allow', 2: 'deny', 3: 'originator' });
   expect(['allow', 'deny', 'originator'].map(postConditionModeFromName)).toEqual([1, 2, 3]);
 });
+
+it('post-condition mode descriptions and UI options remain stable', () => {
+  const {
+    postConditionModeOptions,
+    postConditionModeDescriptions,
+  } = require('../post-condition-mode-utils');
+  expect({
+    options: postConditionModeOptions,
+    descriptions: postConditionModeDescriptions,
+  }).toMatchSnapshot();
+});

@@ -489,3 +489,18 @@ describe('condition code / post condition type pairing', () => {
     );
   });
 });
+
+it('post-condition form labels, selectable values and condition-code maps remain stable', () => {
+  const fields = require('../function-call-post-condition-params-utils');
+  expect({
+    types: fields.PostConditionTypeOptions,
+    typeLabels: fields.PostConditionTypeLabelMap,
+    typeValues: fields.PostConditionTypeValueMap,
+    typesFromValues: fields.PostConditionTypeValueMapReversed,
+    codeLabels: fields.PostConditionConditionCodeLabelMap,
+    codeValues: fields.PostConditionConditionCodeValueMap,
+    codesFromValues: fields.PostConditionConditionCodeValueMapReversed,
+    initial: fields.initialPostConditionParameterValues,
+    parameters: fields.postConditionParameterMap,
+  }).toMatchSnapshot();
+});

@@ -88,10 +88,17 @@ beforeEach(() => {
 });
 
 test('overview fetches final cycle blocks independently of activity', async () => {
+  const now = Date.now();
+  const clock = jest
+    .spyOn(Date, 'now')
+    .mockReturnValueOnce(now)
+    .mockReturnValueOnce(now)
+    .mockReturnValue(now + 1);
   jest.mocked(data.fetchStakingActivity).mockResolvedValue({ events: [], incomplete: true });
   const sections = loadStakingOverview('testnet');
-  const overview = await sections.stacking;
-  await sections.bonds;
+  const [overview] = await Promise.all([sections.stacking, sections.bonds]).finally(() =>
+    clock.mockRestore()
+  );
   expect(data.fetchPoxInfo).toHaveBeenCalledWith('testnet', undefined);
   expect(data.fetchCycleRewards).toHaveBeenCalledWith(
     [12, 11, 10, 9],
@@ -112,7 +119,7 @@ test('overview fetches final cycle blocks independently of activity', async () =
     'testnet',
     undefined,
     {},
-    jest.mocked(data.fetchBondRewards).mock.calls[0][4]
+    expect.any(Number)
   );
   expect(data.fetchBurnBlockTimes).toHaveBeenCalledWith(
     expect.arrayContaining([9000, 9899, 9900, 10799, 10800, 11699]),

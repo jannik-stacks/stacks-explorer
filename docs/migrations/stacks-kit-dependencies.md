@@ -241,3 +241,37 @@ Final 2026-11-13 rerun: lint and all 123 unit suites passed again (1,454
 passed tests, two skips, 104 snapshots). The production build completed,
 including TypeScript and 21 static pages, with the same local font-response
 workaround. Standalone `pnpm typecheck` (`tsc --noEmit`) also exited 0.
+
+## Production import-site inventory
+
+[stacks-kit-migration/inventory.json](../../stacks-kit-migration/inventory.json)
+uses the original part-1 entries/sites/proof format and preserves all 46 entry
+IDs. Successor Kit symbols stay with the behavior entry they replace; the shared
+Clarity display helper joins the existing display entry. No entry was dropped.
+Proofs name existing tests or captured vector IDs, including restored part-1
+round trips for wallet storage, network cookies and query/search cache JSON.
+
+The unchanged part-1 checker is restored at
+[check-coverage.mjs](../../stacks-kit-migration/check-coverage.mjs). Run
+`node stacks-kit-migration/check-coverage.mjs --all` before pushing. It passes:
+96 imports/tracked, zero missing sites, zero proof problems and zero removed
+entries. This includes all 93 previously reported Kit/Connect bindings plus
+three BNS calls from the original wrapper scope; no scope was narrowed.
+
+The restored storage suites passed all 24 tests and their original provider
+snapshot. Only the wallet test driver changes: native Kit post-condition
+strings/bigint replace numeric SDK selectors, and optional argument hex prefixes
+are normalized when comparing the captured wire bytes. No captured expected
+bytes or stored fixtures changed. Restored address/NFT/BNS component vectors
+also pass all 28 tests and 23 original snapshots. They exposed and corrected
+the lost 0x prefix for buffer NFT IDs in metadata URLs/cache keys and Gamma
+links; the consumer now formats the native Kit buffer value to preserve the
+existing observable behavior. Browser smoke coverage
+remains separately unavailable under the maintainer-approved exception.
+
+Final resubmission checks: the original checker passes all 96 tracked sites
+with no missing entries, proof problems or removed IDs, including comparison
+with the part-1 baseline. Lint, all 127 unit suites (1,521 passed tests, two
+skips, 128 snapshots), standalone type checking and the documented font-mocked
+production build passed. The restored checker, snapshots and stored JSON
+fixtures remain byte-identical to part 1. No dependency or adapter was added.

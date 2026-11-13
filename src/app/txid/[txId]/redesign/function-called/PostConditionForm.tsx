@@ -1,4 +1,5 @@
 import { Select } from '@/common/components/Select';
+import { isUint128 } from '@/common/utils/number-utils';
 import { Input } from '@/ui/Input';
 import { Caption } from '@/ui/typography';
 import { Box, Field, Stack } from '@chakra-ui/react';
@@ -89,10 +90,20 @@ export function PostConditionForm({
                           <Input
                             variant="redesignPrimary"
                             width="full"
-                            type={parameter === 'postConditionAmount' ? 'number' : 'text'}
+                            type="text"
                             name={parameter}
                             id={parameter}
-                            onChange={handleChange}
+                            onChange={event => {
+                              if (parameter === 'postConditionAmount') {
+                                const amount = event.target.value;
+                                formikSetFieldValue(
+                                  parameter,
+                                  amount !== '' && isUint128(amount) ? BigInt(amount) : amount
+                                );
+                              } else {
+                                handleChange(event);
+                              }
+                            }}
                           />
                           <Field.ErrorText color="textError" textStyle="text-medium-xs">
                             {errors[parameter]}

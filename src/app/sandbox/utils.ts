@@ -1,6 +1,7 @@
 'use client';
 
 import { displayClarityValue } from '@/common/utils/clarity-display';
+import { validateStacksContractId } from '@/common/utils/utils';
 import { Cl, ClarityAbiType, ClarityValue, encodeClarityArg } from '@jannik-stacks/kit';
 
 import { ReadOnlyResponse } from '../../common/types/ReadOnlyResponse';
@@ -57,6 +58,7 @@ export const encodeTuple = (
 
 export const encodeOptional = (optionalType: ClarityAbiType, value: string): ClarityValue => {
   if (value) {
+    if (optionalType === 'trait_reference') return Cl.some(encodeFormValue(value, optionalType));
     try {
       return Cl.some(encodeFormValue(value, optionalType));
     } catch (e) {
@@ -86,10 +88,14 @@ export function encodeFormValue(value: string, type: ClarityAbiType): ClarityVal
   if (typeof type === 'object' && 'optional' in type)
     return Cl.some(encodeFormValue(value, type.optional));
   let input: unknown = value;
-  if (type === 'trait_reference' || (type === 'principal' && value.includes('.'))) {
+  if (type === 'trait_reference' && !validateStacksContractId(value)) {
+    throw new Error('Trait reference must include a valid contract address and name');
+  }
+  if (type === 'principal' && value.includes('.')) {
     const [address, name] = value.split('.');
     input = `${address}.${name}`;
   }
+  if (type === 'uint128' || type === 'int128') input = BigInt(value);
   if (type === 'bool') {
     if (!['true', 'false', '0', '1'].includes(value)) throw new Error('Invalid boolean');
     input = value === 'true' || value === '1';

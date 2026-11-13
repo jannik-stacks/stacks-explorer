@@ -14,7 +14,7 @@ describe('checkPostConditionParameters', () => {
       postConditionType: 'ft-postcondition',
       postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -29,7 +29,7 @@ describe('checkPostConditionParameters', () => {
       postConditionType: 'ft-postcondition',
       postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -44,7 +44,7 @@ describe('checkPostConditionParameters', () => {
       postConditionType: undefined,
       postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -59,7 +59,7 @@ describe('checkPostConditionParameters', () => {
       postConditionType: 'ft-postcondition',
       postConditionConditionCode: undefined,
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -76,7 +76,7 @@ describe('checkPostConditionParameters', () => {
       postConditionType: 'ft-postcondition',
       postConditionConditionCode: 'eq',
       postConditionAddress: 'INVALID_ADDRESS',
-      postConditionAmount: 12345,
+      postConditionAmount: BigInt(12345),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -93,7 +93,7 @@ describe('checkPostConditionParameters', () => {
       postConditionType: 'ft-postcondition',
       postConditionConditionCode: 'eq',
       postConditionAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      postConditionAmount: -1,
+      postConditionAmount: BigInt(-1),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: 'asset-contract-name',
       postConditionAssetName: 'asset-name',
@@ -110,7 +110,7 @@ describe('checkPostConditionParameters', () => {
       postConditionType: 'ft-postcondition',
       postConditionConditionCode: 'eq',
       postConditionAddress: 'INVALID_ADDRESS',
-      postConditionAmount: -1,
+      postConditionAmount: BigInt(-1),
       postConditionAssetAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
       postConditionAssetContractName: undefined,
       postConditionAssetName: 'asset-name',
@@ -133,7 +133,7 @@ describe('getPostCondition', () => {
         postConditionType: 'staking-postcondition',
         postConditionAddress: address,
         postConditionConditionCode: 'lte',
-        postConditionAmount: 1100000,
+        postConditionAmount: BigInt(1100000),
       })
     ).toEqual([
       { type: 'staking-postcondition', address, condition: 'lte', amount: BigInt(1100000) },
@@ -207,3 +207,40 @@ it('sandbox post-condition selectable labels and serialized values remain stable
     parameters: postConditionParameterMap,
   }).toMatchSnapshot();
 });
+
+it('keeps a sandbox post-condition amount above Number.MAX_SAFE_INTEGER exact', async () => {
+  const { Codec } = await import('@jannik-stacks/kit');
+  const params = {
+    postConditionMode: 'deny',
+    postConditionType: 'stx-postcondition',
+    postConditionAddress: 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7',
+    postConditionConditionCode: 'eq',
+    postConditionAmount: BigInt('9007199254740993'),
+  } as const;
+  expect(checkPostConditionParameters(params as FunctionFormikState)).toEqual({});
+  expect(Codec.Raw.PostCondition.encode(getPostCondition(params)[0])).toBe(
+    '000216a46ff88886c2ef9762d970b4d2c63678835bd39d010020000000000001'
+  );
+});
+
+it.each(['trait_reference', { optional: 'trait_reference' }] as const)(
+  'reports incomplete sandbox trait arguments %#',
+  type => {
+    const fn = {
+      name: 'call',
+      access: 'public',
+      outputs: { type: 'bool' },
+      args: [{ name: 'trait', type }],
+    } as const;
+    expect(
+      checkFunctionParameters(fn, { trait: 'SP000000000000000000002Q6VF78' } as FunctionFormikState)
+    ).toEqual({
+      trait: 'Trait reference must include a valid contract address and name',
+    });
+    expect(
+      checkFunctionParameters(fn, {
+        trait: 'SP000000000000000000002Q6VF78.hello',
+      } as FunctionFormikState)
+    ).toEqual({});
+  }
+);

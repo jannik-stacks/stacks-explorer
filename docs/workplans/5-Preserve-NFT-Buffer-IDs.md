@@ -62,3 +62,12 @@ Retry checks so far: the supplied checker and repository copy both pass (93 trac
 - [x] Add missing consumer/session/cookie proofs and run only the four touched suites (nine passing tests).
 - [x] Final `pnpm lint` passes (six existing warnings) and font-mocked one-worker `pnpm build` exits 0, including compilation, TypeScript, all 21 static pages and standalone tracing (`/scratch/nft-inventory-build.log`).
 - [x] Review final diff, file sizes and news. Eight changed/new files in this retry, all below 1 MiB; the sole production edit remains the buffer token-ID expression. Inventory now passes locally; full `pnpm test:unit` remains for the engine as requested. Browser e2e remains unavailable; affected address collectibles metadata/Gamma flow is recorded above.
+
+### Merge inventory follow-up
+
+The merge base includes three additional established inventory IDs absent from the reconstructed checkout inventory: `S044` (address validation), `X-EXP-1` (network cookie persistence) and `X-EXP-2` (wallet session restoration). Restore all three under their existing IDs, using current Kit symbols and live regression proofs. Retain the address entry even though the reconstructed inventory also groups that owner in S043; no behavior entry is dropped. No runtime or test changes are needed. Verify with `AGENTGRAPH_BASE=agentgraph/4` so the removed-entry audit uses the actual PR target, rather than only the older checkout base.
+
+- [x] Restore the three established records and validate their proof files/names.
+- [x] Check inventory against both the checkout base and PR target; review diff/news.
+
+Merge follow-up verification: both `node stacks-kit-migration/check-coverage.mjs --limit 80` and `AGENTGRAPH_BASE=agentgraph/4 node stacks-kit-migration/check-coverage.mjs --limit 80` pass: 93 tracked imports, zero missing sites, zero proof problems and zero removed entries. Diff/whitespace review passes; only inventory and workplan change, so prior test/lint/build evidence remains applicable. No new test run is needed for these metadata-only changes. News read before completion: nothing new. Status: Completed.

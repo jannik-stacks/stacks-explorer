@@ -1533,6 +1533,89 @@
         }
       ],
       "behavior": "Native Address validation/network versions preserve accepted/rejected address/contract inputs and matching network mode used by forms, search and display consumers."
+    },
+    {
+      "id": "S044",
+      "file": "src/common/utils/utils.ts",
+      "line": 58,
+      "symbol": [
+        "Address",
+        "Network"
+      ],
+      "sinks": [
+        "query-key",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/common/utils/utils.ts",
+          "symbol": [
+            "Address",
+            "Network"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/utils/__tests__/validateStacksAddress.test.ts",
+            "name": "matches single-sig and multisig addresses to their own network"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/utils/__tests__/validateStacksAddress.test.ts",
+            "name": "returns false for invalid addresses"
+          }
+        }
+      ],
+      "behavior": "Native Address validation/network versions preserve accepted/rejected address/contract inputs and matching network mode used by forms, search and display consumers."
+    },
+    {
+      "id": "X-EXP-1",
+      "file": "src/common/context/GlobalContextProvider.tsx",
+      "line": 97,
+      "symbol": "network-cookie-roundtrip",
+      "sinks": [
+        "storage",
+        "state",
+        "url"
+      ],
+      "flow": "Numeric chain IDs 1/2147483648 remain in Network JSON; addedCustomNetworks cookie data restores network list, mode and API URL through GlobalContextProvider.",
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/context/__tests__/GlobalContext.test.tsx",
+            "name": "loads an existing custom-network cookie and preserves built-in chain IDs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X-EXP-2",
+      "file": "src/app/sandbox/hooks/useUser.ts",
+      "line": 66,
+      "symbol": "wallet-cache-restore",
+      "sinks": [
+        "storage",
+        "state",
+        "api"
+      ],
+      "flow": "Retained Connect persisted session data restores the Redux STX address; the Explorer network marker survives remount, is removed on disconnect, and rejects sessions belonging to another network. The test mocks the Connect SDK session loader.",
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/useUser.test.tsx",
+            "name": "restores a stored wallet session after connecting and remounting, then disconnects"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/useUser.test.tsx",
+            "name": "disconnects a stored session belonging to another network"
+          }
+        }
+      ]
     }
   ],
   "version": 1,
@@ -1540,6 +1623,7 @@
     "Reconstructed from all 93 discovered production import sites in the migration checkout; no baseline inventory was present. IDs are stable per owner file.",
     "Sinks are the checker discovery tags. Type annotations have no runtime codec; their proofs exercise the shared ABI/form, display, network or wallet boundary used by the owning component. These are behavior proofs, not component-interaction coverage claims.",
     "Connect is retained for wallet lifecycle and SIP-030; S014 includes loading persisted session data after remount and disconnect. Extended API/schema and metadata clients are retained by the checker default scope. BNS SDK is retained; its holding decoding is covered by S002.",
-    "No entries are dropped. The NFTTable proof covers the native wire input 0x02000000021234 and the Explorer ID, metadata key and both Gamma links."
+    "No entries are dropped. The NFTTable proof covers the native wire input 0x02000000021234 and the Explorer ID, metadata key and both Gamma links.",
+    "Preserve merge-base IDs S044, X-EXP-1 and X-EXP-2. S044 retains the established address-validation behavior record alongside the reconstructed S043 owner grouping; X-EXP records keep explicit persistence proofs. No entries are dropped."
   ]
 }

@@ -1,0 +1,1545 @@
+{
+  "entries": [
+    {
+      "id": "S001",
+      "file": "src/app/address/[principal]/TokenBalanceCard/TokenAssetListItem.tsx",
+      "line": 48,
+      "symbol": [
+        "Cl"
+      ],
+      "sinks": [
+        "wire"
+      ],
+      "sites": [
+        {
+          "file": "src/app/address/[principal]/TokenBalanceCard/TokenAssetListItem.tsx",
+          "symbol": [
+            "Cl"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/address/[principal]/TokenBalanceCard/__tests__/nft-consumers.test.tsx",
+            "name": "passes the decoded integer NFT identifier to avatar metadata lookup"
+          }
+        }
+      ],
+      "behavior": "Integer NFT holding bytes become the bigint ID passed to avatar metadata lookup; other Clarity types yield no integer ID."
+    },
+    {
+      "id": "S002",
+      "file": "src/app/address/[principal]/TokenBalanceCard/useBnsNames.ts",
+      "line": 46,
+      "symbol": [
+        "Cl"
+      ],
+      "sinks": [
+        "wire"
+      ],
+      "sites": [
+        {
+          "file": "src/app/address/[principal]/TokenBalanceCard/useBnsNames.ts",
+          "symbol": [
+            "Cl"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/address/[principal]/TokenBalanceCard/__tests__/nft-consumers.test.tsx",
+            "name": "resolves captured BNS tuple bytes and integer IDs through the retained resolver"
+          }
+        }
+      ],
+      "behavior": "BNS v1 tuple buffers become displayed name/namespace; BNS v2 uint IDs go to retained bns-v2-sdk with the selected network."
+    },
+    {
+      "id": "S003",
+      "file": "src/app/address/[principal]/redesign/NFTTable.tsx",
+      "line": 56,
+      "symbol": [
+        "Cl"
+      ],
+      "sinks": [
+        "wire"
+      ],
+      "sites": [
+        {
+          "file": "src/app/address/[principal]/redesign/NFTTable.tsx",
+          "symbol": [
+            "Cl"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/address/[principal]/redesign/__tests__/NFTTable.test.tsx",
+            "name": "preserves the Explorer token ID for wire value %s"
+          }
+        }
+      ],
+      "behavior": "Holding bytes become card IDs, contract:token metadata search/lookup keys and contract_token Gamma URLs; buffer 0x02000000021234 must retain 0x1234."
+    },
+    {
+      "id": "S004",
+      "file": "src/app/sandbox/components/Argument/ListArgumentInput.tsx",
+      "line": 16,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/Argument/ListArgumentInput.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        }
+      ],
+      "behavior": "Sandbox list ABI annotations feed the shared argument tree; runtime coercion is covered at its serialized form boundary."
+    },
+    {
+      "id": "S005",
+      "file": "src/app/sandbox/components/Argument/PrimitiveArgumentInput.tsx",
+      "line": 13,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/Argument/PrimitiveArgumentInput.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        }
+      ],
+      "behavior": "Sandbox primitive ABI annotations feed text/boolean/integer form fields; shared coercion preserves decimal and hexadecimal integer bytes."
+    },
+    {
+      "id": "S006",
+      "file": "src/app/sandbox/components/Argument/TupleArgumentInput.tsx",
+      "line": 14,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/Argument/TupleArgumentInput.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        }
+      ],
+      "behavior": "Sandbox tuple ABI annotations feed nested fields; shared tuple/optional encoders preserve captured bytes."
+    },
+    {
+      "id": "S007",
+      "file": "src/app/sandbox/components/Argument/index.tsx",
+      "line": 37,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/Argument/index.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        }
+      ],
+      "behavior": "Sandbox argument dispatcher uses ABI shapes to select the primitive/list/tuple form path; form processing and labels are tested at shared helpers."
+    },
+    {
+      "id": "S008",
+      "file": "src/app/sandbox/components/Argument/types.ts",
+      "line": 7,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "unclassified"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/Argument/types.ts",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        }
+      ],
+      "behavior": "Erased ABI annotation on sandbox argument props; no independent runtime value or persisted representation beyond the shared form inputs."
+    },
+    {
+      "id": "S009",
+      "file": "src/app/sandbox/components/ContractCall/DataVariablesView.tsx",
+      "line": 16,
+      "symbol": [
+        "ClarityAbiArg"
+      ],
+      "sinks": [
+        "state"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/ContractCall/DataVariablesView.tsx",
+          "symbol": [
+            "ClarityAbiArg"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "decodes captured $name with and without a prefix"
+          }
+        }
+      ],
+      "behavior": "Erased ABI argument annotation supplies variable name/type to the variable row; shared type labels and fetched Clarity value display are the output boundary."
+    },
+    {
+      "id": "S010",
+      "file": "src/app/sandbox/components/ContractCall/FunctionView.tsx",
+      "line": 6,
+      "symbol": [
+        "Cl",
+        "ClarityAbiFunction",
+        "ClarityValue",
+        "StacksTransaction"
+      ],
+      "sinks": [
+        "query-key",
+        "wire",
+        "state",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/ContractCall/FunctionView.tsx",
+          "symbol": [
+            "Cl",
+            "ClarityAbiFunction",
+            "ClarityValue",
+            "StacksTransaction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/walletTransactions.test.ts",
+            "name": "serializes nested Kit values before handing a contract call to Connect"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/useCallReadOnlyFunction.test.ts",
+            "name": "serializes arguments in order, escapes the function name and preserves the response"
+          }
+        }
+      ],
+      "behavior": "Sandbox form state becomes native Clarity arguments and post conditions, then serialized wallet/read-only requests; transaction mode remains a native string."
+    },
+    {
+      "id": "S011",
+      "file": "src/app/sandbox/components/ContractCall/PostConditionForm.tsx",
+      "line": 5,
+      "symbol": [
+        "Cl",
+        "ClarityAbiFunction",
+        "FungibleComparator",
+        "NonFungibleComparator",
+        "PostCondition",
+        "PoxComparator",
+        "StacksTransaction"
+      ],
+      "sinks": [
+        "wire",
+        "state",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/ContractCall/PostConditionForm.tsx",
+          "symbol": [
+            "Cl",
+            "ClarityAbiFunction",
+            "FungibleComparator",
+            "NonFungibleComparator",
+            "PostCondition",
+            "PoxComparator",
+            "StacksTransaction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/sandbox/components/ContractCall/__tests__/PostConditionForm.test.ts",
+            "name": "keeps a sandbox post-condition amount above Number.MAX_SAFE_INTEGER exact"
+          }
+        }
+      ],
+      "behavior": "Sandbox validation and native post-condition construction preserve bigint amounts, comparator selections and serialized wallet bytes."
+    },
+    {
+      "id": "S012",
+      "file": "src/app/sandbox/components/ContractCall/ReadOnlyField.tsx",
+      "line": 14,
+      "symbol": [
+        "ClarityAbiFunction",
+        "ClarityValue"
+      ],
+      "sinks": [
+        "api",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/ContractCall/ReadOnlyField.tsx",
+          "symbol": [
+            "ClarityAbiFunction",
+            "ClarityValue"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/useCallReadOnlyFunction.test.ts",
+            "name": "serializes arguments in order, escapes the function name and preserves the response"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/prettyFunctionResult.test.ts",
+            "name": "returns the pretty-printed clarity value on success"
+          }
+        }
+      ],
+      "behavior": "Sandbox read-only ABI/value annotations feed the common read-only request and result display; no alternate codec or value shape."
+    },
+    {
+      "id": "S013",
+      "file": "src/app/sandbox/components/ContractCall/SelectedContractView.tsx",
+      "line": 131,
+      "symbol": [
+        "ClarityAbiFunction"
+      ],
+      "sinks": [
+        "url",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/components/ContractCall/SelectedContractView.tsx",
+          "symbol": [
+            "ClarityAbiFunction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        }
+      ],
+      "behavior": "Selected-contract ABI annotation feeds function argument selection/labels; the shared ABI form/label helpers own the behavior."
+    },
+    {
+      "id": "S014",
+      "file": "src/app/sandbox/hooks/useUser.ts",
+      "line": 65,
+      "symbol": [
+        "connect",
+        "disconnect",
+        "getLocalStorage",
+        "isConnected"
+      ],
+      "sinks": [
+        "api",
+        "storage",
+        "state"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/hooks/useUser.ts",
+          "symbol": [
+            "connect",
+            "disconnect",
+            "getLocalStorage",
+            "isConnected"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/useUser.test.tsx",
+            "name": "restores a stored wallet session after connecting and remounting, then disconnects"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/useUser.test.tsx",
+            "name": "disconnects a stored session belonging to another network"
+          }
+        }
+      ],
+      "behavior": "Retained Connect lifecycle restores STX addresses into Redux from the persisted Connect session, binds it to stacks-wallet-network-url, and disconnects across networks or on request."
+    },
+    {
+      "id": "S015",
+      "file": "src/app/sandbox/utils.ts",
+      "line": 11,
+      "symbol": [
+        "Cl",
+        "ClarityAbiType",
+        "ClarityValue",
+        "encodeClarityArg"
+      ],
+      "sinks": [
+        "wire"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/utils.ts",
+          "symbol": [
+            "Cl",
+            "ClarityAbiType",
+            "ClarityValue",
+            "encodeClarityArg"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "decodes captured $name with and without a prefix"
+          }
+        }
+      ],
+      "behavior": "Shared form coercion and Clarity parsing preserve literal wire vectors, visible representations, invalid-input fallbacks and trait errors."
+    },
+    {
+      "id": "S016",
+      "file": "src/app/sandbox/utils/walletTransactions.ts",
+      "line": 9,
+      "symbol": [
+        "Cl",
+        "ClarityValue",
+        "Codec",
+        "PostCondition",
+        "StacksTransaction",
+        "request",
+        "NetworkString"
+      ],
+      "sinks": [
+        "wire",
+        "display",
+        "api"
+      ],
+      "sites": [
+        {
+          "file": "src/app/sandbox/utils/walletTransactions.ts",
+          "symbol": [
+            "Cl",
+            "ClarityValue",
+            "Codec",
+            "PostCondition",
+            "StacksTransaction",
+            "request",
+            "NetworkString"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/walletTransactions.test.ts",
+            "name": "serializes nested Kit values before handing a contract call to Connect"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/walletTransactions.test.ts",
+            "name": "pins wallet request defaults and explicit transfer/deploy settings"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/walletTransactions.test.ts",
+            "name": "serializes every post condition through the repository wallet boundary"
+          }
+        }
+      ],
+      "behavior": "SIP-030 wallet request methods, defaults, selected network and serializations; native Kit arguments/post conditions become hex at the Connect boundary."
+    },
+    {
+      "id": "S017",
+      "file": "src/app/staking/reward-estimate.ts",
+      "line": 52,
+      "symbol": [
+        "Cl",
+        "ClarityValue"
+      ],
+      "sinks": [
+        "wire",
+        "api"
+      ],
+      "sites": [
+        {
+          "file": "src/app/staking/reward-estimate.ts",
+          "symbol": [
+            "Cl",
+            "ClarityValue"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/staking/__tests__/reward-estimate.test.ts",
+            "name": "combines confirmed credits with a bond-first estimate at one pinned block"
+          }
+        }
+      ],
+      "behavior": "Pinned-block reward RPC requests carry serialized arguments and decode native results into the existing forecast/confirmed-credit values and error behavior."
+    },
+    {
+      "id": "S018",
+      "file": "src/app/txid/[txId]/redesign/function-called/Argument/ListArgumentInput.tsx",
+      "line": 16,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "wire",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/Argument/ListArgumentInput.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        }
+      ],
+      "behavior": "Transaction form list ABI annotations feed shared argument coercion and serialized parameter processing."
+    },
+    {
+      "id": "S019",
+      "file": "src/app/txid/[txId]/redesign/function-called/Argument/PrimitiveArgumentInput.tsx",
+      "line": 11,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "wire",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/Argument/PrimitiveArgumentInput.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        }
+      ],
+      "behavior": "Transaction form primitive ABI annotations feed fields; shared coercion preserves hexadecimal int/uint input and validation errors."
+    },
+    {
+      "id": "S020",
+      "file": "src/app/txid/[txId]/redesign/function-called/Argument/TupleArgumentInput.tsx",
+      "line": 12,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "wire",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/Argument/TupleArgumentInput.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/parseHexClarityValue.test.ts",
+            "name": "encodes tuples, optional tuples and optional fields"
+          }
+        }
+      ],
+      "behavior": "Transaction form tuple ABI annotations feed nested fields; shared tuple/optional encoders preserve captured bytes."
+    },
+    {
+      "id": "S021",
+      "file": "src/app/txid/[txId]/redesign/function-called/Argument/index.tsx",
+      "line": 37,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/Argument/index.tsx",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        }
+      ],
+      "behavior": "Transaction form argument dispatcher uses ABI shapes; shared ABI parameter and label helpers are the observable boundary."
+    },
+    {
+      "id": "S022",
+      "file": "src/app/txid/[txId]/redesign/function-called/Argument/types.ts",
+      "line": 6,
+      "symbol": [
+        "ClarityAbiType"
+      ],
+      "sinks": [
+        "unclassified"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/Argument/types.ts",
+          "symbol": [
+            "ClarityAbiType"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        }
+      ],
+      "behavior": "Erased ABI annotation on transaction argument props; no independent runtime value or persisted representation beyond shared form inputs."
+    },
+    {
+      "id": "S023",
+      "file": "src/app/txid/[txId]/redesign/function-called/FunctionArgsTable.tsx",
+      "line": 57,
+      "symbol": [
+        "ClarityAbiFunction"
+      ],
+      "sinks": [
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/FunctionArgsTable.tsx",
+          "symbol": [
+            "ClarityAbiFunction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "takes argument names and types from the function ABI by position"
+          }
+        }
+      ],
+      "behavior": "ABI name/type association by argument position becomes displayed transaction argument labels."
+    },
+    {
+      "id": "S024",
+      "file": "src/app/txid/[txId]/redesign/function-called/FunctionCallForm.tsx",
+      "line": 18,
+      "symbol": [
+        "ClarityAbiFunction",
+        "ClarityValue",
+        "StacksTransaction"
+      ],
+      "sinks": [
+        "query-key",
+        "wire",
+        "state",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/FunctionCallForm.tsx",
+          "symbol": [
+            "ClarityAbiFunction",
+            "ClarityValue",
+            "StacksTransaction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/walletTransactions.test.ts",
+            "name": "serializes nested Kit values before handing a contract call to Connect"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/useCallReadOnlyFunction.test.ts",
+            "name": "serializes arguments in order, escapes the function name and preserves the response"
+          }
+        }
+      ],
+      "behavior": "Transaction form state becomes native arguments and post conditions at the shared parameter, read-only and wallet boundaries."
+    },
+    {
+      "id": "S025",
+      "file": "src/app/txid/[txId]/redesign/function-called/FunctionCalled.tsx",
+      "line": 24,
+      "symbol": [
+        "ClarityAbiFunction"
+      ],
+      "sinks": [
+        "wire",
+        "state",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/FunctionCalled.tsx",
+          "symbol": [
+            "ClarityAbiFunction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats results from real transaction data (non-tuple)"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        }
+      ],
+      "behavior": "Function ABI association and decoded results become transaction function display and form initialization."
+    },
+    {
+      "id": "S026",
+      "file": "src/app/txid/[txId]/redesign/function-called/FunctionList.tsx",
+      "line": 12,
+      "symbol": [
+        "ClarityAbiFunction"
+      ],
+      "sinks": [
+        "state"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/FunctionList.tsx",
+          "symbol": [
+            "ClarityAbiFunction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        }
+      ],
+      "behavior": "Function-list ABI annotation shapes selected function state; shared ABI form processing/labels own its downstream values."
+    },
+    {
+      "id": "S027",
+      "file": "src/app/txid/[txId]/redesign/function-called/FunctionListItem.tsx",
+      "line": 15,
+      "symbol": [
+        "ClarityAbiFunction"
+      ],
+      "sinks": [
+        "wire",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/FunctionListItem.tsx",
+          "symbol": [
+            "ClarityAbiFunction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        }
+      ],
+      "behavior": "Function-list-item ABI annotation shapes function labels and selection; shared ABI form processing/labels own its downstream values."
+    },
+    {
+      "id": "S028",
+      "file": "src/app/txid/[txId]/redesign/function-called/PostConditionForm.tsx",
+      "line": 6,
+      "symbol": [
+        "PostCondition",
+        "StacksTransaction"
+      ],
+      "sinks": [
+        "wire",
+        "state",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/PostConditionForm.tsx",
+          "symbol": [
+            "PostCondition",
+            "StacksTransaction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-call-post-condition-utils.test.ts",
+            "name": "retains bigint amounts and native Kit selections"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/sandbox/__tests__/walletTransactions.test.ts",
+            "name": "serializes every post condition through the repository wallet boundary"
+          }
+        }
+      ],
+      "behavior": "Transaction post-condition form annotations feed native selection state, bigint amounts and wallet serialization; shared Pc builders own construction."
+    },
+    {
+      "id": "S029",
+      "file": "src/app/txid/[txId]/redesign/function-called/ReadOnlyField.tsx",
+      "line": 15,
+      "symbol": [
+        "ClarityAbiFunction",
+        "ClarityValue"
+      ],
+      "sinks": [
+        "wire",
+        "api",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/ReadOnlyField.tsx",
+          "symbol": [
+            "ClarityAbiFunction",
+            "ClarityValue"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/useCallReadOnlyFunction.test.ts",
+            "name": "serializes arguments in order, escapes the function name and preserves the response"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/prettyFunctionResult.test.ts",
+            "name": "returns the pretty-printed clarity value on success"
+          }
+        }
+      ],
+      "behavior": "Transaction read-only ABI/value annotations feed the same RPC serialization and result display as the sandbox form."
+    },
+    {
+      "id": "S030",
+      "file": "src/app/txid/[txId]/redesign/function-called/function-call-function-params-utils.ts",
+      "line": 16,
+      "symbol": [
+        "Cl",
+        "ClarityAbiFunction",
+        "ClarityAbiType",
+        "ClarityValue",
+        "StacksTransaction",
+        "NetworkString"
+      ],
+      "sinks": [
+        "query-key",
+        "state"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/function-call-function-params-utils.ts",
+          "symbol": [
+            "Cl",
+            "ClarityAbiFunction",
+            "ClarityAbiType",
+            "ClarityValue",
+            "StacksTransaction",
+            "NetworkString"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "preserves hexadecimal int and uint bytes through contract form processing"
+          }
+        }
+      ],
+      "behavior": "Initial ABI form state, required/principal/uint errors, argument coercion, tuple/optional/list/memo paths and exact serialized argument bytes."
+    },
+    {
+      "id": "S031",
+      "file": "src/app/txid/[txId]/redesign/function-called/function-call-post-condition-params-utils.ts",
+      "line": 5,
+      "symbol": [
+        "Cl",
+        "FungibleComparator",
+        "NonFungibleComparator",
+        "Pc",
+        "PostCondition",
+        "PoxComparator",
+        "StacksTransaction"
+      ],
+      "sinks": [
+        "state"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/function-call-post-condition-params-utils.ts",
+          "symbol": [
+            "Cl",
+            "FungibleComparator",
+            "NonFungibleComparator",
+            "Pc",
+            "PostCondition",
+            "PoxComparator",
+            "StacksTransaction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-call-post-condition-utils.test.ts",
+            "name": "retains bigint amounts and native Kit selections"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-call-post-condition-utils.test.ts",
+            "name": "Post Condition Creation"
+          }
+        }
+      ],
+      "behavior": "Native Pc construction, form extraction, bigint amount validation and comparator/mode selection; resulting wallet wire bytes remain captured."
+    },
+    {
+      "id": "S032",
+      "file": "src/app/txid/[txId]/redesign/function-called/utils.ts",
+      "line": 18,
+      "symbol": [
+        "Cl",
+        "ClarityAbiFunction",
+        "ClarityValue"
+      ],
+      "sinks": [
+        "wire",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/app/txid/[txId]/redesign/function-called/utils.ts",
+          "symbol": [
+            "Cl",
+            "ClarityAbiFunction",
+            "ClarityValue"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats captured PoX contract logs"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        }
+      ],
+      "behavior": "ABI labels, Clarity value/result formatting and decoded contract-log display preserve captured text and errors."
+    },
+    {
+      "id": "S033",
+      "file": "src/common/components/ContractAvailableFunctions.tsx",
+      "line": 34,
+      "symbol": [
+        "ClarityAbiFunction"
+      ],
+      "sinks": [
+        "state",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/common/components/ContractAvailableFunctions.tsx",
+          "symbol": [
+            "ClarityAbiFunction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "pins initial values, validation and coercion for every argument path"
+          }
+        }
+      ],
+      "behavior": "Available-function ABI annotation feeds selected-function state and labels; shared form and label helpers own the downstream values."
+    },
+    {
+      "id": "S034",
+      "file": "src/common/components/modals/AddNetwork/utils.ts",
+      "line": 43,
+      "symbol": [
+        "StacksNetwork"
+      ],
+      "sinks": [
+        "url"
+      ],
+      "sites": [
+        {
+          "file": "src/common/components/modals/AddNetwork/utils.ts",
+          "symbol": [
+            "StacksNetwork"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/context/__tests__/GlobalContext.test.tsx",
+            "name": "adds a custom network from a query string"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/context/__tests__/GlobalContext.test.tsx",
+            "name": "loads an existing custom-network cookie and preserves built-in chain IDs"
+          }
+        }
+      ],
+      "behavior": "Erased network chainId annotation on custom-network info response; returned ID joins custom-network objects keyed by normalized API URL."
+    },
+    {
+      "id": "S035",
+      "file": "src/common/constants/network.ts",
+      "line": 17,
+      "symbol": [
+        "STACKS_MAINNET",
+        "STACKS_TESTNET"
+      ],
+      "sinks": [
+        "unclassified"
+      ],
+      "sites": [
+        {
+          "file": "src/common/constants/network.ts",
+          "symbol": [
+            "STACKS_MAINNET",
+            "STACKS_TESTNET"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/context/__tests__/GlobalContext.test.tsx",
+            "name": "adds a custom network from a query string"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/context/__tests__/GlobalContext.test.tsx",
+            "name": "loads an existing custom-network cookie and preserves built-in chain IDs"
+          }
+        }
+      ],
+      "behavior": "Native network chain IDs remain 1 and 2147483648 in built-in network objects and ID-to-mode mapping consumed by context, URLs and fee/read-only consumers."
+    },
+    {
+      "id": "S036",
+      "file": "src/common/queries/bns-queries.ts",
+      "line": 51,
+      "symbol": [
+        "Cl"
+      ],
+      "sinks": [
+        "wire"
+      ],
+      "sites": [
+        {
+          "file": "src/common/queries/bns-queries.ts",
+          "symbol": [
+            "Cl"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/bns-queries.test.ts",
+            "name": "pins BNS argument bytes for %s"
+          }
+        }
+      ],
+      "behavior": "BNS history requests serialize tuple name/namespace buffers to the captured URL bytes; response parsing retains latest-recipient/null behavior."
+    },
+    {
+      "id": "S037",
+      "file": "src/common/queries/useCallReadOnlyFunction.ts",
+      "line": 13,
+      "symbol": [
+        "Cl",
+        "ClarityAbiFunction",
+        "ClarityValue"
+      ],
+      "sinks": [
+        "wire",
+        "query-key",
+        "api"
+      ],
+      "sites": [
+        {
+          "file": "src/common/queries/useCallReadOnlyFunction.ts",
+          "symbol": [
+            "Cl",
+            "ClarityAbiFunction",
+            "ClarityValue"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/useCallReadOnlyFunction.test.ts",
+            "name": "serializes arguments in order, escapes the function name and preserves the response"
+          }
+        }
+      ],
+      "behavior": "Read-only arguments serialize in order into POST bodies and readonly query keys; function names are URL escaped, network ID/sender identify the cache, and responses/errors pass through."
+    },
+    {
+      "id": "S038",
+      "file": "src/common/types/network.ts",
+      "line": 16,
+      "symbol": [
+        "StacksNetwork"
+      ],
+      "sinks": [
+        "unclassified"
+      ],
+      "sites": [
+        {
+          "file": "src/common/types/network.ts",
+          "symbol": [
+            "StacksNetwork"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/context/__tests__/GlobalContext.test.tsx",
+            "name": "adds a custom network from a query string"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/context/__tests__/GlobalContext.test.tsx",
+            "name": "loads an existing custom-network cookie and preserves built-in chain IDs"
+          }
+        }
+      ],
+      "behavior": "Erased chainId annotation on Explorer Network objects; existing numeric network IDs and custom-network cookie data load without shape conversion."
+    },
+    {
+      "id": "S039",
+      "file": "src/common/utils/clarity-display.ts",
+      "line": 3,
+      "symbol": [
+        "Cl",
+        "ClarityAbiType",
+        "ClarityValue"
+      ],
+      "sinks": [
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/common/utils/clarity-display.ts",
+          "symbol": [
+            "Cl",
+            "ClarityAbiType",
+            "ClarityValue"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats basic clarity types correctly"
+          }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "handles tuple values correctly"
+          }
+        }
+      ],
+      "behavior": "Shared Clarity/ABI display functions preserve captured labels, principal/uint/tuple text and pretty result formatting."
+    },
+    {
+      "id": "S040",
+      "file": "src/common/utils/fee-utils.ts",
+      "line": 6,
+      "symbol": [
+        "Codec",
+        "NetworkName",
+        "Payload",
+        "Transaction",
+        "Tx"
+      ],
+      "sinks": [
+        "unclassified"
+      ],
+      "sites": [
+        {
+          "file": "src/common/utils/fee-utils.ts",
+          "symbol": [
+            "Codec",
+            "NetworkName",
+            "Payload",
+            "Transaction",
+            "Tx"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/utils/__tests__/fee-utils.test.ts",
+            "name": "pins ${chain} %s fees, sample payloads, lengths and averages"
+          }
+        }
+      ],
+      "behavior": "Native transaction samples preserve all three payloads and lengths on each network; fee fallback, minimums, priorities and averaged rounding remain captured."
+    },
+    {
+      "id": "S041",
+      "file": "src/common/utils/post-condition-mode-utils.ts",
+      "line": 5,
+      "symbol": [
+        "StacksTransaction"
+      ],
+      "sinks": [
+        "unclassified"
+      ],
+      "sites": [
+        {
+          "file": "src/common/utils/post-condition-mode-utils.ts",
+          "symbol": [
+            "StacksTransaction"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/utils/__tests__/post-condition-mode-utils.test.ts",
+            "name": "round-trips every mode, including originator"
+          }
+        }
+      ],
+      "behavior": "Native post-condition mode names round-trip, including originator; invalid/inherited member names yield undefined."
+    },
+    {
+      "id": "S042",
+      "file": "src/common/utils/transaction-utils.ts",
+      "line": 232,
+      "symbol": [
+        "Cl"
+      ],
+      "sinks": [
+        "wire",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/common/utils/transaction-utils.ts",
+          "symbol": [
+            "Cl"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "formats captured PoX contract logs"
+          }
+        }
+      ],
+      "behavior": "Contract-log bytes decode through native Kit and shared pretty formatting into captured visible log output."
+    },
+    {
+      "id": "S043",
+      "file": "src/common/utils/utils.ts",
+      "line": 58,
+      "symbol": [
+        "Address",
+        "Network"
+      ],
+      "sinks": [
+        "query-key",
+        "display"
+      ],
+      "sites": [
+        {
+          "file": "src/common/utils/utils.ts",
+          "symbol": [
+            "Address",
+            "Network"
+          ]
+        }
+      ],
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/utils/__tests__/validateStacksAddress.test.ts",
+            "name": "matches single-sig and multisig addresses to their own network"
+          }
+        },
+        {
+          "test": {
+            "file": "src/common/utils/__tests__/validateStacksAddress.test.ts",
+            "name": "returns false for invalid addresses"
+          }
+        }
+      ],
+      "behavior": "Native Address validation/network versions preserve accepted/rejected address/contract inputs and matching network mode used by forms, search and display consumers."
+    }
+  ],
+  "version": 1,
+  "notes": [
+    "Reconstructed from all 93 discovered production import sites in the migration checkout; no baseline inventory was present. IDs are stable per owner file.",
+    "Sinks are the checker discovery tags. Type annotations have no runtime codec; their proofs exercise the shared ABI/form, display, network or wallet boundary used by the owning component. These are behavior proofs, not component-interaction coverage claims.",
+    "Connect is retained for wallet lifecycle and SIP-030; S014 includes loading persisted session data after remount and disconnect. Extended API/schema and metadata clients are retained by the checker default scope. BNS SDK is retained; its holding decoding is covered by S002.",
+    "No entries are dropped. The NFTTable proof covers the native wire input 0x02000000021234 and the Explorer ID, metadata key and both Gamma links."
+  ]
+}

@@ -84,7 +84,7 @@ export const callContract = async (params: {
     const response = await request('stx_callContract', {
       contract: params.contract as `${string}.${string}`,
       functionName: params.functionName,
-      functionArgs: clarityArgs.map(arg => `0x${Cl.serialize(arg)}`),
+      functionArgs: clarityArgs.map(arg => Cl.serialize(arg)),
       network: params.network || 'mainnet',
       postConditions: params.postConditions?.map(postCondition =>
         typeof postCondition === 'string'

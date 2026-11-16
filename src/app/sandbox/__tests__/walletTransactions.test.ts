@@ -134,7 +134,7 @@ it('serializes nested Kit values before handing a contract call to Connect', asy
   expect(requestMock).toHaveBeenCalledWith(
     'stx_callContract',
     expect.objectContaining({
-      functionArgs: [hex],
+      functionArgs: [hex.slice(2)],
       postConditions: ['000216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0'],
     })
   );

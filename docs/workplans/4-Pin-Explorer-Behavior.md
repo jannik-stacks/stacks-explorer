@@ -37,7 +37,7 @@ Literal SDK-shaped inputs are acceptable; no runtime SDK oracle in vector expect
 Completed
 
 ## Notes
-Issue supplies categories rather than one concrete failing input/error. The initial reproduction removes SDK decoding mocks in the existing function-called test. Root package.json and pnpm-lock.yaml must remain unchanged. Capturing vectors is development-only; capture scripts stay in /scratch.
+Issue supplies categories rather than one concrete failing input/error. The initial reproduction removes SDK decoding mocks in the existing function-called test. Dependency versions and pnpm-lock.yaml must remain unchanged. The merge review authorizes a coverage package script and requires committed development-only capture scripts under stacks-kit-migration/.
 
 ### Requirement inventory and ownership
 
@@ -126,3 +126,38 @@ The new hook proofs use real QueryClient caches and mocked fetch only. Fee keys 
 Retained routes are deduplicated by their actual callback input (route), with stable route-only test names. All 30 distinct expected request snapshots are retained unchanged; 26 identical duplicate snapshots were removed after comparing their payloads. Both downstream hook inventory rows now reference their own cache-key tests; fee/data-variable producer entries also link these proofs.
 
 Review verification completed: `pnpm lint` passes (six existing hook warnings); `CI=1 pnpm run test:unit` passes 131 suites, 1,640 tests and 267 snapshots, with two existing skips (44.051s). The maintainer coverage check passes with 168 tracked imports and zero missing sites/proof problems; the detailed inventory guard passes in the suite. `CIRCLE_NODE_TOTAL=2 NODE_OPTIONS=--max-old-space-size=2816 NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/scratch/google-fonts.cjs pnpm build` passes, including TypeScript, static pages and tracing; build output remains in /scratch. The PR still contains 55 files, all below 1 MiB. Production code and dependencies remain unchanged.
+
+### Merge review (2026-11-16)
+
+- [x] Remove the source-location ledger/guard/scanner and retained-client/hydration tests; keep the canonical inventory with a package-script gate.
+- [x] Exercise all 14 cases in both forms and wallet wrappers through actual Connect provider serialization.
+- [x] Centralize the jsdom realm setup and keep byte-only tests in Node.
+- [x] Replace the NUL snapshot with an inline assertion; commit reproducible capture scripts; document owner-approved quirk changes.
+- [x] Make the staking timestamp test deterministic without skipping it.
+- [x] Run lint, full unit tests, coverage and build on final changes and record output.
+
+The later review explicitly authorizes a root package script for coverage; production code and dependency versions remain unchanged.
+
+Merge-review implementation: the canonical inventory is now the sole inventory; advisory locations are not asserted for equality. The separate `check:stacks-coverage` package script runs the unchanged maintainer checker outside Jest. Downstream fee/data-variable proofs remain linked in that inventory. The redundant retained-client suite and synthetic persisted-query fixture/hydration checks were deleted.
+
+Both wallet forms execute all 14 cases through actual Connect serialization and observe provider RPC parameters directly. The original serializer-based assertions failed against the provider requests in all 28 form cases plus the wrapper snapshot; comparison confirmed that only the 0x prefix differed, and the same argument bytes are retained as bare provider hex. Wallet failure cases now observe the real Connect error boundary and assert the preserved error message. No serializers are mocked.
+
+The shared jsdom byte realm is installed from setup-jest.js before every suite; the browser provider has no byte-global side effects. Pure post-condition/network/mode vectors now use Node. Node's native structuredClone is preserved to avoid recursion through the browser polyfill. The NUL buffer case is inline; all snapshots contain zero NUL bytes and the PR diff for the log snapshot is text.
+
+Capture scripts are committed under stacks-kit-migration and verified: fixture reconstruction matches the captured Clarity/BNS/public-wallet JSON and enums, and the snapshot driver passes 21 suites, 455 tests and 229 snapshots without updating expectations. The fixtures README lists each known quirk as “may change with owner sign-off”, allowing a recorded decision instead of an unnecessary Kit compatibility adapter. Staking tests use a fixed Date.now input; the timeout test still explicitly advances it, and no test was skipped.
+
+Final merge-review validation (2026-11-16): `pnpm lint` passed with the six existing hook warnings and zero errors. `CI=1 pnpm run test:unit` passed on the final test/configuration changes: 129 suites, 1,602 passed tests, two existing skips, and 234 snapshots (53.63s). The timestamp test was not skipped. Output excerpts are included in the PR comment.
+
+`pnpm check:stacks-coverage` passed: 168 tracked imports, zero missing sites/proof problems/dropped entries. `CIRCLE_NODE_TOTAL=2 NODE_OPTIONS=--max-old-space-size=2816 NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/scratch/google-fonts.cjs pnpm build` passed through TypeScript, static pages, tracing and standalone output. The invocation-only local font responses and output symlink stay outside the checkout in /scratch. `git diff --check` passes. The complete PR has 54 files, each below 1 MiB (largest under 56 KiB). Production behavior and dependency versions are unchanged; root package.json only gains the explicitly requested coverage script.
+
+```text
+pnpm lint
+6 problems (0 errors, 6 warnings)
+All matched files use Prettier code style!
+
+CI=1 pnpm run test:unit
+Test Suites: 129 passed, 129 total
+Tests:       2 skipped, 1602 passed, 1604 total
+Snapshots:   234 passed, 234 total
+Time:        53.63 s
+```

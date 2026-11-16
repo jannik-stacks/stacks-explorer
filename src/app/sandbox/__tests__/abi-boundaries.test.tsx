@@ -1,23 +1,28 @@
 import { Argument as RedesignArgument } from '@/app/txid/[txId]/redesign/function-called/Argument';
 import { FunctionCallForm } from '@/app/txid/[txId]/redesign/function-called/FunctionCallForm';
 import { createBehaviorWrapper } from '@/common/queries/test-utils/BehaviorProvider';
-import { serializeClarityValues } from '@/common/queries/test-utils/serializeClarityValues';
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Formik } from 'formik';
-
-import { request } from '@stacks/connect';
 
 import { Argument as SandboxArgument } from '../components/Argument';
 import { FunctionView } from '../components/ContractCall/FunctionView';
 
-jest.mock('@stacks/connect', () => ({
-  ...jest.requireActual('@stacks/connect'),
-  request: jest.fn(),
-}));
-const requestMock = jest.mocked(request);
+const requestMock = jest.fn();
+beforeEach(() => {
+  localStorage.setItem('STX_PROVIDER', 'StacksProvider');
+  (window as any).StacksProvider = {
+    request: async (method: string, params: unknown) => ({
+      jsonrpc: '2.0',
+      id: '1',
+      result: await requestMock(method, params),
+    }),
+  };
+});
 afterEach(() => {
   cleanup();
   requestMock.mockReset();
+  localStorage.clear();
+  delete (window as any).StacksProvider;
 });
 const types = [
   'uint128',
@@ -136,15 +141,8 @@ for (const style of ['sandbox', 'redesign']) {
       if (value !== '') fireEvent.change(input, { target: { value } });
       fireEvent.click(screen.getByRole('button', { name: /Call function/ }));
       await waitFor(() => expect(requestMock).toHaveBeenCalled());
-      const [method, rawParams] = requestMock.mock.calls[0];
-      const params = rawParams as unknown as {
-        functionArgs: Parameters<typeof serializeClarityValues>[0];
-      };
-      expect({
-        method,
-        ...params,
-        functionArgs: await serializeClarityValues(params.functionArgs),
-      }).toMatchSnapshot();
+      const [method, params] = requestMock.mock.calls[0];
+      expect({ method, ...params }).toMatchSnapshot();
     }
   );
 }

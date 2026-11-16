@@ -1507,18 +1507,12 @@
         },
         {
           "test": {
-            "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
-            "name": "loads a literal pre-migration query-cache record"
-          }
-        },
-        {
-          "test": {
             "file": "src/common/queries/__tests__/useCallReadOnlyFunction.test.ts",
             "name": "serializes arguments in order"
           }
         }
       ],
-      "flow": "cvToHex(argument) -> JSON POST arguments plus readonly query key; returned raw hex/result -> stored/hydrated cache -> shown Clarity output. Literal old query cache remains readable."
+      "flow": "Serialized argument bytes and chain ID -> read-only query key and request body -> in-memory cached result and shown output. Explorer does not persist this cache."
     },
     {
       "id": "S039",
@@ -1813,6 +1807,42 @@
           "test": {
             "file": "src/app/sandbox/hooks/__tests__/useUser.test.tsx",
             "name": "rejects an old wallet cache belonging to a different network"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X-EXP-3",
+      "file": "src/common/queries/useFeeEstimates.ts",
+      "line": 11,
+      "symbol": "fee-cache-key",
+      "sinks": [
+        "query-key"
+      ],
+      "flow": "Network mode -> mode-only fee query key -> fetched numeric fee data in memory; custom API URLs with the same mode use the same key.",
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+            "name": "useFeeEstimates stores fetched fees under the mode-only cache key"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X-EXP-4",
+      "file": "src/common/queries/useDataVarValue.ts",
+      "line": 70,
+      "symbol": "data-variable-cache-key",
+      "sinks": [
+        "query-key"
+      ],
+      "flow": "Contract, variable, chain ID and API URL -> distinct data-variable query keys -> returned wire hex in the in-memory cache.",
+      "proof": [
+        {
+          "test": {
+            "file": "src/common/queries/__tests__/cache-boundaries.test.tsx",
+            "name": "useDataVarValue keys cached wire values by contract, variable, chain ID and API URL"
           }
         }
       ]

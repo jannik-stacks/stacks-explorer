@@ -383,7 +383,11 @@ describe('contract-log boundary outputs', () => {
       hex: string;
       repr: string;
     }[]
-  )('shows captured $name log bytes', ({ hex, repr }) => {
+  )('shows captured $name log bytes', ({ hex, repr, name }) => {
+    if (name === 'buffer') {
+      expect(handleContractLogHex({ hex, repr })).toBe('\u0000\ufffd\ufffd');
+      return;
+    }
     expect(handleContractLogHex({ hex, repr })).toMatchSnapshot();
   });
   it('shows a raw buffer as UTF-8 and rejects malformed serialized values', () => {

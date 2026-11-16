@@ -888,7 +888,7 @@ exports[`redesign real form produces wallet argument bytes 0 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x010000000000000000000000000000002a",
+    "010000000000000000000000000000002a",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -902,7 +902,7 @@ exports[`redesign real form produces wallet argument bytes 1 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x00ffffffffffffffffffffffffffffffff",
+    "00ffffffffffffffffffffffffffffffff",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -916,7 +916,7 @@ exports[`redesign real form produces wallet argument bytes 2 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x04",
+    "04",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -930,7 +930,7 @@ exports[`redesign real form produces wallet argument bytes 3 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x05160000000000000000000000000000000000000000",
+    "05160000000000000000000000000000000000000000",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -944,7 +944,7 @@ exports[`redesign real form produces wallet argument bytes 4 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x020000000300ff80",
+    "020000000300ff80",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -958,7 +958,7 @@ exports[`redesign real form produces wallet argument bytes 5 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0d0000000568656c6c6f",
+    "0d0000000568656c6c6f",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -972,7 +972,7 @@ exports[`redesign real form produces wallet argument bytes 6 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0e0000000368c3a9",
+    "0e0000000368c3a9",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -986,7 +986,7 @@ exports[`redesign real form produces wallet argument bytes 7 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0a02000000026869",
+    "0a02000000026869",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1000,7 +1000,7 @@ exports[`redesign real form produces wallet argument bytes 8 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x09",
+    "09",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1014,7 +1014,7 @@ exports[`redesign real form produces wallet argument bytes 9 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0c0000000101780100000000000000000000000000000007",
+    "0c0000000101780100000000000000000000000000000007",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1028,7 +1028,7 @@ exports[`redesign real form produces wallet argument bytes 10 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0a0c0000000101780100000000000000000000000000000008",
+    "0a0c0000000101780100000000000000000000000000000008",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1042,7 +1042,7 @@ exports[`redesign real form produces wallet argument bytes 11 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0b000000010100000000000000000000000000000009",
+    "0b000000010100000000000000000000000000000009",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1056,7 +1056,7 @@ exports[`redesign real form produces wallet argument bytes 12 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0b00000001010000000000000000000000000000000a",
+    "0b00000001010000000000000000000000000000000a",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1070,7 +1070,7 @@ exports[`redesign real form produces wallet argument bytes 13 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0b000000010c000000010178010000000000000000000000000000000b",
+    "0b000000010c000000010178010000000000000000000000000000000b",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1433,7 +1433,7 @@ exports[`sandbox real form produces wallet argument bytes 0 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x010000000000000000000000000000002a",
+    "010000000000000000000000000000002a",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1447,7 +1447,7 @@ exports[`sandbox real form produces wallet argument bytes 1 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x00ffffffffffffffffffffffffffffffff",
+    "00ffffffffffffffffffffffffffffffff",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1461,7 +1461,7 @@ exports[`sandbox real form produces wallet argument bytes 2 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x04",
+    "04",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1475,7 +1475,7 @@ exports[`sandbox real form produces wallet argument bytes 3 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x05160000000000000000000000000000000000000000",
+    "05160000000000000000000000000000000000000000",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1489,7 +1489,7 @@ exports[`sandbox real form produces wallet argument bytes 4 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x020000000300ff80",
+    "020000000300ff80",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1503,7 +1503,7 @@ exports[`sandbox real form produces wallet argument bytes 5 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0d0000000568656c6c6f",
+    "0d0000000568656c6c6f",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1517,7 +1517,7 @@ exports[`sandbox real form produces wallet argument bytes 6 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0e0000000368c3a9",
+    "0e0000000368c3a9",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1531,7 +1531,7 @@ exports[`sandbox real form produces wallet argument bytes 7 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0a02000000026869",
+    "0a02000000026869",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1545,7 +1545,7 @@ exports[`sandbox real form produces wallet argument bytes 8 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x09",
+    "09",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1559,7 +1559,7 @@ exports[`sandbox real form produces wallet argument bytes 9 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0c0000000101780100000000000000000000000000000007",
+    "0c0000000101780100000000000000000000000000000007",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1573,7 +1573,7 @@ exports[`sandbox real form produces wallet argument bytes 10 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0a0c0000000101780100000000000000000000000000000008",
+    "0a0c0000000101780100000000000000000000000000000008",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1587,7 +1587,7 @@ exports[`sandbox real form produces wallet argument bytes 11 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0b000000010100000000000000000000000000000009",
+    "0b000000010100000000000000000000000000000009",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1601,7 +1601,7 @@ exports[`sandbox real form produces wallet argument bytes 12 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0b00000001010000000000000000000000000000000a",
+    "0b00000001010000000000000000000000000000000a",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",
@@ -1615,7 +1615,7 @@ exports[`sandbox real form produces wallet argument bytes 13 1`] = `
 {
   "contract": "SP000000000000000000002Q6VF78.vectors",
   "functionArgs": [
-    "0x0b000000010c000000010178010000000000000000000000000000000b",
+    "0b000000010c000000010178010000000000000000000000000000000b",
   ],
   "functionName": "exercise",
   "method": "stx_callContract",

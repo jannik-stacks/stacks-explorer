@@ -7,13 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import { TextDecoder, TextEncoder } from 'util';
 
-Object.assign(global, {
-  TextEncoder,
-  TextDecoder,
-  Uint8Array: Object.getPrototypeOf(Buffer.prototype).constructor,
-});
 global.ResizeObserver = class {
   observe() {}
   unobserve() {}

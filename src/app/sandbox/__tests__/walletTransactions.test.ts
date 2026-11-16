@@ -1,8 +1,5 @@
 /** @jest-environment node */
 import { getPostCondition } from '@/app/txid/[txId]/redesign/function-called/function-call-post-condition-params-utils';
-import { serializeClarityValues } from '@/common/queries/test-utils/serializeClarityValues';
-
-import { request } from '@stacks/connect';
 
 import {
   callContract,
@@ -13,10 +10,30 @@ import {
   transferStx,
 } from '../utils/walletTransactions';
 
-jest.mock('@stacks/connect', () => ({ request: jest.fn() }));
-const requestMock = jest.mocked(request);
+const requestMock = jest.fn();
 const address = 'SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7';
-beforeEach(() => requestMock.mockReset());
+beforeEach(() => {
+  requestMock.mockReset();
+  const storage = new Map<string, string>();
+  (global as any).window = {
+    localStorage: {
+      getItem: (key: string) => storage.get(key) ?? null,
+      setItem: (key: string, value: string) => storage.set(key, value),
+      removeItem: (key: string) => storage.delete(key),
+    },
+    StacksProvider: {
+      request: async (method: string, params: unknown) => ({
+        jsonrpc: '2.0',
+        id: '1',
+        result: await requestMock(method, params),
+      }),
+    },
+  };
+  window.localStorage.setItem('STX_PROVIDER', 'StacksProvider');
+});
+afterEach(() => {
+  delete (global as any).window;
+});
 
 it('pins wallet request defaults and explicit transfer/deploy settings', async () => {
   requestMock.mockResolvedValue({ txid: 'tx' } as any);
@@ -69,21 +86,13 @@ it('serializes every post condition through the repository wallet boundary', asy
     postConditionMode: 'originator',
   });
   await callContract({ contract: `${address}.hello`, functionName: 'print', functionArgs: [] });
-  const calls = [];
-  for (const [method, params] of requestMock.mock.calls) {
-    const args = params as unknown as Parameters<typeof callContract>[0];
-    calls.push([
-      method,
-      { ...args, functionArgs: await serializeClarityValues(args.functionArgs) },
-    ]);
-  }
-  expect(calls).toMatchSnapshot();
+  expect(requestMock.mock.calls).toMatchSnapshot();
 });
 
 it('returns addresses and preserves parsed values', async () => {
   requestMock.mockResolvedValue({ addresses: [{ address }] } as any);
   await expect(getAddresses()).resolves.toEqual([{ address }]);
-  expect(requestMock.mock.calls).toEqual([['getAddresses']]);
+  expect(requestMock.mock.calls).toEqual([['getAddresses', undefined]]);
   expect(parseClarityValue({ type: 'uint', value: '42', extra: true })).toEqual({
     type: 'uint',
     value: '42',
@@ -108,5 +117,5 @@ it.each(operations)('returns null for wallet rejection (%#)', async operation =>
 it.each(operations)('propagates other wallet errors (%#)', async operation => {
   const error = new Error('Wallet unavailable');
   requestMock.mockRejectedValue(error);
-  await expect(operation()).rejects.toBe(error);
+  await expect(operation()).rejects.toThrow(error.message);
 });

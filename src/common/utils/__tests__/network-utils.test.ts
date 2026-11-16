@@ -1,3 +1,4 @@
+/** @jest-environment node */
 import { DEFAULT_DEVNET_SERVER } from '../../constants/constants';
 import { Network, NetworkModes } from '../../types/network';
 import {

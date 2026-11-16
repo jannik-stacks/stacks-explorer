@@ -1,3 +1,4 @@
+/** @jest-environment node */
 import { PostConditionMode } from '@/common/utils/fixtures/stacks-behavior/sdk-constants';
 
 import { postConditionModeFromName, postConditionModeNames } from '../post-condition-mode-utils';

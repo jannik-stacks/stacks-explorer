@@ -7,7 +7,7 @@
 The app already uses Kit, but obsolete direct SDK/Leather declarations and ESLint dependency ownership remain. Finish dependency pruning without changing captured behavior or formatting policy.
 
 ## Components Involved
-Root package.json and pnpm-lock.yaml, ESLint dependency ownership, Jest migration leftovers, dependency/import-site inventories, part-1 boundary proofs and NFT buffer ID formatting.
+Root package.json and pnpm-lock.yaml, ESLint dependency ownership, Jest migration leftovers, dependency/import-site inventories, part-1 boundary proofs and native Kit form behavior.
 
 ## Dependencies
 Part-2 app migration and part-1 behavior vectors must pass before removal. Retain Connect, Explorer API/metadata clients and schemas, BNS resolution, and the Prettier policy exception.
@@ -34,7 +34,7 @@ No implementation blockers. Browser coverage is unavailable because the sandbox 
 Keep transitive SDKs only for retained functionality without a Kit replacement. Preserve the transactions pin if retained integrations require its existing resolution. Keep formatting policy unchanged; no frozen-test changes or unrelated formatting.
 
 ## Status
-Completed — coverage, lint, all 132 unit suites, standalone type checking and the production build pass on base 5539d1d; browser smoke remains the sole maintainer-approved exception.
+Completed — both review-requested files match the base; focused/full tests, coverage, lint, production build and standalone type checking pass.
 
 ## Notes
 
@@ -99,13 +99,11 @@ Only verification documentation changed for this review follow-up; previous lint
 
 ### Merge follow-up: moved base and import-site audit
 
-The checkout already contains base de092e9. Merge verification reports a staking loader assertion failure (page-loaders.test.tsx:109) and no stacks-kit-migration/inventory.json for 93 Kit import sites. Trace the independently created reward-history deadlines, reproduce a clock tick between them, and make the existing assertion match the actual budget ownership without changing runtime behavior. Inventory all import sites and their behavior proofs in stacks-kit-migration/inventory.json. Run the focused regression and mandatory lint/unit/type/build checks on the updated base. Browser coverage retains only the explicitly approved exception.
-
-The reported loader failure is intermittent: the untouched focused suite and exact full engine unit command initially passed. A scripted 1 ms Date.now tick between the independently created featured-bond and page-loader budgets then reproduced the failure deterministically (expected deadline 1794586942495, received 1794586942496). The existing wiring test now accepts a numeric settlement deadline instead of requiring it to equal the unrelated featured-bond deadline. The ticking-clock regression is retained and restored in finally; runtime code and captured migration vectors are unchanged. Focused result: 30/30 passed. Lint passed with the existing six warnings; the full engine unit command passed all 123 suites, 1,469 tests and 104 snapshots (two skips).
+The checkout already contains base de092e9. Merge verification reports no stacks-kit-migration/inventory.json for 93 Kit import sites. Inventory all import sites and their behavior proofs, then run mandatory lint/unit/type/build checks. A separately reported staking deadline assertion issue is outside this dependency-cleanup scope; its test remains identical to the base revision. Browser coverage retains only the explicitly approved exception.
 
 A TypeScript AST audit independently located exactly the reported 93 production import sites: 86 from Kit and seven from retained Connect (including NetworkString type imports). Its first-use locations match the reported examples exactly (TokenAssetListItem.tsx:48, useBnsNames.ts:46, NFTTable.tsx:56 and ListArgumentInput.tsx:16). The dependency-package inventory is separate from this import-site inventory. The new JSON records file, first-use line, source, local/imported symbol, import syntax, migration/retention status, sink categories and proof references. Shared test evidence, TypeScript contracts and browser-only gaps are explicitly distinguished.
 
-Final checks for the test fix on base de092e9: lint exited 0; `CI=1 pnpm run test:unit` exited 0 (123 suites, 1,469 passed / two skipped tests, 104 snapshots); the sequential production build exited 0 including TypeScript, 21 static pages and tracing with the same invocation-only local font response; standalone `pnpm typecheck` exited 0. `git diff --check` passed. These checks cover the unchanged executable source; the added import-site inventory is independently audited for coverage and proof-reference integrity. /news/news.md still has no updates.
+Earlier verification on base de092e9: lint exited 0; `CI=1 pnpm run test:unit` exited 0 (123 suites, 1,469 passed / two skipped tests, 104 snapshots); the sequential production build exited 0 including TypeScript, 21 static pages and tracing with the same invocation-only local font response; standalone `pnpm typecheck` exited 0. `git diff --check` passed. These checks cover the unchanged executable source; the added import-site inventory is independently audited for coverage and proof-reference integrity. /news/news.md still has no updates.
 
 ### Complete import-site inventory
 
@@ -121,7 +119,7 @@ The part-1 history provides the actual schema and checker. Replaced the invalid 
 
 Restored the part-1 wallet/session, network-cookie and query/search-cache tests, their provider/fixtures and original provider snapshot. Focused tests initially failed on old numeric post-condition selectors, then exposed only an optional 0x prefix difference at the actual Connect provider boundary. Updated the test driver to native Kit selectors/bigint and compare canonical argument hex, leaving all captured bytes/expected outputs untouched. Focused result: three suites, 24 tests and the original snapshot passed. The browser exception is not used for these storage proofs. No production code or dependency changed.
 
-Also restored the original address/NFT/BNS component vectors and their snapshots to provide direct boundary proofs. They exposed one actual migration regression: the captured buffer NFT ID 0x00ff80 lost its 0x prefix in Gamma links, metadata search URLs and cache keys. Added only a native Kit buffer discriminator in NFTTable to preserve the prior visible ID format. Observed the original snapshot fail before the fix; all 28 address tests / 23 original snapshots then passed without changing any expected output. No legacy adapter was introduced. This required one production consumer correction beyond declaration pruning, directly justified by the existing part-1 behavior contract.
+Restored the original address/NFT/BNS component vectors and their snapshots to provide direct boundary proofs. The existing base tokenId branch already preserves buffer prefixes in Gamma links, metadata URLs and cache keys. The extra buffer branch added to value was redundant and is removed in the review follow-up. NFTTable has no change relative to the base. The captured address outputs remain unchanged.
 
 ### Final resubmission verification
 
@@ -130,7 +128,7 @@ Also restored the original address/NFT/BNS component vectors and their snapshots
 - `CI=1 pnpm run test:unit`: exit 0; 127 suites, 1,521 passed / two skipped tests, all 128 snapshots passed.
 - Sequential font-mocked `pnpm build`: exit 0, including compilation, TypeScript, all 21 static pages and standalone tracing. Standalone `pnpm typecheck`: exit 0. The invocation-only font workaround is unchanged.
 - Restored checker, both restored snapshot files and all three restored JSON fixtures are byte-identical to part 1 (c4c2e874); no expected bytes/outputs were regenerated. Only the wallet test driver uses native Kit selectors/bigint and canonical optional-prefix hex.
-- Final PR scope: 19 files, every file below 1 MiB. The additional files restore the required part-1 checker and live boundary/storage proofs absent from the moved base. The only runtime correction preserves buffer NFT ID prefixes in existing URLs/cache keys; no adapter or dependency was added. The deterministic staking deadline regression remains green.
+- Final PR scope: 19 files, every file below 1 MiB. The additional files restore the required part-1 checker and live boundary/storage proofs absent from the moved base. The redundant NFT value branch and unrelated staking test changes from that checkpoint are removed in the review follow-up below; neither file remains in the PR diff.
 - `git diff --check` passed. Read /news/news.md before resubmitting; it contains no updates. Resend the push and PR proposals with the browser limitation and manual page checklist.
 
 ### Merge follow-up: base 5539d1d behavior snapshots
@@ -143,4 +141,16 @@ Restored number inputs in primitive/tuple fields and post-condition amounts in b
 
 Current checks on base 5539d1d: lint passed (six existing warnings, Prettier passed); the exact engine command CI=1 pnpm run test:unit passed all 132 suites, 1,639 tests and 234 snapshots (two skips). Seven additional captured snapshots now execute because the old selector exceptions no longer abort their tests. Coverage remains 96 tracked imports, zero missing sites/proof problems/removed entries. Manifest, lockfile and npm configuration are unchanged from the successful lifecycle-enabled clean installation. Production build and standalone type checking also exited 0.
 
-Final verification on the updated base: the sequential production build exited 0 with the documented invocation-only font response, including compilation, TypeScript, all 21 static pages and tracing. Standalone pnpm typecheck exited 0. The final source audit found no obsolete SDK/Leather import in source or configuration; the dependency inventory and #3 exception list remain unchanged and fully justified. PR scope is 26 files; the largest is pnpm-lock.yaml at 598,222 bytes, all below 1 MiB. git diff --check passed. The original ABI snapshot ordering is retained to avoid unrelated churn. Read /news/news.md before finalizing: no updates. All implementation and verification tasks are complete; browser smoke remains the explicitly approved limitation and manual checklist above.
+Final verification on the updated base: the sequential production build exited 0 with the documented invocation-only font response, including compilation, TypeScript, all 21 static pages and tracing. Standalone pnpm typecheck exited 0. The final source audit found no obsolete SDK/Leather import in source or configuration; the dependency inventory and #3 exception list remain unchanged and fully justified. PR scope is 24 files after the review-requested reverts; the largest is pnpm-lock.yaml at 598,222 bytes, all below 1 MiB. git diff --check passed. The original ABI snapshot ordering is retained to avoid unrelated churn. Read /news/news.md before finalizing: no updates. All implementation and verification tasks are complete; browser smoke remains the explicitly approved limitation and manual checklist above.
+
+### Review follow-up: remove redundant and unrelated changes
+
+- [x] Restore NFTTable.tsx to the base: its existing tokenId buffer branch already retains the 0x prefix; no NFT runtime fix is needed or claimed.
+- [x] Restore all of staking/__tests__/page-loaders.test.tsx to the base, including the original Date.now behavior, promise sequencing and exact deadline assertion. Any staking assertion correction belongs in a separate base-branch change.
+- [x] Rerun address/staking proofs, coverage, lint, unit tests, build and standalone type checks; correct both documents and PR claims.
+
+Both files are byte-identical to base 5539d1d (also identical to the corresponding agentgraph/5 files). The focused address/staking suites passed all 58 tests and 23 original snapshots after restoration. Coverage passes all 96 imports with zero missing sites, proof problems or removed entries.
+
+Post-revert lint exited 0 (six existing warnings, Prettier passed). The exact engine unit command passed all 132 suites, 1,639 tests and 234 snapshots, with two skips. Both reverted files are absent from the PR diff against the base; the remaining PR scope is 24 files.
+
+Post-revert production build exited 0 using the same documented invocation-only font response and resource limits; compilation, TypeScript, all 21 static pages and tracing completed. Standalone pnpm typecheck exited 0. Neither NFTTable nor the staking loader test differs from the base. The inventory document and proposed PR body no longer claim an NFT runtime fix or staking test correction. All checks are complete; git diff --check passed and /news/news.md contains no updates. Browser smoke remains the previously approved limitation with the manual page checklist.

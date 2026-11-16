@@ -55,15 +55,7 @@ export function NFTTable() {
       const hex = nft.value.hex;
       const cv = Cl.deserialize(hex);
       const value =
-        cv.type === 'buffer'
-          ? `0x${cv.value}`
-          : 'value' in cv
-            ? cv.value
-            : cv.type === 'true'
-              ? true
-              : cv.type === 'false'
-                ? false
-                : null;
+        'value' in cv ? cv.value : cv.type === 'true' ? true : cv.type === 'false' ? false : null;
       const isNumericString = typeof value === 'string' && /^\d+$/.test(value);
       const tokenId =
         cv.type === 'buffer'

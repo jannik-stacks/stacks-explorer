@@ -263,10 +263,11 @@ snapshot. Only the wallet test driver changes: native Kit post-condition
 strings/bigint replace numeric SDK selectors, and optional argument hex prefixes
 are normalized when comparing the captured wire bytes. No captured expected
 bytes or stored fixtures changed. Restored address/NFT/BNS component vectors
-also pass all 28 tests and 23 original snapshots. They exposed and corrected
-the lost 0x prefix for buffer NFT IDs in metadata URLs/cache keys and Gamma
-links; the consumer now formats the native Kit buffer value to preserve the
-existing observable behavior. Browser smoke coverage
+cover the original captured outputs. The existing base tokenId branch already
+preserves buffer NFT ID prefixes in metadata URLs/cache keys and Gamma links.
+The redundant buffer branch in value is removed; NFTTable remains unchanged
+from the base revision. The unrelated staking loader test also remains
+identical to the base, including its exact deadline assertion. Browser smoke coverage
 remains separately unavailable under the maintainer-approved exception.
 
 Final resubmission checks: the original checker passes all 96 tracked sites
@@ -300,3 +301,11 @@ source/configuration audit found no obsolete SDK/Leather imports. The pnpm why
 inventory and #3 exception list remain unchanged; no package, version, override
 or approval policy changed in this follow-up. Browser smoke remains the sole
 maintainer-approved verification exception, with manual pages in the workplan.
+
+After removing the redundant NFT value branch and restoring the complete
+staking loader test to the base, verification again passed: 58 focused tests
+and 23 snapshots, lint, all 132 unit suites (1,639 passed tests, two skips,
+234 snapshots), the 96-site inventory check, the documented font-mocked
+production build and standalone type checking. Neither file remains in the
+PR diff against the base. No NFT runtime fix or staking test change is part
+of this dependency cleanup.

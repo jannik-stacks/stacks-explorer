@@ -1,5 +1,6 @@
 import { encodeOptional, parseReadOnlyResponse } from '@/app/sandbox/utils';
 import { NetworkModes } from '@/common/types/network';
+import { QueryClient, dehydrate, hydrate } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
 
 import { behaviorNetwork, createBehaviorWrapper } from '../test-utils/BehaviorProvider';
@@ -19,7 +20,7 @@ afterEach(() => {
   localStorage.clear();
   jest.restoreAllMocks();
 });
-it('keeps serialized read-only arguments in the query key and exposes cached results', async () => {
+it('keeps serialized read-only arguments in the query key and restores JSON cached results', async () => {
   jest.spyOn(Date, 'now').mockReturnValue(1700000000000);
   jest
     .spyOn(global, 'fetch')
@@ -48,7 +49,11 @@ it('keeps serialized read-only arguments in the query key and exposes cached res
     1,
   ];
   expect(queryClient.getQueryData(key)).toEqual({ okay: true, result: '0x0703' });
-  expect(parseReadOnlyResponse(queryClient.getQueryData(key) as any)).toBe('(ok true)');
+  const stored = JSON.stringify(dehydrate(queryClient));
+  const restored = new QueryClient();
+  hydrate(restored, JSON.parse(stored));
+  expect(restored.getQueryData(key)).toEqual({ okay: true, result: '0x0703' });
+  expect(parseReadOnlyResponse(restored.getQueryData(key) as any)).toBe('(ok true)');
 });
 it.each([NetworkModes.Mainnet, NetworkModes.Testnet])(
   'persists BNS owner results and restores their URL inputs on %s',
@@ -86,6 +91,15 @@ it('loads existing recent-result JSON and treats malformed JSON as empty', () =>
   expect(useRecentResultsLocalStorage()[0].result.entity_id).toBe('SP000000000000000000002Q6VF78');
   localStorage.setItem('recentResults', '{');
   expect(useRecentResultsLocalStorage()).toEqual([]);
+});
+
+it('loads a literal pre-migration query-cache record and shows its result', () => {
+  const stored = require('@/common/utils/fixtures/stacks-behavior/stored-query-cache.json');
+  const queryClient = new QueryClient();
+  hydrate(queryClient, stored);
+  const data = queryClient.getQueryData(stored.queries[0].queryKey);
+  expect(data).toEqual({ okay: true, result: '0x0703' });
+  expect(parseReadOnlyResponse(data as any)).toBe('(ok true)');
 });
 
 it.each([

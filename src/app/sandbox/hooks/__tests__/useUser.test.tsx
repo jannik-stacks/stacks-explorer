@@ -173,6 +173,16 @@ it('serializes actual wallet-provider RPC requests and preserves returned transa
   expect(await getAddresses()).toEqual([
     { symbol: 'STX', address: storedWallet.decoded.addresses.stx[0].address },
   ]);
-  expect(provider.request.mock.calls).toMatchSnapshot();
+  expect(
+    provider.request.mock.calls.map(([method, params]: any[]) => [
+      method,
+      method === 'stx_callContract'
+        ? {
+            ...params,
+            functionArgs: params.functionArgs.map((hex: string) => hex.replace(/^0x/, '')),
+          }
+        : params,
+    ])
+  ).toMatchSnapshot();
   delete (window as any).StacksProvider;
 });

@@ -1,0 +1,50 @@
+{
+  "abi": {
+    "name": "exercise",
+    "access": "public",
+    "outputs": { "type": "bool" },
+    "args": [
+      { "name": "amount", "type": "uint128" },
+      { "name": "signed", "type": "int128" },
+      { "name": "flag", "type": "bool" },
+      { "name": "text", "type": { "string-ascii": { "length": 20 } } },
+      { "name": "unicode", "type": { "string-utf8": { "length": 20 } } },
+      { "name": "bytes", "type": { "buffer": { "length": 3 } } },
+      { "name": "who", "type": "principal" },
+      { "name": "memo", "type": { "optional": { "buffer": { "length": 34 } } } },
+      { "name": "optional", "type": { "optional": "uint128" } },
+      { "name": "tuple", "type": { "tuple": [{ "name": "x", "type": "uint128" }] } },
+      {
+        "name": "optional-tuple",
+        "type": { "optional": { "tuple": [{ "name": "x", "type": "uint128" }] } }
+      },
+      { "name": "list", "type": { "list": { "length": 3, "type": "uint128" } } },
+      {
+        "name": "tuple-list",
+        "type": {
+          "list": { "length": 3, "type": { "tuple": [{ "name": "x", "type": "uint128" }] } }
+        }
+      },
+      {
+        "name": "optional-list",
+        "type": { "list": { "length": 3, "type": { "optional": "uint128" } } }
+      }
+    ]
+  },
+  "values": {
+    "amount": "340282366920938463463374607431768211455",
+    "signed": "-170141183460469231731687303715884105728",
+    "flag": "false",
+    "text": "hello",
+    "unicode": "hé🙂",
+    "bytes": "00ff80",
+    "who": "SP000000000000000000002Q6VF78.hello",
+    "memo": "hi",
+    "optional": "42",
+    "tuple": { "x": "1" },
+    "optional-tuple": { "x": "2" },
+    "list": ["0", "1"],
+    "tuple-list": [{ "x": "3" }, { "x": "4" }],
+    "optional-list": ["5", "6"]
+  }
+}

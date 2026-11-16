@@ -1,4 +1,4 @@
 import '@testing-library/jest-dom';
 import structuredClone from '@ungap/structured-clone';
 
-global.structuredClone = structuredClone;
+if (!global.structuredClone) global.structuredClone = structuredClone;

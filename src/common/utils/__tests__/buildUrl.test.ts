@@ -1,5 +1,3 @@
-import { ChainId } from '@stacks/network';
-
 import { Network, NetworkModes } from '../../types/network';
 import { buildUrl, getQueryParams } from '../buildUrl';
 
@@ -11,7 +9,7 @@ const buildNetwork = (
   btcBlockBaseUrl: '',
   btcTxBaseUrl: '',
   btcAddressBaseUrl: '',
-  networkId: ChainId.Mainnet,
+  networkId: 1,
   ...network,
 });
 

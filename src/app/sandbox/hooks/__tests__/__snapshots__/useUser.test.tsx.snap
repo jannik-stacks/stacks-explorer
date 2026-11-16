@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serializes actual wallet-provider RPC requests and preserves returned transaction data 1`] = `
+[
+  [
+    "getAddresses",
+    undefined,
+  ],
+  [
+    "stx_transferStx",
+    {
+      "amount": "123",
+      "memo": "hé",
+      "network": "mainnet",
+      "recipient": "SP000000000000000000002Q6VF78",
+    },
+  ],
+  [
+    "stx_deployContract",
+    {
+      "clarityCode": "(ok true)",
+      "clarityVersion": 4,
+      "name": "vectors",
+      "network": "mainnet",
+      "postConditionMode": "allow",
+    },
+  ],
+  [
+    "stx_callContract",
+    {
+      "contract": "SP000000000000000000002Q6VF78.vectors",
+      "functionArgs": [
+        "010000000000000000000000000000002a",
+        "03",
+        "0d0000000568656c6c6f",
+        "0a010000000000000000000000000000002a",
+      ],
+      "functionName": "exercise",
+      "network": "mainnet",
+      "postConditionMode": "deny",
+      "postConditions": [
+        "000216000000000000000000000000000000000000000001000000000000007b",
+      ],
+    },
+  ],
+  [
+    "stx_signMessage",
+    {
+      "message": "hé",
+    },
+  ],
+  [
+    "getAddresses",
+    undefined,
+  ],
+]
+`;

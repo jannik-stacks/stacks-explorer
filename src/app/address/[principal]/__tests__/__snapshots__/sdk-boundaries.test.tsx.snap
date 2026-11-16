@@ -1,0 +1,650 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NFT ascii bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:Hello, world!",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_Hello, world!",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_Hello, world!",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3AHello%2C%20world!",
+  ],
+}
+`;
+
+exports[`NFT buffer bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:0x00ff80",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_0x00ff80",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_0x00ff80",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A0x00ff80",
+  ],
+}
+`;
+
+exports[`NFT contract bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:SP000000000000000000002Q6VF78.pox-4",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_SP000000000000000000002Q6VF78.pox-4",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_SP000000000000000000002Q6VF78.pox-4",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3ASP000000000000000000002Q6VF78.pox-4",
+  ],
+}
+`;
+
+exports[`NFT err bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:[object Object]",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A%5Bobject%20Object%5D",
+  ],
+}
+`;
+
+exports[`NFT false bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:false",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_false",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_false",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3Afalse",
+  ],
+}
+`;
+
+exports[`NFT int-max bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:170141183460469231731687303715884105727",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_170141183460469231731687303715884105727",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_170141183460469231731687303715884105727",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A170141183460469231731687303715884105727",
+  ],
+}
+`;
+
+exports[`NFT int-min bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:-170141183460469231731687303715884105728",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_-170141183460469231731687303715884105728",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_-170141183460469231731687303715884105728",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A-170141183460469231731687303715884105728",
+  ],
+}
+`;
+
+exports[`NFT int-negative bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:-1",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_-1",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_-1",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A-1",
+  ],
+}
+`;
+
+exports[`NFT nested bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:[object Object]",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A%5Bobject%20Object%5D",
+  ],
+}
+`;
+
+exports[`NFT none bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:null",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_null",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_null",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3Anull",
+  ],
+}
+`;
+
+exports[`NFT ok bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:[object Object]",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A%5Bobject%20Object%5D",
+  ],
+}
+`;
+
+exports[`NFT principal bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:SP000000000000000000002Q6VF78",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_SP000000000000000000002Q6VF78",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_SP000000000000000000002Q6VF78",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3ASP000000000000000000002Q6VF78",
+  ],
+}
+`;
+
+exports[`NFT some bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:[object Object]",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_[object Object]",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A%5Bobject%20Object%5D",
+  ],
+}
+`;
+
+exports[`NFT true bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:true",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_true",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_true",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3Atrue",
+  ],
+}
+`;
+
+exports[`NFT uint-max bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:340282366920938463463374607431768211455",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_340282366920938463463374607431768211455",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_340282366920938463463374607431768211455",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A340282366920938463463374607431768211455",
+  ],
+}
+`;
+
+exports[`NFT uint-zero bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:0",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_0",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_0",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3A0",
+  ],
+}
+`;
+
+exports[`NFT utf8 bytes produce stable links, metadata search URLs and cache keys 1`] = `
+{
+  "keys": [
+    [
+      "nftHoldings",
+      "SP000000000000000000002Q6VF78",
+      10,
+      0,
+    ],
+    [
+      "bulk-token-metadata",
+      "https://vectors.example",
+      [
+        "SP000000000000000000002Q6VF78.collectible:hé🙂",
+      ],
+    ],
+    [
+      "image-content-type",
+      undefined,
+    ],
+  ],
+  "links": [
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_hé🙂",
+    "https://gamma.io/stacks/nfts/SP000000000000000000002Q6VF78.collectible_hé🙂",
+    "/txid/SP000000000000000000002Q6VF78.collectible?chain=mainnet",
+  ],
+  "urls": [
+    "https://vectors.example/extended/v1/tokens/nft/holdings?principal=SP000000000000000000002Q6VF78&limit=10&offset=0&tx_metadata=false",
+    "https://vectors.example/metadata/v1/search?contract=SP000000000000000000002Q6VF78.collectible%3Ah%C3%A9%F0%9F%99%82",
+  ],
+}
+`;
+
+exports[`pins BNS SDK fallback argument bytes and decoded output on mainnet 1`] = `
+{
+  "found": true,
+  "result": {
+    "display_name": "alice.btc",
+    "entity_id": "SP000000000000000000002Q6VF78",
+    "entity_type": "bns_address",
+  },
+}
+`;
+
+exports[`pins BNS SDK fallback argument bytes and decoded output on mainnet 2`] = `
+{
+  "SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF.BNS-V2::BNS-V2": {
+    "name": "616c696365",
+    "namespace": "616c696365",
+  },
+}
+`;
+
+exports[`pins BNS SDK fallback argument bytes and decoded output on mainnet 3`] = `
+[
+  {
+    "body": {
+      "arguments": [
+        "0x0200000005616c696365",
+        "0x0200000003627463",
+      ],
+      "sender": "SP3K34Y7JSVKT7HYVCQ65T1Q6AFV10FSH7ATVAZJV",
+    },
+    "url": "https://api.mainnet.hiro.so/v2/contracts/call-read/SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF/BNS-V2/get-bns-info",
+  },
+  {
+    "body": {
+      "arguments": [
+        "0x01ffffffffffffffffffffffffffffffff",
+      ],
+      "sender": "SP3K34Y7JSVKT7HYVCQ65T1Q6AFV10FSH7ATVAZJV",
+    },
+    "url": "https://api.mainnet.hiro.so/v2/contracts/call-read/SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF/BNS-V2/get-bns-from-id",
+  },
+]
+`;
+
+exports[`pins BNS SDK fallback argument bytes and decoded output on testnet 1`] = `
+{
+  "found": true,
+  "result": {
+    "display_name": "alice.btc",
+    "entity_id": "SP000000000000000000002Q6VF78",
+    "entity_type": "bns_address",
+  },
+}
+`;
+
+exports[`pins BNS SDK fallback argument bytes and decoded output on testnet 2`] = `
+{
+  "SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF.BNS-V2::BNS-V2": {
+    "name": "616c696365",
+    "namespace": "616c696365",
+  },
+}
+`;
+
+exports[`pins BNS SDK fallback argument bytes and decoded output on testnet 3`] = `
+[
+  {
+    "body": {
+      "arguments": [
+        "0x0200000005616c696365",
+        "0x0200000003627463",
+      ],
+      "sender": "SP3K34Y7JSVKT7HYVCQ65T1Q6AFV10FSH7ATVAZJV",
+    },
+    "url": "https://api.testnet.hiro.so/v2/contracts/call-read/ST2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D9SZJQ0M/BNS-V2/get-bns-info",
+  },
+  {
+    "body": {
+      "arguments": [
+        "0x01ffffffffffffffffffffffffffffffff",
+      ],
+      "sender": "SP3K34Y7JSVKT7HYVCQ65T1Q6AFV10FSH7ATVAZJV",
+    },
+    "url": "https://api.testnet.hiro.so/v2/contracts/call-read/ST2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D9SZJQ0M/BNS-V2/get-bns-from-id",
+  },
+]
+`;

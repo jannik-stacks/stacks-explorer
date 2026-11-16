@@ -2,17 +2,6 @@
 import { stacksAPIFetch } from '@/api/stacksAPIFetch';
 import type { PoxInfo } from '@/common/queries/usePoxInforRaw';
 
-import {
-  ClarityValue,
-  cvToHex,
-  responseErrorCV,
-  responseOkCV,
-  someCV,
-  trueCV,
-  tupleCV,
-  uintCV,
-} from '@stacks/transactions';
-
 import type { Bond } from '../data';
 import { fetchCurrentCycleEstimate, getPendingCalculationHeight } from '../reward-estimate';
 
@@ -34,27 +23,29 @@ const bonds = [
 function respond(body: unknown) {
   return { ok: true, json: async () => body } as Response;
 }
-function mockReads(overrides: Record<string, ClarityValue> = {}) {
+function mockReads(overrides: Record<string, string> = {}) {
   fetchMock.mockImplementation(async (url, init) => {
     if (url.includes('/extended/v2/blocks'))
       return respond({ results: [{ index_block_hash: `0x${tip}`, burn_block_height: 965299 }] });
     const fn = new URL(url).pathname.split('/').pop()!;
     const args = JSON.parse(init?.body as string).arguments;
-    const values: Record<string, ClarityValue> = {
-      'current-pox-reward-cycle': uintCV(142),
-      'current-distribution-cycle': uintCV(284),
-      'get-last-reward-compute-height': uintCV(964249),
-      'get-rewards-per-token-for-cycle': uintCV('1000000000000000000'),
-      'get-total-shares-staked-for-cycle': uintCV(
-        args[1] === cvToHex(someCV(uintCV(1))) ? 100000000 : 100
-      ),
-      'get-new-rewards': uintCV(100000),
-      'get-protocol-bond': someCV(tupleCV({ 'target-rate': uintCV(300) })),
-      'assert-all-active-bonds-included': responseOkCV(trueCV()),
+    const values: Record<string, string> = {
+      'current-pox-reward-cycle': '0x010000000000000000000000000000008e',
+      'current-distribution-cycle': '0x010000000000000000000000000000011c',
+      'get-last-reward-compute-height': '0x01000000000000000000000000000eb699',
+      'get-rewards-per-token-for-cycle': '0x0100000000000000000de0b6b3a7640000',
+      'get-total-shares-staked-for-cycle':
+        args[1] === '0x0a0100000000000000000000000000000001'
+          ? '0x0100000000000000000000000005f5e100'
+          : '0x0100000000000000000000000000000064',
+      'get-new-rewards': '0x01000000000000000000000000000186a0',
+      'get-protocol-bond':
+        '0x0a0c000000010b7461726765742d72617465010000000000000000000000000000012c',
+      'assert-all-active-bonds-included': '0x0703',
       ...overrides,
     };
     if (!values[fn]) throw new Error(`Unexpected read ${fn}`);
-    return respond({ okay: true, result: cvToHex(values[fn]) });
+    return respond({ okay: true, result: values[fn] });
   });
 }
 beforeEach(() => fetchMock.mockReset());
@@ -68,12 +59,18 @@ test('combines confirmed credits with a bond-first estimate at one pinned block'
     projectedTotalSats: BigInt(68200),
   });
   const reads = fetchMock.mock.calls.filter(([url]) => url.includes('/call-read/'));
+  expect(
+    reads.map(([url, init]) => ({
+      path: new URL(url).pathname,
+      body: JSON.parse(init!.body as string),
+    }))
+  ).toMatchSnapshot();
   expect(reads.length).toBeGreaterThan(6);
   expect(reads.every(([url]) => new URL(url).searchParams.get('tip') === tip)).toBe(true);
 });
 
 test('does not mix a pending previous-cycle pool into the current cycle', async () => {
-  mockReads({ 'get-last-reward-compute-height': uintCV(963199) });
+  mockReads({ 'get-last-reward-compute-height': '0x01000000000000000000000000000eb27f' });
   const result = await fetchCurrentCycleEstimate(pox, bonds, 'mainnet');
   expect(result.estimatedSats).toBeUndefined();
   expect(result.projectedTotalSats).toBeUndefined();
@@ -81,7 +78,7 @@ test('does not mix a pending previous-cycle pool into the current cycle', async 
 });
 
 test('keeps confirmed credits when calculations are delayed by multiple intervals', async () => {
-  mockReads({ 'get-last-reward-compute-height': uintCV(962149) });
+  mockReads({ 'get-last-reward-compute-height': '0x01000000000000000000000000000eae65' });
   const result = await fetchCurrentCycleEstimate(pox, bonds, 'mainnet');
   expect(result.estimatedSats).toBeUndefined();
   expect(result.projectedTotalSats).toBeUndefined();
@@ -103,11 +100,11 @@ test('omits the forecast when the pinned block has no burn height', async () => 
 });
 
 test('rejects an incomplete active-bond set and a cycle rollover', async () => {
-  mockReads({ 'assert-all-active-bonds-included': responseErrorCV(uintCV(1)) });
+  mockReads({ 'assert-all-active-bonds-included': '0x080100000000000000000000000000000001' });
   await expect(fetchCurrentCycleEstimate(pox, bonds, 'mainnet')).rejects.toThrow(
     'missing an active bond'
   );
-  mockReads({ 'current-pox-reward-cycle': uintCV(143) });
+  mockReads({ 'current-pox-reward-cycle': '0x010000000000000000000000000000008f' });
   await expect(fetchCurrentCycleEstimate(pox, bonds, 'mainnet')).rejects.toThrow('cycle boundary');
 });
 

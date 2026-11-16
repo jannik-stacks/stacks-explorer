@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sandbox post-condition selectable labels and serialized values remain stable 1`] = `
+{
+  "options": [
+    {
+      "label": "STX Post Condition",
+      "value": 0,
+    },
+    {
+      "label": "Fungible Post Condition",
+      "value": 1,
+    },
+    {
+      "label": "Non-Fungible Post Condition",
+      "value": 2,
+    },
+    {
+      "label": "Staking Post Condition",
+      "value": 3,
+    },
+    {
+      "label": "PoX Post Condition",
+      "value": 4,
+    },
+  ],
+  "parameters": {
+    "0": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAmount",
+    ],
+    "1": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAmount",
+      "postConditionAssetAddress",
+      "postConditionAssetContractName",
+      "postConditionAssetName",
+    ],
+    "2": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAssetAddress",
+      "postConditionAssetContractName",
+      "postConditionAssetName",
+    ],
+    "3": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAmount",
+    ],
+    "4": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+    ],
+  },
+}
+`;

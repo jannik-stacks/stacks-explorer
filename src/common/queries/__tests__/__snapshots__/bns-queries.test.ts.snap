@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pins BNS argument bytes for .btc 1`] = `
+[
+  [
+    "https://custom.example/extended/v1/tokens/nft/history?asset_identifier=SP000000000000000000002Q6VF78.bns%3A%3Anames&value=0x0c00000002046e616d650200000000096e616d6573706163650200000003627463&tx_metadata=false",
+    {
+      "next": {
+        "revalidate": 60,
+      },
+    },
+  ],
+]
+`;
+
+exports[`pins BNS argument bytes for alice 1`] = `
+[
+  [
+    "https://custom.example/extended/v1/tokens/nft/history?asset_identifier=SP000000000000000000002Q6VF78.bns%3A%3Anames&value=0x0c00000002046e616d650200000005616c696365096e616d6573706163650200000003627463&tx_metadata=false",
+    {
+      "next": {
+        "revalidate": 60,
+      },
+    },
+  ],
+]
+`;
+
+exports[`pins BNS argument bytes for alice.btc 1`] = `
+[
+  [
+    "https://custom.example/extended/v1/tokens/nft/history?asset_identifier=SP000000000000000000002Q6VF78.bns%3A%3Anames&value=0x0c00000002046e616d650200000005616c696365096e616d6573706163650200000003627463&tx_metadata=false",
+    {
+      "next": {
+        "revalidate": 60,
+      },
+    },
+  ],
+]
+`;
+
+exports[`pins BNS argument bytes for hé.btc 1`] = `
+[
+  [
+    "https://custom.example/extended/v1/tokens/nft/history?asset_identifier=SP000000000000000000002Q6VF78.bns%3A%3Anames&value=0x0c00000002046e616d65020000000368c3a9096e616d6573706163650200000003627463&tx_metadata=false",
+    {
+      "next": {
+        "revalidate": 60,
+      },
+    },
+  ],
+]
+`;

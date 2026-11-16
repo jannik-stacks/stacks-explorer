@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`contract-log boundary outputs shows captured ascii log bytes 1`] = `""Hello, world!""`;
+
+exports[`contract-log boundary outputs shows captured contract log bytes 1`] = `"'SP000000000000000000002Q6VF78.pox-4"`;
+
+exports[`contract-log boundary outputs shows captured err log bytes 1`] = `"(err u1)"`;
+
+exports[`contract-log boundary outputs shows captured false log bytes 1`] = `"false"`;
+
+exports[`contract-log boundary outputs shows captured int-max log bytes 1`] = `"170141183460469231731687303715884105727"`;
+
+exports[`contract-log boundary outputs shows captured int-min log bytes 1`] = `"-170141183460469231731687303715884105728"`;
+
+exports[`contract-log boundary outputs shows captured int-negative log bytes 1`] = `"-1"`;
+
+exports[`contract-log boundary outputs shows captured nested log bytes 1`] = `
+"(ok (some {
+  a: (list
+    u0
+    u1
+  ),
+  b: none
+}))"
+`;
+
+exports[`contract-log boundary outputs shows captured none log bytes 1`] = `"none"`;
+
+exports[`contract-log boundary outputs shows captured ok log bytes 1`] = `"(ok true)"`;
+
+exports[`contract-log boundary outputs shows captured principal log bytes 1`] = `"'SP000000000000000000002Q6VF78"`;
+
+exports[`contract-log boundary outputs shows captured some log bytes 1`] = `"(some u7)"`;
+
+exports[`contract-log boundary outputs shows captured true log bytes 1`] = `"true"`;
+
+exports[`contract-log boundary outputs shows captured uint-max log bytes 1`] = `"u340282366920938463463374607431768211455"`;
+
+exports[`contract-log boundary outputs shows captured uint-zero log bytes 1`] = `"u0"`;
+
+exports[`contract-log boundary outputs shows captured utf8 log bytes 1`] = `"u"hé🙂""`;

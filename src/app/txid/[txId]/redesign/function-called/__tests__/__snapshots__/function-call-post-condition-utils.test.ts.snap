@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`post-condition form labels, selectable values and condition-code maps remain stable 1`] = `
+{
+  "codeLabels": {
+    "1": "Equal",
+    "16": "Sends",
+    "17": "Does not send",
+    "18": "May send",
+    "2": "Greater",
+    "3": "GreaterEqual",
+    "4": "Less",
+    "48": "Will not perform",
+    "49": "May perform",
+    "5": "LessEqual",
+    "50": "Will perform",
+  },
+  "codeValues": {
+    "1": "equal",
+    "16": "sends",
+    "17": "does-not-send",
+    "18": "may-send",
+    "2": "greater",
+    "3": "greater-equal",
+    "4": "less",
+    "48": "will-not-perform",
+    "49": "may-perform",
+    "5": "less-equal",
+    "50": "will-perform",
+  },
+  "codesFromValues": {
+    "does-not-send": 17,
+    "equal": 1,
+    "greater": 2,
+    "greater-equal": 3,
+    "less": 4,
+    "less-equal": 5,
+    "may-perform": 49,
+    "may-send": 18,
+    "sends": 16,
+    "will-not-perform": 48,
+    "will-perform": 50,
+  },
+  "initial": {
+    "postConditionAddress": undefined,
+    "postConditionAmount": undefined,
+    "postConditionAssetAddress": undefined,
+    "postConditionAssetContractName": undefined,
+    "postConditionAssetName": undefined,
+    "postConditionConditionCode": undefined,
+    "postConditionMode": 1,
+    "postConditionType": undefined,
+  },
+  "parameters": {
+    "0": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAmount",
+    ],
+    "1": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAmount",
+      "postConditionAssetAddress",
+      "postConditionAssetContractName",
+      "postConditionAssetName",
+    ],
+    "2": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAssetAddress",
+      "postConditionAssetContractName",
+      "postConditionAssetName",
+    ],
+    "3": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+      "postConditionAmount",
+    ],
+    "4": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+    ],
+  },
+  "typeLabels": {
+    "0": "STX Post Condition",
+    "1": "Fungible Post Condition",
+    "2": "Non-Fungible Post Condition",
+    "3": "Staking Post Condition",
+    "4": "PoX Post Condition",
+  },
+  "typeValues": {
+    "0": "stx-post-condition",
+    "1": "fungible-post-condition",
+    "2": "non-fungible-post-condition",
+    "3": "staking-post-condition",
+    "4": "pox-post-condition",
+  },
+  "types": [
+    {
+      "label": "STX Post Condition",
+      "value": "stx-post-condition",
+    },
+    {
+      "label": "Fungible Post Condition",
+      "value": "fungible-post-condition",
+    },
+    {
+      "label": "Non-Fungible Post Condition",
+      "value": "non-fungible-post-condition",
+    },
+    {
+      "label": "Staking Post Condition",
+      "value": "staking-post-condition",
+    },
+    {
+      "label": "PoX Post Condition",
+      "value": "pox-post-condition",
+    },
+  ],
+  "typesFromValues": {
+    "fungible-post-condition": 1,
+    "non-fungible-post-condition": 2,
+    "pox-post-condition": 4,
+    "staking-post-condition": 3,
+    "stx-post-condition": 0,
+  },
+}
+`;

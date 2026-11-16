@@ -55,7 +55,10 @@ const poxInfo = {
   ],
 } as unknown as PoxInfo;
 
+afterEach(() => jest.restoreAllMocks());
+
 beforeEach(() => {
+  jest.spyOn(Date, 'now').mockReturnValue(1700000000000);
   jest.clearAllMocks();
   jest.mocked(data.fetchBondSchedule).mockRejectedValue(new Error('No projection'));
   jest.mocked(data.fetchPoxInfo).mockResolvedValue(poxInfo);

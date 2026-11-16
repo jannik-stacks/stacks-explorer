@@ -1,15 +1,26 @@
 /** @jest-environment node */
-import { PostConditionMode } from '@/common/utils/fixtures/stacks-behavior/sdk-constants';
+import { Tx } from '@jannik-stacks/kit';
 
-import { postConditionModeFromName, postConditionModeNames } from '../post-condition-mode-utils';
+import { postConditionModeFromName } from '../post-condition-mode-utils';
 
 describe('post condition mode names', () => {
-  test('round-trips every mode, including originator', () => {
-    Object.values(PostConditionMode)
-      .filter((mode): mode is PostConditionMode => typeof mode === 'number')
-      .forEach(mode => {
-        expect(postConditionModeFromName(postConditionModeNames[mode])).toBe(mode);
-      });
+  test.each([
+    ['allow', '01'],
+    ['deny', '02'],
+    ['originator', '03'],
+  ] as const)('pins the wire mode numbers and wallet names: %s', (mode, wire) => {
+    const postConditionMode = postConditionModeFromName(mode);
+    expect(postConditionMode).toBe(mode);
+    const hex = Tx.from({
+      type: 'transfer',
+      network: 'mainnet',
+      recipient: 'SP000000000000000000002Q6VF78',
+      amount: BigInt(1),
+      fee: BigInt(0),
+      nonce: BigInt(0),
+      postConditionMode,
+    }).toHex();
+    expect(hex.slice(220, 222)).toBe(wire);
   });
 
   test('returns undefined for a name that is not a mode', () => {
@@ -22,11 +33,6 @@ describe('post condition mode names', () => {
     expect(postConditionModeFromName('toString')).toBeUndefined();
     expect(postConditionModeFromName('__proto__')).toBeUndefined();
   });
-});
-
-it('pins the wire mode numbers and wallet names', () => {
-  expect(postConditionModeNames).toEqual({ 1: 'allow', 2: 'deny', 3: 'originator' });
-  expect(['allow', 'deny', 'originator'].map(postConditionModeFromName)).toEqual([1, 2, 3]);
 });
 
 it('post-condition mode descriptions and UI options remain stable', () => {

@@ -427,6 +427,36 @@ describe('Function Called Utils', () => {
   });
 
   describe('formatFunctionResult', () => {
+    it.each([
+      [
+        '070c0000000101780a010000000000000000000000000000002a',
+        '(optional uint)',
+        '{"type":"uint","value":"42"}',
+      ],
+      [
+        '070c00000001017807010000000000000000000000000000002a',
+        '(response uint UnknownType)',
+        '{"type":"uint","value":"42"}',
+      ],
+      [
+        '070c00000001017808010000000000000000000000000000002a',
+        '(response UnknownType uint)',
+        '{"type":"uint","value":"42"}',
+      ],
+      [
+        '070c0000000101780a07010000000000000000000000000000002a',
+        '(optional (response uint UnknownType))',
+        '{"type":"(response uint UnknownType)","value":{"type":"uint","value":"42"},"success":true}',
+      ],
+      [
+        '070c0000000101780a08010000000000000000000000000000002a',
+        '(optional (response UnknownType uint))',
+        '{"type":"(response UnknownType uint)","value":{"type":"uint","value":"42"},"success":false}',
+      ],
+    ])('preserves wrapped tuple-field display for literal wire bytes %s', (hex, type, value) => {
+      expect(formatFunctionResult({ hex, repr: '' })).toEqual([{ name: 'x', type, value }]);
+    });
+
     it('formats non-tuple results correctly', () => {
       const result = formatFunctionResult({
         hex: '0x0703',
@@ -588,10 +618,14 @@ describe('ABI form parameter vectors', () => {
       names: Object.keys(final),
       arguments: await serializeClarityValues(Object.values(final)),
     }).toMatchSnapshot();
-    expect(extractFunctionParams({ ...values, postConditionMode: 2 })).toEqual(values);
+    expect(extractFunctionParams({ ...values, postConditionMode: 'deny' })).toEqual(values);
     expect(isPublicFunction(abi)).toBe(true);
     expect(isPublicFunction({ ...abi, access: 'read_only' })).toBe(false);
-    expect([1, 2, 3].map(shouldUsePostConditions)).toEqual([false, true, true]);
+    expect((['allow', 'deny', 'originator'] as const).map(shouldUsePostConditions)).toEqual([
+      false,
+      true,
+      true,
+    ]);
   });
   it('pins empty optional fields and ignores arguments absent from the ABI', async () => {
     const final = processFunctionParameters(
@@ -621,3 +655,40 @@ describe('ABI form parameter vectors', () => {
     });
   });
 });
+
+it('preserves hexadecimal int and uint bytes through contract form processing', async () => {
+  const { Cl } = await import('@jannik-stacks/kit');
+  const abi = {
+    name: 'call',
+    access: 'public',
+    outputs: { type: 'bool' },
+    args: [
+      { name: 'signed', type: 'int128' },
+      { name: 'unsigned', type: 'uint128' },
+    ],
+  } as const;
+  const values = { signed: '0x2a', unsigned: '0x2a' };
+  expect(checkFunctionParameters(abi, values)).toEqual({});
+  expect(Object.values(processFunctionParameters(values, abi)).map(Cl.serialize)).toEqual([
+    '000000000000000000000000000000002a',
+    '010000000000000000000000000000002a',
+  ]);
+});
+
+it.each(['trait_reference', { optional: 'trait_reference' }] as const)(
+  'reports incomplete contract-page trait arguments %#',
+  type => {
+    const abi = {
+      name: 'call',
+      access: 'public',
+      outputs: { type: 'bool' },
+      args: [{ name: 'trait', type }],
+    } as const;
+    expect(checkFunctionParameters(abi, { trait: 'SP000000000000000000002Q6VF78' })).toEqual({
+      trait: 'Trait reference must include a valid contract address and name',
+    });
+    expect(checkFunctionParameters(abi, { trait: 'SP000000000000000000002Q6VF78.hello' })).toEqual(
+      {}
+    );
+  }
+);

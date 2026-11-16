@@ -1,5 +1,6 @@
 /** @jest-environment node */
 import { stacksAPIFetch } from '@/api/stacksAPIFetch';
+import { FEE_CONFIG } from '@/app/feeConfig';
 
 import { fetchSampleTxsFeeEstimate } from '../fee-utils';
 
@@ -62,4 +63,23 @@ it('propagates transport errors', async () => {
 it.each([{}, { estimations: [] }])('rejects malformed fee responses %#', async response => {
   fetchMock.mockResolvedValue({ json: async () => response } as Response);
   await expect(fetchSampleTxsFeeEstimate('mainnet', 'https://custom.example')).rejects.toThrow();
+});
+
+it('reads the configured fallback for all sample transactions and their average', async () => {
+  const previous = FEE_CONFIG.fallbackFeeEstimations;
+  FEE_CONFIG.fallbackFeeEstimations = [321, 654, 987];
+  try {
+    fetchMock.mockResolvedValue({ json: async () => responses.defaults } as Response);
+    const result = await fetchSampleTxsFeeEstimate('testnet', 'https://custom.example');
+    for (const fees of Object.values(result)) {
+      expect(fees).toEqual({
+        no_priority: 0,
+        low_priority: 321,
+        medium_priority: 654,
+        high_priority: 987,
+      });
+    }
+  } finally {
+    FEE_CONFIG.fallbackFeeEstimations = previous;
+  }
 });

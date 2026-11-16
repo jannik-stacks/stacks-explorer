@@ -161,10 +161,10 @@ it('serializes actual wallet-provider RPC requests and preserves returned transa
     functionArgs: [42, true, 'hello', encodeOptional('uint128', '42')],
     postConditions: [
       getPostCondition({
-        postConditionType: 0,
-        postConditionConditionCode: 1,
+        postConditionType: 'stx-postcondition',
+        postConditionConditionCode: 'eq',
         postConditionAddress: storedWallet.decoded.addresses.stx[0].address,
-        postConditionAmount: 123,
+        postConditionAmount: BigInt(123),
       }),
     ],
     postConditionMode: 'deny',

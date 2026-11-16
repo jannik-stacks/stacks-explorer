@@ -1,7 +1,6 @@
 import { ListValueType, ValueType } from '@/app/sandbox/types/values';
+import { ClarityAbiType } from '@jannik-stacks/kit';
 import React from 'react';
-
-import { ClarityAbiType } from '@stacks/transactions';
 
 export interface ArgumentInputProps {
   type: ClarityAbiType;

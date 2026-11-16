@@ -1,6 +1,5 @@
+import { Cl, ClarityAbiFunction, ClarityValue } from '@jannik-stacks/kit';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
-
-import { ClarityAbiFunction, ClarityValue, cvToHex } from '@stacks/transactions';
 
 import { HIRO_HEADERS } from '../constants/env';
 import { ReadOnlyResponse } from '../types/ReadOnlyResponse';
@@ -27,7 +26,7 @@ export const callReadOnlyFunction = async ({
     network.url
   }/v2/contracts/call-read/${contractAddress}/${contractName}/${encodeURIComponent(functionName)}`;
 
-  const args = functionArgs.map(arg => cvToHex(arg));
+  const args = functionArgs.map(arg => `0x${Cl.serialize(arg)}`);
 
   const body = JSON.stringify({
     sender: senderAddress,
@@ -72,7 +71,7 @@ export function useCallReadOnlyFunction(
       'readonly',
       contractId,
       fn.name,
-      readOnlyValue.map(cvToHex),
+      readOnlyValue.map(value => `0x${Cl.serialize(value)}`),
       ...(stxAddress ? [stxAddress] : []),
       stacksNetwork.networkId,
     ],

@@ -124,4 +124,43 @@ describe('GlobalContext', () => {
       expect(updatedNetworks[customApiUrl].isCustomNetwork).toBe(true);
     });
   });
+
+  it('loads an existing custom-network cookie and preserves built-in chain IDs', () => {
+    useSearchParams.mockReturnValue({ get: () => null } as any);
+    const storedNetwork = {
+      label: 'Existing network',
+      url: 'https://saved.example:3999',
+      btcBlockBaseUrl: 'https://mempool.space/testnet/block/',
+      btcTxBaseUrl: 'https://mempool.space/testnet/tx/',
+      btcAddressBaseUrl: 'https://mempool.space/testnet/address/',
+      networkId: 2147483648,
+      mode: 'testnet',
+      isCustomNetwork: true,
+    };
+    const cookie = JSON.stringify({ [storedNetwork.url]: storedNetwork });
+    render(
+      <CookiesProvider>
+        <GlobalContextProvider
+          addedCustomNetworksCookie={cookie}
+          removedCustomNetworksCookie=""
+          tokenPrice={mockTokenPrice}
+        >
+          <GlobalContextTestComponent />
+        </GlobalContextProvider>
+      </CookiesProvider>
+    );
+    const networks = getContextField('networks');
+    expect(networks[storedNetwork.url]).toEqual(storedNetwork);
+    expect(JSON.parse(JSON.stringify(networks))[storedNetwork.url]).toEqual(storedNetwork);
+    expect(Object.values(networks)).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: 'Stacks Mainnet', networkId: 1, mode: 'mainnet' }),
+        expect.objectContaining({
+          label: 'Stacks Testnet (Primary)',
+          networkId: 2147483648,
+          mode: 'testnet',
+        }),
+      ])
+    );
+  });
 });

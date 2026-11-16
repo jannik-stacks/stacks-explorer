@@ -30,7 +30,7 @@ export const ContractCallTxSummaryItems = ({ tx }: { tx: TxDetailsOf<'contract_c
   if (isConfirmed && tx.result) {
     const formattedResult = formatFunctionResult(tx.result);
     resultValue = formattedResult.map(r => r.value).join(', ');
-    resultSuccess = getFunctionResultSuccessStatus(tx.result);
+    resultSuccess = !!getFunctionResultSuccessStatus(tx.result);
   }
 
   const txHasAllEvents = canListTokensTransferred(tx);

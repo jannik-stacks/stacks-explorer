@@ -8,7 +8,6 @@ import { getConnectNetworkString } from '@/common/utils/network-utils';
 import {
   postConditionModeDescriptions,
   postConditionModeFromName,
-  postConditionModeNames,
   postConditionModeOptions,
 } from '@/common/utils/post-condition-mode-utils';
 import { InvalidFunctionType, getInvalidFunctionType, showFn } from '@/common/utils/sandbox';
@@ -16,11 +15,10 @@ import { Alert } from '@/components/ui/alert';
 import { Button } from '@/ui/Button';
 import { Text } from '@/ui/Text';
 import { Flex, Stack } from '@chakra-ui/react';
+import { ClarityAbiFunction, ClarityValue, StacksTransaction } from '@jannik-stacks/kit';
 import { useQueryClient } from '@tanstack/react-query';
 import { Form, Formik, FormikErrors } from 'formik';
 import { FC, useMemo, useState } from 'react';
-
-import { ClarityAbiFunction, ClarityValue, PostConditionMode } from '@stacks/transactions';
 
 import { Argument } from './Argument';
 import { PostConditionForm } from './PostConditionForm';
@@ -47,12 +45,12 @@ interface FunctionCallFormProps {
 }
 
 export interface FunctionParameters {
-  [key: string]: ValueType | ListValueType;
+  [key: string]: ValueType | ListValueType | bigint;
 }
 
 export type FormikSetFieldValueFunction = (
   field: string,
-  value: string | number,
+  value: string | number | bigint,
   shouldValidate?: boolean
 ) => Promise<void | FormikErrors<FunctionFormikState>>;
 
@@ -153,7 +151,7 @@ export const FunctionCallForm: FC<FunctionCallFormProps> = ({
                     Post-conditions:
                   </Text>
                   <Select
-                    defaultValue={[postConditionModeNames[PostConditionMode.Allow]]}
+                    defaultValue={['allow']}
                     items={postConditionModeOptions}
                     label="Post-condition mode"
                     onValueChange={details => {
@@ -166,11 +164,7 @@ export const FunctionCallForm: FC<FunctionCallFormProps> = ({
                 </Flex>
                 <Alert
                   status="neutral"
-                  description={
-                    postConditionModeDescriptions[
-                      values.postConditionMode ?? PostConditionMode.Allow
-                    ]
-                  }
+                  description={postConditionModeDescriptions[values.postConditionMode ?? 'allow']}
                 />
               </Stack>
             )}
@@ -185,7 +179,7 @@ export const FunctionCallForm: FC<FunctionCallFormProps> = ({
                         type={type}
                         error={errors[name]}
                         key={name}
-                        value={values[name]}
+                        value={values[name] as ValueType | ListValueType}
                       />
                     ))}
                   </>

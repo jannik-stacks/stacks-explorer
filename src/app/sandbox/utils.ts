@@ -1,28 +1,15 @@
 'use client';
 
-import {
-  ClarityAbiType,
-  ClarityAbiTypeTuple,
-  ClarityValue,
-  cvToString,
-  deserializeCV,
-  encodeAbiClarityValue,
-  hexToCV,
-  isClarityAbiOptional,
-  isClarityAbiTuple,
-  noneCV,
-  someCV,
-  tupleCV,
-} from '@stacks/transactions';
+import { displayClarityValue } from '@/common/utils/clarity-display';
+import { validateStacksContractId } from '@/common/utils/utils';
+import { Cl, ClarityAbiType, ClarityValue, encodeClarityArg } from '@jannik-stacks/kit';
 
 import { ReadOnlyResponse } from '../../common/types/ReadOnlyResponse';
 import { TupleValueType } from './types/values';
 
 export const parseReadOnlyResponse = ({ result }: ReadOnlyResponse) => {
-  const hex = result.slice(2);
-  const bufferCv = Buffer.from(hex, 'hex');
-  const clarityValue = deserializeCV(bufferCv);
-  return cvToString(clarityValue);
+  const clarityValue = Cl.deserialize(result);
+  return displayClarityValue(clarityValue);
 };
 
 export interface ParsedHexClarityValue {
@@ -32,49 +19,53 @@ export interface ParsedHexClarityValue {
 
 export const parseHexClarityValue = (hex: string): ParsedHexClarityValue => {
   try {
-    return { display: cvToString(hexToCV(hex)), parsed: true };
+    return { display: displayClarityValue(Cl.deserialize(hex)), parsed: true };
   } catch {
     return { display: hex, parsed: false };
   }
 };
 
-export const getTuple = (type?: ClarityAbiType): ClarityAbiTypeTuple['tuple'] | undefined => {
+export const getTuple = (
+  type?: ClarityAbiType
+): Extract<ClarityAbiType, { tuple: unknown }>['tuple'] | undefined => {
   if (!type) return;
-  const isTuple = isClarityAbiTuple(type);
+  const isTuple = typeof type === 'object' && 'tuple' in type;
   if (isTuple) return type?.tuple;
-  const isOptional = isClarityAbiOptional(type);
-  if (isOptional && isClarityAbiTuple(type?.optional)) return type?.optional?.tuple;
+  const isOptional = typeof type === 'object' && 'optional' in type;
+  if (isOptional && typeof type?.optional === 'object' && 'tuple' in type?.optional)
+    return type?.optional?.tuple;
 };
 
 export const encodeTuple = (
-  tuple: ClarityAbiTypeTuple['tuple'],
+  tuple: Extract<ClarityAbiType, { tuple: unknown }>['tuple'],
   value: TupleValueType
 ): ClarityValue => {
   const tupleData = tuple.reduce(
     (acc, tupleEntry) => {
-      const optionalType = isClarityAbiOptional(tupleEntry.type);
+      const optionalType = typeof tupleEntry.type === 'object' && 'optional' in tupleEntry.type;
       const type = tupleEntry.type;
       acc[tupleEntry.name] = optionalType
         ? !!value[tupleEntry.name]
-          ? encodeAbiClarityValue(value[tupleEntry.name].toString(), type)
-          : noneCV()
-        : encodeAbiClarityValue(value[tupleEntry.name].toString(), type);
+          ? encodeFormValue(value[tupleEntry.name].toString(), type)
+          : Cl.none()
+        : encodeFormValue(value[tupleEntry.name].toString(), type);
       return acc;
     },
     {} as Record<string, ClarityValue>
   );
-  return tupleCV(tupleData);
+  return Cl.tuple(tupleData);
 };
 
 export const encodeOptional = (optionalType: ClarityAbiType, value: string): ClarityValue => {
   if (value) {
+    if (optionalType === 'trait_reference') return Cl.some(encodeFormValue(value, optionalType));
     try {
-      return someCV(encodeAbiClarityValue(value, optionalType));
+      return Cl.some(encodeFormValue(value, optionalType));
     } catch (e) {
-      return noneCV();
+      return Cl.none();
     }
   } else {
-    return noneCV();
+    return Cl.none();
   }
 };
 
@@ -83,12 +74,41 @@ const allValuesNotEmpty = (value: TupleValueType) => {
 };
 
 export const encodeOptionalTuple = (
-  optionalType: ClarityAbiTypeTuple['tuple'],
+  optionalType: Extract<ClarityAbiType, { tuple: unknown }>['tuple'],
   value: TupleValueType
 ): ClarityValue => {
   if (allValuesNotEmpty(value)) {
-    return someCV(encodeTuple(optionalType, value));
+    return Cl.some(encodeTuple(optionalType, value));
   } else {
-    return noneCV();
+    return Cl.none();
   }
 };
+
+export function encodeFormValue(value: string, type: ClarityAbiType): ClarityValue {
+  if (typeof type === 'object' && 'optional' in type)
+    return Cl.some(encodeFormValue(value, type.optional));
+  let input: unknown = value;
+  if (type === 'trait_reference' && !validateStacksContractId(value)) {
+    throw new Error('Trait reference must include a valid contract address and name');
+  }
+  if (type === 'principal' && value.includes('.')) {
+    const [address, name] = value.split('.');
+    input = `${address}.${name}`;
+  }
+  if (type === 'uint128' || type === 'int128') input = BigInt(value);
+  if (type === 'bool') {
+    if (!['true', 'false', '0', '1'].includes(value)) throw new Error('Invalid boolean');
+    input = value === 'true' || value === '1';
+  }
+  if (type === 'none') input = null;
+  const cv = encodeClarityArg(type, input, '');
+  Cl.serialize(cv);
+  return cv;
+}
+
+export function encodeMemoInput(value: string): string {
+  return value
+    .split('')
+    .map(char => (char.charCodeAt(0) & 0xff).toString(16).padStart(2, '0'))
+    .join('');
+}

@@ -1,7 +1,7 @@
+import { formatAbiType } from '@/common/utils/clarity-display';
 import { Box } from '@chakra-ui/react';
+import { ClarityAbiType } from '@jannik-stacks/kit';
 import { FC } from 'react';
-
-import { ClarityAbiType, getTypeString } from '@stacks/transactions';
 
 import { Field } from '../../../../components/ui/field';
 import { Input } from '../../../../ui/Input';
@@ -19,12 +19,12 @@ export const PrimitiveArgumentInput: FC<
       <Box width="100%">
         <Input
           width="100%"
-          type={getTypeString(type).includes('int') ? 'number' : 'text'}
+          type="text"
           name={name}
           id={name}
           onChange={handleChange}
           value={value}
-          placeholder={`${getTypeString(type)}`}
+          placeholder={`${formatAbiType(type)}`}
         />
         {error && <Caption color={'error'}>{error}</Caption>}
       </Box>

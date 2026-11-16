@@ -3,12 +3,12 @@
 import { RISKY_NFTS } from '@/app/token/[tokenId]/consts';
 import { isRiskyNFTContract } from '@/app/token/[tokenId]/utils';
 import { Flex, FlexProps, Icon } from '@chakra-ui/react';
+import { Cl } from '@jannik-stacks/kit';
 import { Warning } from '@phosphor-icons/react';
 import React from 'react';
 
 import { NonFungibleTokenHolding } from '@stacks/stacks-blockchain-api-types/generated';
 import type { operations } from '@stacks/token-metadata-api-client/lib/generated/schema';
-import { cvToJSON, hexToCV } from '@stacks/transactions';
 
 import { TxLink } from '../../../../common/components/ExplorerLinks';
 import { TwoColsListItem } from '../../../../common/components/TwoColumnsListItem';
@@ -45,7 +45,7 @@ export const TokenAssetListItem: React.FC<TokenAssetListItemProps> = ({
   const firstNftValue = (() => {
     if (!holdings?.length) return undefined;
     try {
-      const decoded = cvToJSON(hexToCV(holdings[0].value.hex));
+      const decoded = Cl.deserialize(holdings[0].value.hex);
       if (decoded?.type === 'int' || decoded?.type === 'uint') {
         return BigInt(decoded.value);
       }

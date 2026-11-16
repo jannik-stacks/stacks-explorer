@@ -6,692 +6,692 @@ exports[`pins every condition code and sandbox/redesign builder on standard and 
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
     ],
-    "code": 16,
+    "code": "sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
     ],
-    "code": 16,
+    "code": "sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
     ],
-    "code": 17,
+    "code": "not-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
     ],
-    "code": 17,
+    "code": "not-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
     ],
-    "code": 18,
+    "code": "maybe-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020216a46ff88886c2ef9762d970b4d2c63678835bd39d16a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
     ],
-    "code": 18,
+    "code": "maybe-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030216a46ff88886c2ef9762d970b4d2c63678835bd39d05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "040216a46ff88886c2ef9762d970b4d2c63678835bd39d30",
     ],
-    "code": 48,
+    "code": "will-not-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040216a46ff88886c2ef9762d970b4d2c63678835bd39d30",
     ],
-    "code": 48,
+    "code": "will-not-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040216a46ff88886c2ef9762d970b4d2c63678835bd39d31",
     ],
-    "code": 49,
+    "code": "may-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040216a46ff88886c2ef9762d970b4d2c63678835bd39d31",
     ],
-    "code": 49,
+    "code": "may-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040216a46ff88886c2ef9762d970b4d2c63678835bd39d32",
     ],
-    "code": 50,
+    "code": "will-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040216a46ff88886c2ef9762d970b4d2c63678835bd39d32",
     ],
-    "code": 50,
+    "code": "will-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "000316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 0,
+    "type": "stx-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e01000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e02000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e03000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e04000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "010316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e05000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 1,
+    "type": "ft-postcondition",
   },
   {
     "bytes": [
       "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
     ],
-    "code": 16,
+    "code": "sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e10",
     ],
-    "code": 16,
+    "code": "sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
     ],
-    "code": 17,
+    "code": "not-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e11",
     ],
-    "code": 17,
+    "code": "not-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
     ],
-    "code": 18,
+    "code": "maybe-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "020316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7416a46ff88886c2ef9762d970b4d2c63678835bd39d05617373657405746f6b656e0e00000005746f6b656e12",
     ],
-    "code": 18,
+    "code": "maybe-sent",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 2,
+    "type": "nft-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7401000000000010c8e0",
     ],
-    "code": 1,
+    "code": "eq",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7402000000000010c8e0",
     ],
-    "code": 2,
+    "code": "gt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7403000000000010c8e0",
     ],
-    "code": 3,
+    "code": "gte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7404000000000010c8e0",
     ],
-    "code": 4,
+    "code": "lt",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "030316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7405000000000010c8e0",
     ],
-    "code": 5,
+    "code": "lte",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 3,
+    "type": "staking-postcondition",
   },
   {
     "bytes": [
       "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7430",
     ],
-    "code": 48,
+    "code": "will-not-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7430",
     ],
-    "code": 48,
+    "code": "will-not-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7431",
     ],
-    "code": 49,
+    "code": "may-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7431",
     ],
-    "code": 49,
+    "code": "may-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7432",
     ],
-    "code": 50,
+    "code": "will-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 4,
+    "type": "pox-postcondition",
   },
   {
     "bytes": [
       "040316a46ff88886c2ef9762d970b4d2c63678835bd39d057661756c7432",
     ],
-    "code": 50,
+    "code": "will-perform",
     "principal": "SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.vault",
-    "type": 4,
+    "type": "pox-postcondition",
   },
 ]
 `;
 
-exports[`post-condition mode 1 controls shown fields in both forms 1`] = `
+exports[`post-condition mode allow controls shown fields in both forms 1`] = `
 {
   "inputs": [],
   "text": "",
 }
 `;
 
-exports[`post-condition mode 1 controls shown fields in both forms 2`] = `
+exports[`post-condition mode allow controls shown fields in both forms 2`] = `
 {
   "inputs": [],
   "text": "",
 }
 `;
 
-exports[`post-condition mode 2 controls shown fields in both forms 1`] = `
+exports[`post-condition mode deny controls shown fields in both forms 1`] = `
 {
   "inputs": [
     {
@@ -701,7 +701,7 @@ exports[`post-condition mode 2 controls shown fields in both forms 1`] = `
     },
     {
       "name": "",
-      "type": "number",
+      "type": "text",
       "value": "",
     },
   ],
@@ -709,7 +709,7 @@ exports[`post-condition mode 2 controls shown fields in both forms 1`] = `
 }
 `;
 
-exports[`post-condition mode 2 controls shown fields in both forms 2`] = `
+exports[`post-condition mode deny controls shown fields in both forms 2`] = `
 {
   "inputs": [
     {
@@ -719,7 +719,7 @@ exports[`post-condition mode 2 controls shown fields in both forms 2`] = `
     },
     {
       "name": "postConditionAmount",
-      "type": "number",
+      "type": "text",
       "value": "",
     },
   ],
@@ -727,7 +727,7 @@ exports[`post-condition mode 2 controls shown fields in both forms 2`] = `
 }
 `;
 
-exports[`post-condition mode 3 controls shown fields in both forms 1`] = `
+exports[`post-condition mode originator controls shown fields in both forms 1`] = `
 {
   "inputs": [
     {
@@ -737,7 +737,7 @@ exports[`post-condition mode 3 controls shown fields in both forms 1`] = `
     },
     {
       "name": "",
-      "type": "number",
+      "type": "text",
       "value": "",
     },
   ],
@@ -745,7 +745,7 @@ exports[`post-condition mode 3 controls shown fields in both forms 1`] = `
 }
 `;
 
-exports[`post-condition mode 3 controls shown fields in both forms 2`] = `
+exports[`post-condition mode originator controls shown fields in both forms 2`] = `
 {
   "inputs": [
     {
@@ -755,7 +755,7 @@ exports[`post-condition mode 3 controls shown fields in both forms 2`] = `
     },
     {
       "name": "postConditionAmount",
-      "type": "number",
+      "type": "text",
       "value": "",
     },
   ],
@@ -768,7 +768,7 @@ exports[`redesign ABI primitive shown attributes 0 1`] = `
   "label": "value",
   "name": "value",
   "placeholder": "uint",
-  "type": "number",
+  "type": "text",
 }
 `;
 
@@ -777,7 +777,7 @@ exports[`redesign ABI primitive shown attributes 1 1`] = `
   "label": "value",
   "name": "value",
   "placeholder": "int",
-  "type": "number",
+  "type": "text",
 }
 `;
 
@@ -831,7 +831,7 @@ exports[`redesign ABI primitive shown attributes 7 1`] = `
   "label": "value",
   "name": "value",
   "placeholder": "(optional uint)",
-  "type": "number",
+  "type": "text",
 }
 `;
 
@@ -841,7 +841,7 @@ exports[`redesign ABI tuple, optional tuple and list shown attributes 1`] = `
     {
       "name": "value.amount",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
     },
     {
       "name": "value.memo",
@@ -859,7 +859,7 @@ exports[`redesign ABI tuple, optional tuple and list shown attributes 2`] = `
     {
       "name": "value.amount",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
     },
     {
       "name": "value.memo",
@@ -877,7 +877,7 @@ exports[`redesign ABI tuple, optional tuple and list shown attributes 3`] = `
     {
       "name": "value.0",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
     },
   ],
   "label": "valuevalue.0+ Add list item",
@@ -1086,7 +1086,7 @@ exports[`redesign shared ABI fixture labels and widget selection 1`] = `
     {
       "name": "amount",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "340282366920938463463374607431768211455",
     },
   ],
@@ -1101,7 +1101,7 @@ exports[`redesign shared ABI fixture labels and widget selection 2`] = `
     {
       "name": "signed",
       "placeholder": "int",
-      "type": "number",
+      "type": "text",
       "value": "-170141183460469231731687303715884105728",
     },
   ],
@@ -1206,7 +1206,7 @@ exports[`redesign shared ABI fixture labels and widget selection 9`] = `
     {
       "name": "optional",
       "placeholder": "(optional uint)",
-      "type": "number",
+      "type": "text",
       "value": "42",
     },
   ],
@@ -1221,7 +1221,7 @@ exports[`redesign shared ABI fixture labels and widget selection 10`] = `
     {
       "name": "tuple.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "1",
     },
   ],
@@ -1236,7 +1236,7 @@ exports[`redesign shared ABI fixture labels and widget selection 11`] = `
     {
       "name": "optional-tuple.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "2",
     },
   ],
@@ -1251,13 +1251,13 @@ exports[`redesign shared ABI fixture labels and widget selection 12`] = `
     {
       "name": "list.0",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "0",
     },
     {
       "name": "list.1",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "1",
     },
   ],
@@ -1272,13 +1272,13 @@ exports[`redesign shared ABI fixture labels and widget selection 13`] = `
     {
       "name": "tuple-list.0.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "3",
     },
     {
       "name": "tuple-list.1.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "4",
     },
   ],
@@ -1293,13 +1293,13 @@ exports[`redesign shared ABI fixture labels and widget selection 14`] = `
     {
       "name": "optional-list.0",
       "placeholder": "(optional uint)",
-      "type": "number",
+      "type": "text",
       "value": "5",
     },
     {
       "name": "optional-list.1",
       "placeholder": "(optional uint)",
-      "type": "number",
+      "type": "text",
       "value": "6",
     },
   ],
@@ -1313,7 +1313,7 @@ exports[`sandbox ABI primitive shown attributes 0 1`] = `
   "label": "value",
   "name": "value",
   "placeholder": "uint",
-  "type": "number",
+  "type": "text",
 }
 `;
 
@@ -1322,7 +1322,7 @@ exports[`sandbox ABI primitive shown attributes 1 1`] = `
   "label": "value",
   "name": "value",
   "placeholder": "int",
-  "type": "number",
+  "type": "text",
 }
 `;
 
@@ -1376,7 +1376,7 @@ exports[`sandbox ABI primitive shown attributes 7 1`] = `
   "label": "value",
   "name": "value",
   "placeholder": "(optional uint)",
-  "type": "number",
+  "type": "text",
 }
 `;
 
@@ -1386,7 +1386,7 @@ exports[`sandbox ABI tuple, optional tuple and list shown attributes 1`] = `
     {
       "name": "value.amount",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
     },
     {
       "name": "value.memo",
@@ -1404,7 +1404,7 @@ exports[`sandbox ABI tuple, optional tuple and list shown attributes 2`] = `
     {
       "name": "value.amount",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
     },
     {
       "name": "value.memo",
@@ -1422,7 +1422,7 @@ exports[`sandbox ABI tuple, optional tuple and list shown attributes 3`] = `
     {
       "name": "value.0",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
     },
   ],
   "label": "valuevalue.0+ Add list item",
@@ -1631,7 +1631,7 @@ exports[`sandbox shared ABI fixture labels and widget selection 1`] = `
     {
       "name": "amount",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "340282366920938463463374607431768211455",
     },
   ],
@@ -1646,7 +1646,7 @@ exports[`sandbox shared ABI fixture labels and widget selection 2`] = `
     {
       "name": "signed",
       "placeholder": "int",
-      "type": "number",
+      "type": "text",
       "value": "-170141183460469231731687303715884105728",
     },
   ],
@@ -1751,7 +1751,7 @@ exports[`sandbox shared ABI fixture labels and widget selection 9`] = `
     {
       "name": "optional",
       "placeholder": "(optional uint)",
-      "type": "number",
+      "type": "text",
       "value": "42",
     },
   ],
@@ -1766,7 +1766,7 @@ exports[`sandbox shared ABI fixture labels and widget selection 10`] = `
     {
       "name": "tuple.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "1",
     },
   ],
@@ -1781,7 +1781,7 @@ exports[`sandbox shared ABI fixture labels and widget selection 11`] = `
     {
       "name": "optional-tuple.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "2",
     },
   ],
@@ -1796,13 +1796,13 @@ exports[`sandbox shared ABI fixture labels and widget selection 12`] = `
     {
       "name": "list.0",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "0",
     },
     {
       "name": "list.1",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "1",
     },
   ],
@@ -1817,13 +1817,13 @@ exports[`sandbox shared ABI fixture labels and widget selection 13`] = `
     {
       "name": "tuple-list.0.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "3",
     },
     {
       "name": "tuple-list.1.x",
       "placeholder": "uint",
-      "type": "number",
+      "type": "text",
       "value": "4",
     },
   ],
@@ -1838,13 +1838,13 @@ exports[`sandbox shared ABI fixture labels and widget selection 14`] = `
     {
       "name": "optional-list.0",
       "placeholder": "(optional uint)",
-      "type": "number",
+      "type": "text",
       "value": "5",
     },
     {
       "name": "optional-list.1",
       "placeholder": "(optional uint)",
-      "type": "number",
+      "type": "text",
       "value": "6",
     },
   ],

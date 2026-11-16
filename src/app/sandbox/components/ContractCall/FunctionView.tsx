@@ -1,21 +1,12 @@
 'use client';
 
+import { encodeFormValue, encodeMemoInput } from '@/app/sandbox/utils';
 import { PRINCIPAL_MEMPOOL_TX_SUMMARIES_INFINITE_KEY } from '@/common/queries/useMempoolTxSummaries';
 import { Box, Flex, Stack } from '@chakra-ui/react';
+import { Cl, ClarityAbiFunction, ClarityValue, StacksTransaction } from '@jannik-stacks/kit';
 import { useQueryClient } from '@tanstack/react-query';
 import { Form, Formik, FormikErrors } from 'formik';
 import { ChangeEvent, FC, ReactNode, useMemo, useState } from 'react';
-
-import { asciiToBytes, bytesToHex } from '@stacks/common';
-import {
-  ClarityAbiFunction,
-  ClarityValue,
-  PostConditionMode,
-  encodeAbiClarityValue,
-  isClarityAbiList,
-  isClarityAbiOptional,
-  listCV,
-} from '@stacks/transactions';
 
 import { Section } from '../../../../common/components/Section';
 import { Select } from '../../../../common/components/Select';
@@ -25,7 +16,6 @@ import { getConnectNetworkString } from '../../../../common/utils/network-utils'
 import {
   postConditionModeDescriptions,
   postConditionModeFromName,
-  postConditionModeNames,
   postConditionModeOptions,
 } from '../../../../common/utils/post-condition-mode-utils';
 import { showFn } from '../../../../common/utils/sandbox';
@@ -53,7 +43,7 @@ interface FunctionViewProps {
 }
 
 interface FormType {
-  [key: string]: ValueType | ListValueType;
+  [key: string]: ValueType | ListValueType | bigint;
 }
 
 export type FormikHandleChangeFunction = {
@@ -78,7 +68,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
   const isReadOnly = fn.access === 'read_only';
 
   const initialPostConditionParameterValues: PostConditionParameters = {
-    postConditionMode: isReadOnly ? PostConditionMode.Allow : PostConditionMode.Deny,
+    postConditionMode: isReadOnly ? 'allow' : 'deny',
     postConditionType: undefined,
     postConditionAddress: undefined,
     postConditionAmount: undefined,
@@ -92,7 +82,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
     () =>
       fn.args.reduce((argsAcc, arg) => {
         const tuple = getTuple(arg.type);
-        const isList = isClarityAbiList(arg.type);
+        const isList = typeof arg.type === 'object' && 'list' in arg.type;
         argsAcc[arg.name] = !!tuple
           ? tuple.reduce(
               (tupleAcc, tupleEntry) => {
@@ -153,8 +143,9 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
           const type = fn.args.find(({ name }) => name === arg)?.type;
           if (!type) return;
           const tuple = getTuple(type);
-          const isList = isClarityAbiList(type);
-          const optionalType = isClarityAbiOptional(type) ? type?.optional : undefined;
+          const isList = typeof type === 'object' && 'list' in type;
+          const optionalType =
+            typeof type === 'object' && 'optional' in type ? type?.optional : undefined;
           if (tuple) {
             if (optionalType) {
               final[arg] = encodeOptionalTuple(tuple, values[arg] as TupleValueType);
@@ -164,27 +155,28 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
           } else if (isList) {
             const listValues = values[arg] as ListValueType;
             const listType = type.list.type;
-            const optionalListType = isClarityAbiOptional(listType)
-              ? listType?.optional
-              : undefined;
+            const optionalListType =
+              typeof listType === 'object' && 'optional' in listType
+                ? listType?.optional
+                : undefined;
             const listTuple = getTuple(listType);
             const listData = listValues.map(listValue =>
               listTuple
                 ? encodeTuple(listTuple, listValue as TupleValueType)
-                : encodeAbiClarityValue(
+                : encodeFormValue(
                     (listValue as NonTupleValueType).toString(),
                     optionalListType || listType
                   )
             );
-            final[arg] = listCV(listData);
+            final[arg] = Cl.list(listData);
           } else if (optionalType) {
             const val =
               arg === 'memo'
-                ? bytesToHex(asciiToBytes((values[arg] as NonTupleValueType).toString()))
+                ? encodeMemoInput((values[arg] as NonTupleValueType).toString())
                 : values[arg];
             final[arg] = encodeOptional(optionalType, val.toString());
           } else {
-            final[arg] = encodeAbiClarityValue((values[arg] as NonTupleValueType).toString(), type);
+            final[arg] = encodeFormValue((values[arg] as NonTupleValueType).toString(), type);
           }
         });
 
@@ -199,7 +191,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
           postConditionAssetName,
         } = values;
 
-        const submittedPostConditionMode = postConditionMode ?? PostConditionMode.Deny;
+        const submittedPostConditionMode = postConditionMode ?? 'deny';
 
         if (fn.access === 'public') {
           try {
@@ -209,7 +201,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
               functionArgs: Object.values(final),
               network: getConnectNetworkString(network),
               postConditions:
-                submittedPostConditionMode === PostConditionMode.Allow
+                submittedPostConditionMode === 'allow'
                   ? undefined
                   : postConditionType == null
                     ? []
@@ -222,7 +214,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
                         postConditionAssetContractName,
                         postConditionAssetName,
                       }),
-              postConditionMode: postConditionModeNames[submittedPostConditionMode],
+              postConditionMode: submittedPostConditionMode,
             });
             void queryClient.invalidateQueries({ queryKey: ['addressMempoolTxsInfinite'] });
             void queryClient.invalidateQueries({
@@ -241,7 +233,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
       }}
     >
       {({ handleSubmit, handleChange, values, errors, setFieldValue }) => {
-        const postConditionMode = values.postConditionMode ?? PostConditionMode.Allow;
+        const postConditionMode = values.postConditionMode ?? 'allow';
         return (
           <Section
             overflowY="visible"
@@ -265,7 +257,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
                         <Flex justifyContent="flex-end" alignItems="center" gap={2} flexWrap="wrap">
                           <Text fontSize="sm">Post-conditions:</Text>
                           <Select
-                            defaultValue={[postConditionModeNames[postConditionMode]]}
+                            defaultValue={[postConditionMode]}
                             items={postConditionModeOptions}
                             label="Post-condition mode"
                             onValueChange={details => {
@@ -291,7 +283,7 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
                             type={type}
                             error={errors[name]}
                             key={name}
-                            value={values[name]}
+                            value={values[name] as ValueType | ListValueType}
                           />
                         ))}
                       </>

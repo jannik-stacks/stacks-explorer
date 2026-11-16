@@ -57,7 +57,12 @@ export function NFTTable() {
       const value =
         'value' in cv ? cv.value : cv.type === 'true' ? true : cv.type === 'false' ? false : null;
       const isNumericString = typeof value === 'string' && /^\d+$/.test(value);
-      const tokenId = isNumericString ? BigInt(value) : (value as bigint | string);
+      const tokenId =
+        cv.type === 'buffer'
+          ? `0x${cv.value}`
+          : isNumericString
+            ? BigInt(value)
+            : (value as bigint | string);
       return {
         assetId: nft.asset_identifier,
         tokenId,

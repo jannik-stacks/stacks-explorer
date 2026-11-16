@@ -90,7 +90,7 @@ export function PostConditionForm({
                           <Input
                             variant="redesignPrimary"
                             width="full"
-                            type="text"
+                            type={parameter === 'postConditionAmount' ? 'number' : 'text'}
                             name={parameter}
                             id={parameter}
                             onChange={event => {

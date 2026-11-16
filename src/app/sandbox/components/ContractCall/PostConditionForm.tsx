@@ -472,7 +472,7 @@ export function PostConditionForm({
                       </Text>
                       <Box width="100%">
                         <Field
-                          type="text"
+                          type={parameter === 'postConditionAmount' ? 'number' : 'text'}
                           name={parameter}
                           id={parameter}
                           component={Input}

@@ -275,3 +275,28 @@ with the part-1 baseline. Lint, all 127 unit suites (1,521 passed tests, two
 skips, 128 snapshots), standalone type checking and the documented font-mocked
 production build passed. The restored checker, snapshots and stored JSON
 fixtures remain byte-identical to part 1. No dependency or adapter was added.
+
+## Updated-base behavior verification (5539d1d)
+
+Reproduced the reported five-suite/60-snapshot failure. Migrated remaining
+form test drivers from numeric selectors to native Kit strings/bigint and
+compare argument wire hex without its optional 0x prefix. Snapshot changes
+only replace internal enum metadata and mode test names: all 84 post-condition
+byte vectors and the other 84 ABI/UI/wallet snapshot payloads remain identical.
+Restored numeric input attributes in both form trees while preserving raw
+input strings through Formik setFieldValue, avoiding parseFloat rounding.
+Twelve new real-form cases first failed with the old handlers, then passed for
+unsafe integers, 128-bit boundaries and nested tuple/list arguments.
+
+Lint and all 132 unit suites pass: 1,639 tests, two skips, all 234 snapshots.
+The coverage checker still passes all 96 tracked imports with no missing sites,
+proof problems or removed entries. The dependency graph/configuration is
+unchanged from the successful lifecycle-enabled clean frozen installation.
+
+The sequential production build and standalone pnpm typecheck both exited 0.
+The build used the same invocation-only local font response documented above
+and completed compilation, TypeScript, all 21 static pages and tracing. Final
+source/configuration audit found no obsolete SDK/Leather imports. The pnpm why
+inventory and #3 exception list remain unchanged; no package, version, override
+or approval policy changed in this follow-up. Browser smoke remains the sole
+maintainer-approved verification exception, with manual pages in the workplan.

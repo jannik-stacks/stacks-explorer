@@ -21,7 +21,7 @@ export const PrimitiveArgumentInput: FC<
         <Input
           variant="redesignPrimary"
           width="full"
-          type="text"
+          type={formatAbiType(type).includes('int') ? 'number' : 'text'}
           name={name}
           id={name}
           onChange={handleChange}

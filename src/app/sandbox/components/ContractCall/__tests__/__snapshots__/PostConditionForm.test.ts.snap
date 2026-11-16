@@ -5,32 +5,27 @@ exports[`sandbox post-condition selectable labels and serialized values remain s
   "options": [
     {
       "label": "STX Post Condition",
-      "value": 0,
+      "value": "stx-postcondition",
     },
     {
       "label": "Fungible Post Condition",
-      "value": 1,
+      "value": "ft-postcondition",
     },
     {
       "label": "Non-Fungible Post Condition",
-      "value": 2,
+      "value": "nft-postcondition",
     },
     {
       "label": "Staking Post Condition",
-      "value": 3,
+      "value": "staking-postcondition",
     },
     {
       "label": "PoX Post Condition",
-      "value": 4,
+      "value": "pox-postcondition",
     },
   ],
   "parameters": {
-    "0": [
-      "postConditionAddress",
-      "postConditionConditionCode",
-      "postConditionAmount",
-    ],
-    "1": [
+    "ft-postcondition": [
       "postConditionAddress",
       "postConditionConditionCode",
       "postConditionAmount",
@@ -38,21 +33,26 @@ exports[`sandbox post-condition selectable labels and serialized values remain s
       "postConditionAssetContractName",
       "postConditionAssetName",
     ],
-    "2": [
+    "nft-postcondition": [
       "postConditionAddress",
       "postConditionConditionCode",
       "postConditionAssetAddress",
       "postConditionAssetContractName",
       "postConditionAssetName",
     ],
-    "3": [
+    "pox-postcondition": [
+      "postConditionAddress",
+      "postConditionConditionCode",
+    ],
+    "staking-postcondition": [
       "postConditionAddress",
       "postConditionConditionCode",
       "postConditionAmount",
     ],
-    "4": [
+    "stx-postcondition": [
       "postConditionAddress",
       "postConditionConditionCode",
+      "postConditionAmount",
     ],
   },
 }

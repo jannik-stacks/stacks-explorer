@@ -111,10 +111,29 @@ const formCases = [
   [{ list: { length: 2, type: { optional: 'uint128' } } }, '10'],
   [{ list: { length: 2, type: { tuple: [{ name: 'x', type: 'uint128' }] } } }, '11'],
 ] as const;
+const exactIntegerCases = [
+  ['uint128', '9007199254740993', '0100000000000000000020000000000001'],
+  ['uint128', '340282366920938463463374607431768211455', '01ffffffffffffffffffffffffffffffff'],
+  ['int128', '-9007199254740993', '00ffffffffffffffffffdfffffffffffff'],
+  ['int128', '-170141183460469231731687303715884105728', '0080000000000000000000000000000000'],
+  [
+    { tuple: [{ name: 'x', type: 'uint128' }] },
+    '9007199254740993',
+    '0c0000000101780100000000000000000020000000000001',
+  ],
+  [
+    { list: { length: 2, type: 'uint128' } },
+    '9007199254740993',
+    '0b000000010100000000000000000020000000000001',
+  ],
+] as const;
 for (const style of ['sandbox', 'redesign']) {
-  it.each(formCases)(
+  it.each([
+    ...formCases.map(([type, value]) => [type, value, undefined] as const),
+    ...exactIntegerCases,
+  ])(
     `${style} real form produces wallet argument bytes %#`,
-    async (type, value) => {
+    async (type, value, expectedHex?: string) => {
       requestMock.mockResolvedValue({ txid: 'vector' } as any);
       const { wrapper } = createBehaviorWrapper();
       const fn = {
@@ -142,7 +161,18 @@ for (const style of ['sandbox', 'redesign']) {
       fireEvent.click(screen.getByRole('button', { name: /Call function/ }));
       await waitFor(() => expect(requestMock).toHaveBeenCalled());
       const [method, params] = requestMock.mock.calls[0];
-      expect({ method, ...params }).toMatchSnapshot();
+      if (expectedHex) {
+        expect(method).toBe('stx_callContract');
+        expect(params.functionArgs.map((hex: string) => hex.replace(/^0x/, ''))).toEqual([
+          expectedHex,
+        ]);
+        return;
+      }
+      expect({
+        method,
+        ...params,
+        functionArgs: params.functionArgs.map((hex: string) => hex.replace(/^0x/, '')),
+      }).toMatchSnapshot();
     }
   );
 }
@@ -181,18 +211,18 @@ it('pins every condition code and sandbox/redesign builder on standard and contr
   const calls = [];
   for (const principal of [address, `${address}.vault`]) {
     for (const [type, codes] of [
-      [0, [1, 2, 3, 4, 5]],
-      [1, [1, 2, 3, 4, 5]],
-      [2, [16, 17, 18]],
-      [3, [1, 2, 3, 4, 5]],
-      [4, [48, 49, 50]],
+      ['stx-postcondition', ['eq', 'gt', 'gte', 'lt', 'lte']],
+      ['ft-postcondition', ['eq', 'gt', 'gte', 'lt', 'lte']],
+      ['nft-postcondition', ['sent', 'not-sent', 'maybe-sent']],
+      ['staking-postcondition', ['eq', 'gt', 'gte', 'lt', 'lte']],
+      ['pox-postcondition', ['will-not-perform', 'may-perform', 'will-perform']],
     ] as const) {
       for (const code of codes) {
         const params = {
           postConditionType: type,
           postConditionConditionCode: code,
           postConditionAddress: principal,
-          postConditionAmount: 1100000,
+          postConditionAmount: BigInt(1100000),
           postConditionAssetAddress: address,
           postConditionAssetContractName: 'asset',
           postConditionAssetName: 'token',
@@ -216,41 +246,44 @@ it('pins every condition code and sandbox/redesign builder on standard and contr
   expect(calls).toMatchSnapshot();
 });
 
-it.each([1, 2, 3])('post-condition mode %s controls shown fields in both forms', mode => {
-  const Sandbox = require('../components/ContractCall/PostConditionForm').PostConditionForm;
-  const Redesign =
-    require('@/app/txid/[txId]/redesign/function-called/PostConditionForm').PostConditionForm;
-  const { wrapper } = createBehaviorWrapper();
-  const values = {
-    postConditionMode: mode,
-    postConditionType: 0,
-    postConditionConditionCode: 1,
-    postConditionAddress: 'SP000000000000000000002Q6VF78',
-    postConditionAmount: 42,
-  };
-  for (const Component of [Sandbox, Redesign]) {
-    const { container, unmount } = render(
-      <Formik initialValues={values} onSubmit={() => {}}>
-        <Component
-          values={values}
-          errors={{}}
-          formikSetFieldValue={() => {}}
-          handleChange={() => {}}
-        />
-      </Formik>,
-      { wrapper }
-    );
-    expect({
-      text: container.textContent,
-      inputs: Array.from(container.querySelectorAll('input')).map(input => ({
-        name: input.name,
-        value: input.value,
-        type: input.type,
-      })),
-    }).toMatchSnapshot();
-    unmount();
+it.each(['allow', 'deny', 'originator'])(
+  'post-condition mode %s controls shown fields in both forms',
+  mode => {
+    const Sandbox = require('../components/ContractCall/PostConditionForm').PostConditionForm;
+    const Redesign =
+      require('@/app/txid/[txId]/redesign/function-called/PostConditionForm').PostConditionForm;
+    const { wrapper } = createBehaviorWrapper();
+    const values = {
+      postConditionMode: mode,
+      postConditionType: 'stx-postcondition',
+      postConditionConditionCode: 'eq',
+      postConditionAddress: 'SP000000000000000000002Q6VF78',
+      postConditionAmount: BigInt(42),
+    };
+    for (const Component of [Sandbox, Redesign]) {
+      const { container, unmount } = render(
+        <Formik initialValues={values} onSubmit={() => {}}>
+          <Component
+            values={values}
+            errors={{}}
+            formikSetFieldValue={() => {}}
+            handleChange={() => {}}
+          />
+        </Formik>,
+        { wrapper }
+      );
+      expect({
+        text: container.textContent,
+        inputs: Array.from(container.querySelectorAll('input')).map(input => ({
+          name: input.name,
+          value: input.value,
+          type: input.type,
+        })),
+      }).toMatchSnapshot();
+      unmount();
+    }
   }
-});
+);
 
 for (const [style, Argument] of [
   ['sandbox', SandboxArgument],

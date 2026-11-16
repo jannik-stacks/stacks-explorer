@@ -86,7 +86,12 @@ it('serializes every post condition through the repository wallet boundary', asy
     postConditionMode: 'originator',
   });
   await callContract({ contract: `${address}.hello`, functionName: 'print', functionArgs: [] });
-  expect(requestMock.mock.calls).toMatchSnapshot();
+  expect(
+    requestMock.mock.calls.map(([method, params]) => [
+      method,
+      { ...params, functionArgs: params.functionArgs.map((hex: string) => hex.replace(/^0x/, '')) },
+    ])
+  ).toMatchSnapshot();
 });
 
 it('returns addresses and preserves parsed values', async () => {

@@ -278,7 +278,9 @@ export const FunctionView: FC<FunctionViewProps> = ({ fn, contractId, cancelButt
                       <>
                         {fn.args.map(({ name, type }) => (
                           <Argument
-                            handleChange={handleChange}
+                            handleChange={event =>
+                              setFieldValue(event.currentTarget.name, event.currentTarget.value)
+                            }
                             name={name}
                             type={type}
                             error={errors[name]}

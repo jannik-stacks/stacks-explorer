@@ -1581,6 +1581,12 @@
             "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
             "name": "formats basic clarity types correctly"
           }
+        },
+        {
+          "test": {
+            "file": "src/app/txid/[txId]/redesign/function-called/__tests__/function-called-utils.test.ts",
+            "name": "preserves wrapped tuple-field display for literal wire bytes %s"
+          }
         }
       ],
       "flow": "hexToCV/cvToJSON/Cl.stringify and response tags -> shown result/log/argument text, type labels and success status in FunctionCalled; all Clarity vectors, principal and ABI argument paths retain output/failure cases.",

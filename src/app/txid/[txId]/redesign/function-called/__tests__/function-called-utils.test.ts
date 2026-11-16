@@ -427,6 +427,36 @@ describe('Function Called Utils', () => {
   });
 
   describe('formatFunctionResult', () => {
+    it.each([
+      [
+        '070c0000000101780a010000000000000000000000000000002a',
+        '(optional uint)',
+        '{"type":"uint","value":"42"}',
+      ],
+      [
+        '070c00000001017807010000000000000000000000000000002a',
+        '(response uint UnknownType)',
+        '{"type":"uint","value":"42"}',
+      ],
+      [
+        '070c00000001017808010000000000000000000000000000002a',
+        '(response UnknownType uint)',
+        '{"type":"uint","value":"42"}',
+      ],
+      [
+        '070c0000000101780a07010000000000000000000000000000002a',
+        '(optional (response uint UnknownType))',
+        '{"type":"(response uint UnknownType)","value":{"type":"uint","value":"42"},"success":true}',
+      ],
+      [
+        '070c0000000101780a08010000000000000000000000000000002a',
+        '(optional (response UnknownType uint))',
+        '{"type":"(response UnknownType uint)","value":{"type":"uint","value":"42"},"success":false}',
+      ],
+    ])('preserves wrapped tuple-field display for literal wire bytes %s', (hex, type, value) => {
+      expect(formatFunctionResult({ hex, repr: '' })).toEqual([{ name: 'x', type, value }]);
+    });
+
     it('formats non-tuple results correctly', () => {
       const result = formatFunctionResult({
         hex: '0x0703',

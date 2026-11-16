@@ -176,7 +176,7 @@ function resultEntryDisplay(cv: KitValue): string {
   if (cv.type === 'true' || cv.type === 'false') return cv.type;
   if (cv.type === 'none') return 'none';
   if (cv.type === 'list') return cv.value.map(value => resultEntryDisplay(value)).join(', ');
-  if (cv.type === 'tuple') {
+  if (cv.type === 'tuple' || cv.type === 'some' || cv.type === 'ok' || cv.type === 'err') {
     const displayField = (value: KitValue): unknown => ({
       type: describeClarityType(value),
       value:
@@ -197,9 +197,14 @@ function resultEntryDisplay(cv: KitValue): string {
                     : value.type === 'buffer'
                       ? `0x${value.value}`
                       : value.value.toString(),
+      ...(value.type === 'ok' || value.type === 'err' ? { success: value.type === 'ok' } : {}),
     });
     return JSON.stringify(
-      Object.fromEntries(Object.entries(cv.value).map(([key, value]) => [key, displayField(value)]))
+      cv.type === 'tuple'
+        ? Object.fromEntries(
+            Object.entries(cv.value).map(([key, value]) => [key, displayField(value)])
+          )
+        : displayField(cv.value)
     );
   }
   return displayClarityValue(cv);

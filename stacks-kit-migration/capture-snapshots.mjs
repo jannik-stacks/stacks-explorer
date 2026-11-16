@@ -1,6 +1,5 @@
 // Development-only repository-behavior capture. Review every changed byte/output.
 import { spawnSync } from 'node:child_process';
-import { delimiter, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -27,9 +26,8 @@ const tests = [
   'src/common/utils/__tests__/post-condition-mode-utils.test.ts',
   'src/common/utils/__tests__/transaction-utils.test.ts',
 ];
-const bin = join(root, 'node_modules/.pnpm-cli/node_modules/.bin');
 const result = spawnSync(
-  join(bin, 'pnpm'),
+  'pnpm',
   [
     'run',
     'test:unit',
@@ -41,7 +39,6 @@ const result = spawnSync(
   {
     cwd: root,
     stdio: 'inherit',
-    env: { ...process.env, PATH: `${bin}${delimiter}${process.env.PATH}` },
   }
 );
 if (result.error) throw result.error;

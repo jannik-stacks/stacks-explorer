@@ -161,3 +161,12 @@ Tests:       2 skipped, 1602 passed, 1604 total
 Snapshots:   234 passed, 234 total
 Time:        53.63 s
 ```
+
+### Capture command portability review
+
+- [x] Resolve pnpm through inherited PATH; remove the sandbox-specific executable and PATH override.
+- [x] Verify capture using a pnpm executable on PATH, then run lint, unit tests and build.
+
+The capture command must work after a normal pnpm install. No production or dependency changes are needed.
+
+Portability verification: an alternate executable placed first on inherited PATH was invoked by capture-snapshots.mjs, and the real capture run passed 21 suites, 455 tests and 229 snapshots. The script no longer imports node:path or constructs an executable path/environment override. Final pnpm lint passed (six existing warnings); CI=1 pnpm run test:unit passed 129 suites, 1,602 tests and 234 snapshots, with two existing skips (40.586s). Inventory coverage and fixture reconstruction passed. The production build passed with the same invocation-only local font responses and /scratch output configuration recorded above. git diff --check passed.
